@@ -16,5 +16,14 @@ namespace Zadanie1
         {
             InitializeComponent();
         }
+
+        private void sygnałSinusoidalnyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 newMDIChild = new Form2();
+            // Set the Parent Form of the Child window.  
+            newMDIChild.MdiParent = this;
+            // Display the new form.  
+            newMDIChild.Show();
+        }
     }
 }
