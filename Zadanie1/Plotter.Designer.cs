@@ -1,6 +1,6 @@
 ﻿namespace Zadanie1
 {
-    partial class Form2
+    partial class Plotter
     {
         /// <summary>
         /// Required designer variable.
