@@ -8,7 +8,7 @@ namespace Zadanie1
 {
    public enum PlotType
     {
-        RozkladJednostajny,
+        SzumJednostajny,
         SzumGaussowski,
         Sinusoidalny,
         SinusoidalnyWyprostowanyJednopolowkowo,
