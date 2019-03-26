@@ -43,6 +43,9 @@ namespace Zadanie1
             this.TotalTime = TotalTime;
             this.Period = Period;
             this.ImpletionRate = ImpletionRate;
+
+            equation = new Equation();
+            equation.Amplitude = Amplitude;
             Plot(type);
         }
 
@@ -114,9 +117,8 @@ namespace Zadanie1
         {
 
             PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(Math.Sin,InitialTime, InitialTime+TotalTime, 0.1, Title));
+            myModel.Series.Add(new FunctionSeries(Math.Sin,InitialTime, InitialTime+TotalTime, 0.1));
             plot1.Model = myModel;
-
         }
 
         private void RysujSzumGaussowski()
@@ -126,7 +128,9 @@ namespace Zadanie1
 
         private void RysujSzumJednostajny()
         {
-            throw new NotImplementedException();
+            PlotModel myModel = new PlotModel { Title = Title };
+            myModel.Series.Add(new FunctionSeries(equation.SzumJednostajny, InitialTime, InitialTime + TotalTime, 0.1));
+            plot1.Model = myModel;
         }
     }
 }

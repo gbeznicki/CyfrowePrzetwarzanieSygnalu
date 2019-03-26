@@ -25,5 +25,14 @@ namespace Zadanie1
             // Display the new form.  
             newMDIChild.Show();
         }
+
+        private void szumORozkłJednostToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plotter newMDIChild = new Plotter(PlotType.SzumJednostajny, "Szum Jednostajny", 10.5, 0.5, 10.1, 0);
+            // Set the Parent Form of the Child window.  
+            newMDIChild.MdiParent = this;
+            // Display the new form.  
+            newMDIChild.Show();
+        }
     }
 }
