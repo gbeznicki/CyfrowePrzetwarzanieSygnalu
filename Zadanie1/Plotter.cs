@@ -46,6 +46,8 @@ namespace Zadanie1
 
             equation = new Equation();
             equation.Amplitude = Amplitude;
+            equation.Period = Period;
+            equation.InitialTime = InitialTime;
             Plot(type);
         }
 
@@ -117,7 +119,7 @@ namespace Zadanie1
         {
 
             PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(Math.Sin,InitialTime, InitialTime+TotalTime, 0.001));
+            myModel.Series.Add(new FunctionSeries(equation.Sinus,InitialTime, InitialTime+TotalTime, 0.001));
             plot1.Model = myModel;
         }
 

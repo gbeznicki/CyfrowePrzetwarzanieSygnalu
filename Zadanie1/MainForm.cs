@@ -25,7 +25,7 @@ namespace Zadanie1
 
         private void sygnałSinusoidalnyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter newMDIChild = new Plotter(PlotType.Sinusoidalny, "Sinus", 0, 0, 10,0);
+            Plotter newMDIChild = new Plotter(PlotType.Sinusoidalny, "Sinus", 10, 0, 10,5);
             // Set the Parent Form of the Child window.  
             newMDIChild.MdiParent = this;
             // Display the new form.  
