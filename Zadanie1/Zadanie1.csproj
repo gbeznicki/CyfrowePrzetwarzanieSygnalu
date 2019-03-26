@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Equation.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="PlotType.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

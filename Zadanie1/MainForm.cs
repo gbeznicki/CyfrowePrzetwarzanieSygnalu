@@ -17,6 +17,12 @@ namespace Zadanie1
             InitializeComponent();
         }
 
+        public double Amplitude { get; set; }
+        public double InitialTime { get; set; }
+        public double TotalTime { get; set; }
+        public double Period { get; set; }
+        public double ImpletionRate { get; set; }
+
         private void sygnałSinusoidalnyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Plotter newMDIChild = new Plotter(PlotType.Sinusoidalny, "Sinus", 0, 0, 10,0);
@@ -33,6 +39,16 @@ namespace Zadanie1
             newMDIChild.MdiParent = this;
             // Display the new form.  
             newMDIChild.Show();
+        }
+
+        private void szumGaussowskiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plotter newMDIChild = new Plotter(PlotType.SzumGaussowski, "Szum Gaussowski", 10.5, 0.5, 10.1, 0);
+            // Set the Parent Form of the Child window.  
+            newMDIChild.MdiParent = this;
+            // Display the new form.  
+            newMDIChild.Show();
+
         }
     }
 }

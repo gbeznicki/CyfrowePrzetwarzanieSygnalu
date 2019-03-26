@@ -156,6 +156,7 @@
             this.szumGaussowskiToolStripMenuItem.Name = "szumGaussowskiToolStripMenuItem";
             this.szumGaussowskiToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.szumGaussowskiToolStripMenuItem.Text = "Szum gaussowski";
+            this.szumGaussowskiToolStripMenuItem.Click += new System.EventHandler(this.szumGaussowskiToolStripMenuItem_Click);
             // 
             // sygnałSinusoidalnyToolStripMenuItem
             // 

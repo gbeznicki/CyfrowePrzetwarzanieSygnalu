@@ -117,19 +117,21 @@ namespace Zadanie1
         {
 
             PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(Math.Sin,InitialTime, InitialTime+TotalTime, 0.1));
+            myModel.Series.Add(new FunctionSeries(Math.Sin,InitialTime, InitialTime+TotalTime, 0.001));
             plot1.Model = myModel;
         }
 
         private void RysujSzumGaussowski()
         {
-            throw new NotImplementedException();
+            PlotModel myModel = new PlotModel { Title = Title };
+            myModel.Series.Add(new FunctionSeries(equation.SzumGaussowski, InitialTime, InitialTime + TotalTime, 0.001));
+            plot1.Model = myModel;
         }
 
         private void RysujSzumJednostajny()
         {
             PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(equation.SzumJednostajny, InitialTime, InitialTime + TotalTime, 0.1));
+            myModel.Series.Add(new FunctionSeries(equation.SzumJednostajny, InitialTime, InitialTime + TotalTime, 0.001));
             plot1.Model = myModel;
         }
     }
