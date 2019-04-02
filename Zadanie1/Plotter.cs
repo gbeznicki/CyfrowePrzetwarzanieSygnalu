@@ -1,6 +1,7 @@
 ﻿using OxyPlot;
 using OxyPlot.Series;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Zadanie1
@@ -48,6 +49,7 @@ namespace Zadanie1
             equation.Amplitude = Amplitude;
             equation.Period = Period;
             equation.InitialTime = InitialTime;
+            equation.ImpletionRate = ImpletionRate;
             Plot(type);
         }
 
@@ -97,22 +99,41 @@ namespace Zadanie1
 
         private void RysujProstokatnySymetryczny()
         {
-            throw new NotImplementedException();
+            PlotModel myModel = new PlotModel { Title = Title };
+            var points = equation.ProstokatnySymetryczny(TotalTime, 1000, InitialTime, Period, ImpletionRate, Amplitude);
+            LineSeries plotData = new LineSeries();
+            foreach (DataPoint point in points)
+            {
+                plotData.Points.Add(point);
+            }
+            myModel.Series.Add(plotData);
+            plot1.Model = myModel;
         }
 
         private void RysujProstokatny()
         {
-            throw new NotImplementedException();
+            PlotModel myModel = new PlotModel { Title = Title };
+            var points = equation.Prostokatny(TotalTime, 1000, InitialTime, Period, ImpletionRate, Amplitude);
+            LineSeries plotData = new LineSeries();
+            foreach (DataPoint point in points) {
+                plotData.Points.Add(point);
+            }
+            myModel.Series.Add(plotData);
+            plot1.Model = myModel;
         }
 
         private void RysujSinusoidalnyWyprostowanyDwupolowkowo()
         {
-            throw new NotImplementedException();
+            PlotModel myModel = new PlotModel { Title = Title };
+            myModel.Series.Add(new FunctionSeries(equation.SinusWyprostowanyDwupolowkowo, InitialTime, InitialTime + TotalTime, 0.001));
+            plot1.Model = myModel;
         }
 
         private void RysujSinusoidalnyWyprostowanyJednopolowkowo()
         {
-            throw new NotImplementedException();
+            PlotModel myModel = new PlotModel { Title = Title };
+            myModel.Series.Add(new FunctionSeries(equation.SinusWyprostowanyJednopolowkowo, InitialTime, InitialTime + TotalTime, 0.001));
+            plot1.Model = myModel;
         }
 
         private void RysujSinusoidalny()

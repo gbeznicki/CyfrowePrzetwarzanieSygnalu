@@ -50,5 +50,41 @@ namespace Zadanie1
             newMDIChild.Show();
 
         }
+
+        private void sygnałSinJednopWypToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plotter newMDIChild = new Plotter(PlotType.SinusoidalnyWyprostowanyJednopolowkowo, "Sinusoidalny wyprostowany jednopołówkowo", 10, 0, 10, 5);
+            // Set the Parent Form of the Child window.  
+            newMDIChild.MdiParent = this;
+            // Display the new form.  
+            newMDIChild.Show();
+        }
+
+        private void sygSinusoidalnyWyprostowanyDwupolowkowoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plotter newMDIChild = new Plotter(PlotType.SinusoidalnyWyprostowanyDwupolowkowo, "Sinusoidalny wyprostowany dwupołówkowo", 10, 0, 10, 5);
+            // Set the Parent Form of the Child window.  
+            newMDIChild.MdiParent = this;
+            // Display the new form.  
+            newMDIChild.Show();
+        }
+
+        private void sygProstokątnyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plotter newMDIChild = new Plotter(PlotType.Prostokatny, "Prostokątny", 5, 0, 10, 1, 0.7);
+            // Set the Parent Form of the Child window.  
+            newMDIChild.MdiParent = this;
+            // Display the new form.  
+            newMDIChild.Show();
+        }
+
+        private void sygProstokątnySymToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plotter newMDIChild = new Plotter(PlotType.ProstokatnySymetryczny, "Prostokątny Symetryczny", 5, 0, 10, 1, 0.7);
+            // Set the Parent Form of the Child window.  
+            newMDIChild.MdiParent = this;
+            // Display the new form.  
+            newMDIChild.Show();
+        }
     }
 }

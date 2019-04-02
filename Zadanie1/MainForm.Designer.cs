@@ -170,24 +170,28 @@
             this.sygnałSinJednopWypToolStripMenuItem.Name = "sygnałSinJednopWypToolStripMenuItem";
             this.sygnałSinJednopWypToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.sygnałSinJednopWypToolStripMenuItem.Text = "Syg sin. jednop. wyp";
+            this.sygnałSinJednopWypToolStripMenuItem.Click += new System.EventHandler(this.sygnałSinJednopWypToolStripMenuItem_Click);
             // 
             // syToolStripMenuItem
             // 
             this.syToolStripMenuItem.Name = "syToolStripMenuItem";
             this.syToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.syToolStripMenuItem.Text = "Syg sin.  dwup. wyp";
+            this.syToolStripMenuItem.Click += new System.EventHandler(this.sygSinusoidalnyWyprostowanyDwupolowkowoToolStripMenuItem_Click);
             // 
             // ątnyToolStripMenuItem
             // 
             this.ątnyToolStripMenuItem.Name = "ątnyToolStripMenuItem";
             this.ątnyToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.ątnyToolStripMenuItem.Text = "Syg prostokątny";
+            this.ątnyToolStripMenuItem.Click += new System.EventHandler(this.sygProstokątnyToolStripMenuItem_Click);
             // 
             // sygProstokątnySymToolStripMenuItem
             // 
             this.sygProstokątnySymToolStripMenuItem.Name = "sygProstokątnySymToolStripMenuItem";
             this.sygProstokątnySymToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.sygProstokątnySymToolStripMenuItem.Text = "Syg prostokątny sym.";
+            this.sygProstokątnySymToolStripMenuItem.Click += new System.EventHandler(this.sygProstokątnySymToolStripMenuItem_Click);
             // 
             // sygTrójkątnyToolStripMenuItem
             // 
