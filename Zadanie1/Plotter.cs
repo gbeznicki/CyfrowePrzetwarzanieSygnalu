@@ -1,5 +1,6 @@
 ﻿using OxyPlot;
 using OxyPlot.Series;
+using System;
 using System.Windows.Forms;
 
 namespace Zadanie1
@@ -91,7 +92,23 @@ namespace Zadanie1
                 case PlotType.SkokJednostkowy:
                     RysujSkokJednostkowy();
                     break;
+                case PlotType.ImpulsJednostkowy:
+                    RysujImpulsJednostkowy();
+                    break;
+                case PlotType.SzumImpulsowy:
+                    RysujSzumImpulsowy();
+                    break;
             }
+        }
+
+        private void RysujSzumImpulsowy()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RysujImpulsJednostkowy()
+        {
+            throw new NotImplementedException();
         }
 
         private void FillEquation()
