@@ -1,7 +1,5 @@
 ﻿using OxyPlot;
 using OxyPlot.Series;
-using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Zadanie1
@@ -11,11 +9,17 @@ namespace Zadanie1
         /// <summary>
         /// Amplituda - określa maksymalną wartość bezwzględną sygnału
         /// </summary>
-        public double Amplitude { get; set; }
+        public double Amplitude
+        {
+            get; set;
+        }
         /// <summary>
         /// Czas początkowy - czas w którym rozpoczyna się sygnał okresowy
         /// </summary>
-        public double InitialTime { get; set; }
+        public double InitialTime
+        {
+            get; set;
+        }
         /// <summary>
         /// Czas trwania sygnału
         /// </summary>
@@ -27,35 +31,38 @@ namespace Zadanie1
         /// <summary>
         /// Współczynnik wypełnienia - dotyczy sygnały prostokątnego i trójkątnego
         /// </summary>
-        public double ImpletionRate { get; set; }
+        public double ImpletionRate
+        {
+            get; set;
+        }
         /// <summary>
         /// Tytuł wykresu
         /// </summary>
         public string Title { get; set; }
+        /// <summary>
+        /// Czas skoku jednostkowego
+        /// </summary>
+        public double JumpTime
+        {
+            get; set;
+        }
+        /// <summary>
+        /// Typ wykresu
+        /// </summary>
+        public PlotType PlotType { get; set; }
 
         private Equation equation;
 
-        public Plotter(PlotType type, string Title, double Amplitude, double InitialTime, double TotalTime, double Period, double ImpletionRate = 0)
+        public Plotter()
         {
             InitializeComponent();
-            this.Title = Title;
-            this.Amplitude = Amplitude;
-            this.InitialTime = InitialTime;
-            this.TotalTime = TotalTime;
-            this.Period = Period;
-            this.ImpletionRate = ImpletionRate;
-
             equation = new Equation();
-            equation.Amplitude = Amplitude;
-            equation.Period = Period;
-            equation.InitialTime = InitialTime;
-            equation.ImpletionRate = ImpletionRate;
-            Plot(type);
         }
 
-        private void Plot(PlotType type)
+        public void Plot()
         {
-            switch (type)
+            FillEquation();
+            switch (PlotType)
             {
                 case PlotType.SzumJednostajny:
                     RysujSzumJednostajny();
@@ -87,14 +94,33 @@ namespace Zadanie1
             }
         }
 
+        private void FillEquation()
+        {
+            equation.Amplitude = Amplitude;
+            equation.Period = Period;
+            equation.InitialTime = InitialTime;
+            equation.ImpletionRate = ImpletionRate;
+            equation.JumpTime = JumpTime;
+        }
+
         private void RysujSkokJednostkowy()
         {
-            throw new NotImplementedException();
+            PlotModel myModel = new PlotModel { Title = Title };
+            myModel.Series.Add(new FunctionSeries(equation.SkokJednostkowy, InitialTime, InitialTime + TotalTime, 0.001));
+            plot1.Model = myModel;
         }
 
         private void RysujTrojkatny()
         {
-            throw new NotImplementedException();
+            PlotModel myModel = new PlotModel { Title = Title };
+            var points = equation.Trojkatny(TotalTime, 1000, InitialTime, Period, ImpletionRate, Amplitude);
+            LineSeries plotData = new LineSeries();
+            foreach (DataPoint point in points)
+            {
+                plotData.Points.Add(point);
+            }
+            myModel.Series.Add(plotData);
+            plot1.Model = myModel;
         }
 
         private void RysujProstokatnySymetryczny()
@@ -115,7 +141,8 @@ namespace Zadanie1
             PlotModel myModel = new PlotModel { Title = Title };
             var points = equation.Prostokatny(TotalTime, 1000, InitialTime, Period, ImpletionRate, Amplitude);
             LineSeries plotData = new LineSeries();
-            foreach (DataPoint point in points) {
+            foreach (DataPoint point in points)
+            {
                 plotData.Points.Add(point);
             }
             myModel.Series.Add(plotData);
@@ -140,7 +167,7 @@ namespace Zadanie1
         {
 
             PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(equation.Sinus,InitialTime, InitialTime+TotalTime, 0.001));
+            myModel.Series.Add(new FunctionSeries(equation.Sinus, InitialTime, InitialTime + TotalTime, 0.001));
             plot1.Model = myModel;
         }
 

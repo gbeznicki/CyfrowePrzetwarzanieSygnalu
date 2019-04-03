@@ -198,12 +198,14 @@
             this.sygTrójkątnyToolStripMenuItem.Name = "sygTrójkątnyToolStripMenuItem";
             this.sygTrójkątnyToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.sygTrójkątnyToolStripMenuItem.Text = "Syg trójkątny";
+            this.sygTrójkątnyToolStripMenuItem.Click += new System.EventHandler(this.sygTrójkątnyToolStripMenuItem_Click);
             // 
             // skokJednostkowyToolStripMenuItem
             // 
             this.skokJednostkowyToolStripMenuItem.Name = "skokJednostkowyToolStripMenuItem";
             this.skokJednostkowyToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.skokJednostkowyToolStripMenuItem.Text = "Skok jednostkowy";
+            this.skokJednostkowyToolStripMenuItem.Click += new System.EventHandler(this.skokJednostkowyToolStripMenuItem_Click);
             // 
             // impulsJednostkowyToolStripMenuItem
             // 

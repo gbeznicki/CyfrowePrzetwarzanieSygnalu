@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Zadanie1
@@ -25,16 +18,32 @@ namespace Zadanie1
 
         private void sygnałSinusoidalnyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter newMDIChild = new Plotter(PlotType.Sinusoidalny, "Sinus", 10, 0, 10,5);
+            Plotter plotter = new Plotter()
+            {
+                PlotType = PlotType.Sinusoidalny,
+                Title = "Sinusoidalny",
+                Amplitude = 10,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 5
+            };
             // Set the Parent Form of the Child window.  
-            newMDIChild.MdiParent = this;
+            plotter.MdiParent = this;
             // Display the new form.  
-            newMDIChild.Show();
+            plotter.Show();
         }
 
         private void szumORozkłJednostToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter newMDIChild = new Plotter(PlotType.SzumJednostajny, "Szum Jednostajny", 10.5, 0.5, 10.1, 0);
+            Plotter newMDIChild = new Plotter()
+            {
+                PlotType = PlotType.SzumJednostajny,
+                Title = "Szum Jednostajny",
+                Amplitude = 10,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 0
+            };
             // Set the Parent Form of the Child window.  
             newMDIChild.MdiParent = this;
             // Display the new form.  
@@ -43,7 +52,15 @@ namespace Zadanie1
 
         private void szumGaussowskiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter newMDIChild = new Plotter(PlotType.SzumGaussowski, "Szum Gaussowski", 10.5, 0.5, 10.1, 0);
+            Plotter newMDIChild = new Plotter()
+            {
+                PlotType = PlotType.SzumGaussowski,
+                Title = "Szum Gaussowski",
+                Amplitude = 10,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 0
+            };
             // Set the Parent Form of the Child window.  
             newMDIChild.MdiParent = this;
             // Display the new form.  
@@ -53,7 +70,15 @@ namespace Zadanie1
 
         private void sygnałSinJednopWypToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter newMDIChild = new Plotter(PlotType.SinusoidalnyWyprostowanyJednopolowkowo, "Sinusoidalny wyprostowany jednopołówkowo", 10, 0, 10, 5);
+            Plotter newMDIChild = new Plotter()
+            {
+                PlotType = PlotType.SinusoidalnyWyprostowanyJednopolowkowo,
+                Title = "Sinusoidalny wyprostowany jednopołówkowo",
+                Amplitude = 10,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 5
+            };
             // Set the Parent Form of the Child window.  
             newMDIChild.MdiParent = this;
             // Display the new form.  
@@ -62,7 +87,15 @@ namespace Zadanie1
 
         private void sygSinusoidalnyWyprostowanyDwupolowkowoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter newMDIChild = new Plotter(PlotType.SinusoidalnyWyprostowanyDwupolowkowo, "Sinusoidalny wyprostowany dwupołówkowo", 10, 0, 10, 5);
+            Plotter newMDIChild = new Plotter()
+            {
+                PlotType = PlotType.SinusoidalnyWyprostowanyDwupolowkowo,
+                Title = "Sinusoidalny wyprostowany dwupołówkowo",
+                Amplitude = 10,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 5
+            };
             // Set the Parent Form of the Child window.  
             newMDIChild.MdiParent = this;
             // Display the new form.  
@@ -71,7 +104,16 @@ namespace Zadanie1
 
         private void sygProstokątnyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter newMDIChild = new Plotter(PlotType.Prostokatny, "Prostokątny", 5, 0, 10, 1, 0.7);
+            Plotter newMDIChild = new Plotter()
+            {
+                PlotType = PlotType.Prostokatny,
+                Title = "Prostokątny",
+                Amplitude = 5,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 1,
+                ImpletionRate = 0.7
+            };
             // Set the Parent Form of the Child window.  
             newMDIChild.MdiParent = this;
             // Display the new form.  
@@ -80,11 +122,59 @@ namespace Zadanie1
 
         private void sygProstokątnySymToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter newMDIChild = new Plotter(PlotType.ProstokatnySymetryczny, "Prostokątny Symetryczny", 5, 0, 10, 1, 0.7);
+            Plotter newMDIChild = new Plotter()
+            {
+                //PlotType.ProstokatnySymetryczny, "Prostokątny Symetryczny", 5, 0, 10, 1, 0.7
+                PlotType = PlotType.ProstokatnySymetryczny,
+                Title = "Prostokątny Symetryczny",
+                Amplitude = 5,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 1,
+                ImpletionRate = 0.7
+            };
             // Set the Parent Form of the Child window.  
             newMDIChild.MdiParent = this;
             // Display the new form.  
             newMDIChild.Show();
+        }
+
+        private void sygTrójkątnyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plotter newMDIChild = new Plotter()
+            {
+                PlotType = PlotType.Trojkatny,
+                Title = "Trójkątny",
+                Amplitude = 5,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 1,
+                ImpletionRate = 0.7
+            };
+            // Set the Parent Form of the Child window.  
+            newMDIChild.MdiParent = this;
+            // Display the new form.  
+            newMDIChild.Show();
+        }
+
+        private void skokJednostkowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plotter plotter = new Plotter()
+            {
+                PlotType = PlotType.SkokJednostkowy,
+                Title = "Skok Jednostkowy",
+                Amplitude = 5,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 1,
+                ImpletionRate = 0.7,
+                JumpTime = 6
+            };
+            plotter.Plot();
+            // Set the Parent Form of the Child window.  
+            plotter.MdiParent = this;
+            // Display the new form.  
+            plotter.Show();
         }
     }
 }
