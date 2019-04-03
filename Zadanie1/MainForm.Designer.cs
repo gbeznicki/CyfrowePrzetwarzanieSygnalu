@@ -212,6 +212,7 @@
             this.impulsJednostkowyToolStripMenuItem.Name = "impulsJednostkowyToolStripMenuItem";
             this.impulsJednostkowyToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.impulsJednostkowyToolStripMenuItem.Text = "Impuls jednostkowy";
+            this.impulsJednostkowyToolStripMenuItem.Click += new System.EventHandler(this.impulsJednostkowyToolStripMenuItem_Click);
             // 
             // szumImpulsowyToolStripMenuItem
             // 

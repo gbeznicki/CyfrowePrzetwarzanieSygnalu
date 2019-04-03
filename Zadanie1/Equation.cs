@@ -133,5 +133,13 @@ namespace Zadanie1
 
             return points;
         }
+
+        public double ImpulsJednostkowy(double x)
+        {
+            if (Math.Abs(x - JumpTime) > 1e-6)
+                return 0;
+            else
+                return Amplitude;
+        }
     }
 }

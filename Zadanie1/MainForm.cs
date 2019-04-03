@@ -176,5 +176,25 @@ namespace Zadanie1
             // Display the new form.  
             plotter.Show();
         }
+
+        private void impulsJednostkowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plotter plotter = new Plotter()
+            {
+                PlotType = PlotType.ImpulsJednostkowy,
+                Title = "Impuls Jednostkowy",
+                Amplitude = 5,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 1,
+                JumpTime = 6
+            };
+            plotter.Plot();
+            // Set the Parent Form of the Child window.  
+            plotter.MdiParent = this;
+            // Display the new form.  
+            plotter.Show();
+
+        }
     }
 }

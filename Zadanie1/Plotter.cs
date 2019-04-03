@@ -108,7 +108,9 @@ namespace Zadanie1
 
         private void RysujImpulsJednostkowy()
         {
-            throw new NotImplementedException();
+            PlotModel myModel = new PlotModel { Title = Title };
+            myModel.Series.Add(new FunctionSeries(equation.ImpulsJednostkowy, InitialTime, InitialTime + TotalTime, 0.001));
+            plot1.Model = myModel;
         }
 
         private void FillEquation()
