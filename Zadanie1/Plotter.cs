@@ -52,6 +52,12 @@ namespace Zadanie1
         /// </summary>
         public PlotType PlotType { get; set; }
 
+        /// <summary>
+        /// Prawdopodobieństwo, dotyczy szumu jednostkowego
+        /// </summary>
+        public double Probability { get; set; }
+
+        private int samplingFrequency = 1000;
         private Equation equation;
 
         public Plotter()
@@ -103,13 +109,27 @@ namespace Zadanie1
 
         private void RysujSzumImpulsowy()
         {
-            throw new NotImplementedException();
+            PlotModel myModel = new PlotModel { Title = Title };
+            var points = equation.SzumImpulsowy(Amplitude, InitialTime, TotalTime, Probability, samplingFrequency - 990);
+            ScatterSeries plotData = new ScatterSeries();
+            foreach (DataPoint point in points)
+            {
+                plotData.Points.Add(new ScatterPoint(point.X, point.Y, 2));
+            }
+            myModel.Series.Add(plotData);
+            plot1.Model = myModel;
         }
 
         private void RysujImpulsJednostkowy()
         {
             PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(equation.ImpulsJednostkowy, InitialTime, InitialTime + TotalTime, 0.001));
+            var points = equation.ImpulsJednostkowy(Amplitude, InitialTime, TotalTime, JumpTime, samplingFrequency - 990);
+            ScatterSeries plotData = new ScatterSeries();
+            foreach (DataPoint point in points)
+            {
+                plotData.Points.Add(new ScatterPoint(point.X, point.Y, 2));
+            }
+            myModel.Series.Add(plotData);
             plot1.Model = myModel;
         }
 
@@ -132,7 +152,7 @@ namespace Zadanie1
         private void RysujTrojkatny()
         {
             PlotModel myModel = new PlotModel { Title = Title };
-            var points = equation.Trojkatny(TotalTime, 1000, InitialTime, Period, ImpletionRate, Amplitude);
+            var points = equation.Trojkatny(TotalTime, samplingFrequency, InitialTime, Period, ImpletionRate, Amplitude);
             LineSeries plotData = new LineSeries();
             foreach (DataPoint point in points)
             {
@@ -145,7 +165,7 @@ namespace Zadanie1
         private void RysujProstokatnySymetryczny()
         {
             PlotModel myModel = new PlotModel { Title = Title };
-            var points = equation.ProstokatnySymetryczny(TotalTime, 1000, InitialTime, Period, ImpletionRate, Amplitude);
+            var points = equation.ProstokatnySymetryczny(TotalTime, samplingFrequency, InitialTime, Period, ImpletionRate, Amplitude);
             LineSeries plotData = new LineSeries();
             foreach (DataPoint point in points)
             {
@@ -158,7 +178,7 @@ namespace Zadanie1
         private void RysujProstokatny()
         {
             PlotModel myModel = new PlotModel { Title = Title };
-            var points = equation.Prostokatny(TotalTime, 1000, InitialTime, Period, ImpletionRate, Amplitude);
+            var points = equation.Prostokatny(TotalTime, samplingFrequency, InitialTime, Period, ImpletionRate, Amplitude);
             LineSeries plotData = new LineSeries();
             foreach (DataPoint point in points)
             {

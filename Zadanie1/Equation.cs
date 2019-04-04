@@ -57,7 +57,10 @@ namespace Zadanie1
             for (; j < howManyPoints; i += span, j++)
             {
                 if (i >= beginsAt + (k + 1) * period)
+                {
                     k++;
+                }
+
                 if (i >= k * period + beginsAt && i < fillFactor * period + k * period + beginsAt)
                 {
                     points.Add(new DataPoint(i, amplitude));
@@ -84,7 +87,10 @@ namespace Zadanie1
             for (; j < howManyPoints; i += span, j++)
             {
                 if (i >= beginsAt + (k + 1) * period)
+                {
                     k++;
+                }
+
                 if (i >= k * period + beginsAt && i < fillFactor * period + k * period + beginsAt)
                 {
                     points.Add(new DataPoint(i, amplitude));
@@ -98,14 +104,37 @@ namespace Zadanie1
             return points;
         }
 
+        public List<DataPoint> SzumImpulsowy(double amplitude, double beginsAt, double duration, double probability, double samplingFrequency)
+        {
+            var points = new List<DataPoint>();
+            var howManyPoints = duration * samplingFrequency;
+            var span = 1.0 / samplingFrequency;
+            var r = new Random();
+
+            var i = beginsAt;
+            var j = 0;
+            for (; j < howManyPoints; i += span, j++)
+            {
+                points.Add(new DataPoint(i, r.NextDouble() < probability ? amplitude : 0.0));
+            }
+
+            return points;
+        }
+
         public double SkokJednostkowy(double x)
         {
             if (x > JumpTime)
+            {
                 return Amplitude;
+            }
             else if (Math.Abs(x - JumpTime) < 1e-6)
+            {
                 return 0.5 * Amplitude;
+            }
             else
+            {
                 return 0;
+            }
         }
 
         public List<DataPoint> Trojkatny(double duration, double samplingFrequency, double beginsAt, double period, double fillFactor, double amplitude)
@@ -120,26 +149,39 @@ namespace Zadanie1
             for (; j < howManyPoints; i += span, j++)
             {
                 if (i >= beginsAt + (k + 1) * period)
+                {
                     k++;
+                }
+
                 if (i >= k * period + beginsAt && i < fillFactor * period + k * period + beginsAt)
                 {
-                    points.Add(new DataPoint(i,amplitude / (fillFactor * period) * (i - k * period - beginsAt)));
+                    points.Add(new DataPoint(i, amplitude / (fillFactor * period) * (i - k * period - beginsAt)));
                 }
                 if (i >= fillFactor * period + k * period + beginsAt && i < period + k * period + beginsAt)
                 {
-                    points.Add(new DataPoint(i,((-amplitude) / (period * (1 - fillFactor)) * (i - k * period - beginsAt)) + (amplitude / (1 - fillFactor))));
+                    points.Add(new DataPoint(i, ((-amplitude) / (period * (1 - fillFactor)) * (i - k * period - beginsAt)) + (amplitude / (1 - fillFactor))));
                 }
             }
 
             return points;
         }
 
-        public double ImpulsJednostkowy(double x)
+        public List<DataPoint> ImpulsJednostkowy(double amplitude, double beginsAt, double duration, double jumpsAt, double samplingFrequency)
         {
-            if (Math.Abs(x - JumpTime) > 1e-6)
-                return 0;
-            else
-                return Amplitude;
+            var points = new List<DataPoint>();
+            var howManyPoints = duration * samplingFrequency;
+            var span = 1.0 / samplingFrequency;
+            var r = new Random();
+
+            var i = beginsAt;
+            var j = 0;
+            for (; j < howManyPoints; i += span, j++)
+                for (; j < howManyPoints; i += span, j++)
+                {
+                    points.Add(new DataPoint(i, Math.Abs(i - jumpsAt) > 1e-6 ? 0.0 : amplitude));
+                }
+
+            return points;
         }
     }
 }

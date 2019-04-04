@@ -196,5 +196,25 @@ namespace Zadanie1
             plotter.Show();
 
         }
+
+        private void szumImpulsowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Plotter plotter = new Plotter()
+            {
+                PlotType = PlotType.SzumImpulsowy,
+                Title = "Szum Impulsowy",
+                Amplitude = 5,
+                InitialTime = 0,
+                TotalTime = 10,
+                Period = 1,
+                JumpTime = 6,
+                Probability = 0.10
+            };
+            plotter.Plot();
+            // Set the Parent Form of the Child window.  
+            plotter.MdiParent = this;
+            // Display the new form.  
+            plotter.Show();
+        }
     }
 }

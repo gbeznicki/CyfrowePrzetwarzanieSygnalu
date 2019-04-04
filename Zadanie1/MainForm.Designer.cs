@@ -219,6 +219,7 @@
             this.szumImpulsowyToolStripMenuItem.Name = "szumImpulsowyToolStripMenuItem";
             this.szumImpulsowyToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.szumImpulsowyToolStripMenuItem.Text = "Szum impulsowy";
+            this.szumImpulsowyToolStripMenuItem.Click += new System.EventHandler(this.szumImpulsowyToolStripMenuItem_Click);
             // 
             // listBox1
             // 
