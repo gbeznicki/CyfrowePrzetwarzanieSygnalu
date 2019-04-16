@@ -117,28 +117,58 @@ namespace Zadanie1
 
         private void RysujSzumImpulsowy()
         {
-            PlotModel myModel = new PlotModel { Title = Title };
-            var points = equation.SzumImpulsowy(Amplitude, InitialTime, TotalTime, Probability, samplingFrequency - 990);
-            ScatterSeries plotData = new ScatterSeries();
-            foreach (DataPoint point in points)
-            {
-                plotData.Points.Add(new ScatterPoint(point.X, point.Y, 2));
-            }
-            myModel.Series.Add(plotData);
-            plot1.Model = myModel;
+            Rysuj(equation.SzumImpulsowy());
         }
 
         private void RysujImpulsJednostkowy()
         {
-            PlotModel myModel = new PlotModel { Title = Title };
-            var points = equation.ImpulsJednostkowy(Amplitude, InitialTime, TotalTime, JumpTime, samplingFrequency - 990);
-            ScatterSeries plotData = new ScatterSeries();
-            foreach (DataPoint point in points)
-            {
-                plotData.Points.Add(new ScatterPoint(point.X, point.Y, 2));
-            }
-            myModel.Series.Add(plotData);
-            plot1.Model = myModel;
+            Rysuj(equation.ImpulsJednostkowy());
+        }
+
+
+        private void RysujSkokJednostkowy()
+        {
+            Rysuj(equation.SkokJednostkowy());
+        }
+
+        private void RysujTrojkatny()
+        {
+            Rysuj(equation.Trojkatny());
+        }
+
+        private void RysujProstokatnySymetryczny()
+        {
+            Rysuj(equation.ProstokatnySymetryczny());
+        }
+
+        private void RysujProstokatny()
+        {
+            Rysuj(equation.Prostokatny());
+        }
+
+        private void RysujSinusoidalnyWyprostowanyDwupolowkowo()
+        {
+            Rysuj(equation.SinusWyprostowanyDwupolowkowo());
+        }
+
+        private void RysujSinusoidalnyWyprostowanyJednopolowkowo()
+        {
+            Rysuj(equation.SinusWyprostowanyJednopolowkowo());
+        }
+
+        private void RysujSinusoidalny()
+        {
+            Rysuj(equation.Sinus());
+        }
+
+        private void RysujSzumGaussowski()
+        {
+            Rysuj(equation.SzumGaussowski());
+        }
+
+        private void RysujSzumJednostajny()
+        {
+            Rysuj(equation.SzumJednostajny());
         }
 
         private void FillEquation()
@@ -148,107 +178,10 @@ namespace Zadanie1
             equation.InitialTime = InitialTime;
             equation.ImpletionRate = ImpletionRate;
             equation.JumpTime = JumpTime;
-        }
-
-        private void RysujSkokJednostkowy()
-        {
-            PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(equation.SkokJednostkowy, InitialTime, InitialTime + TotalTime, 0.001));
-            plot1.Model = myModel;
-        }
-
-        private void RysujTrojkatny()
-        {
-            PlotModel myModel = new PlotModel { Title = Title };
-            var points = equation.Trojkatny(TotalTime, samplingFrequency, InitialTime, Period, ImpletionRate, Amplitude);
-            LineSeries plotData = new LineSeries();
-            foreach (DataPoint point in points)
-            {
-                plotData.Points.Add(point);
-            }
-            myModel.Series.Add(plotData);
-            plot1.Model = myModel;
-        }
-
-        private void RysujProstokatnySymetryczny()
-        {
-            PlotModel myModel = new PlotModel { Title = Title };
-            var points = equation.ProstokatnySymetryczny(TotalTime, samplingFrequency, InitialTime, Period, ImpletionRate, Amplitude);
-            LineSeries plotData = new LineSeries();
-            foreach (DataPoint point in points)
-            {
-                plotData.Points.Add(point);
-            }
-            myModel.Series.Add(plotData);
-            plot1.Model = myModel;
-
-            Dictionary<Double, Int32> histogramData = GenerateHistogram(plotData.Points);
-
-            PlotModel plotModel = new PlotModel { Title = Title };
-            ColumnSeries histogramSeries = new ColumnSeries();
-            plotModel.Axes.Add(new CategoryAxis() { Position = AxisPosition.Bottom });
-            foreach(double label in histogramData.Keys)
-            {
-                ((CategoryAxis)plotModel.Axes[0]).ActualLabels.Add(label.ToString());
-            }
-            plotModel.Axes.Add(new LinearAxis() { Position = AxisPosition.Left });
-
-            foreach (Double y in histogramData.Values)
-            {
-                histogramSeries.Items.Add(new ColumnItem(y));
-            }
-            plotModel.Series.Add(histogramSeries);
-            histogram.Model = plotModel;
-            
-        }
-
-        private void RysujProstokatny()
-        {
-            PlotModel myModel = new PlotModel { Title = Title };
-            var points = equation.Prostokatny(TotalTime, samplingFrequency, InitialTime, Period, ImpletionRate, Amplitude);
-            LineSeries plotData = new LineSeries();
-            foreach (DataPoint point in points)
-            {
-                plotData.Points.Add(point);
-            }
-            myModel.Series.Add(plotData);
-            plot1.Model = myModel;
-        }
-
-        private void RysujSinusoidalnyWyprostowanyDwupolowkowo()
-        {
-            PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(equation.SinusWyprostowanyDwupolowkowo, InitialTime, InitialTime + TotalTime, 0.001));
-            plot1.Model = myModel;
-        }
-
-        private void RysujSinusoidalnyWyprostowanyJednopolowkowo()
-        {
-            PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(equation.SinusWyprostowanyJednopolowkowo, InitialTime, InitialTime + TotalTime, 0.001));
-            plot1.Model = myModel;
-        }
-
-        private void RysujSinusoidalny()
-        {
-
-            PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(equation.Sinus, InitialTime, InitialTime + TotalTime, 0.001));
-            plot1.Model = myModel;
-        }
-
-        private void RysujSzumGaussowski()
-        {
-            PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(equation.SzumGaussowski, InitialTime, InitialTime + TotalTime, 0.001));
-            plot1.Model = myModel;
-        }
-
-        private void RysujSzumJednostajny()
-        {
-            PlotModel myModel = new PlotModel { Title = Title };
-            myModel.Series.Add(new FunctionSeries(equation.SzumJednostajny, InitialTime, InitialTime + TotalTime, 0.001));
-            plot1.Model = myModel;
+            equation.Probability = Probability;
+            equation.ImpletionRate = ImpletionRate;
+            equation.SamplingFrequency = samplingFrequency;
+            equation.TotalTime = TotalTime;
         }
 
         Dictionary<Double, Int32> GenerateHistogram(List<DataPoint> dataPoints)
@@ -270,6 +203,39 @@ namespace Zadanie1
                 h[kraniec] = licznik;
             }
             return h;
+        }
+
+        private void Rysuj(List<DataPoint> points)
+        {
+            //Rysowanie wykresu liniowego/punktowego
+            PlotModel myModel = new PlotModel { Title = Title };
+            LineSeries plotData = new LineSeries();
+            foreach (DataPoint point in points)
+            {
+                plotData.Points.Add(point);
+            }
+            myModel.Series.Add(plotData);
+            plot1.Model = myModel;
+
+            //Pobranie punktów do histogramu
+            Dictionary<Double, Int32> histogramData = GenerateHistogram(plotData.Points);
+
+            //Rysowanie histogramu
+            PlotModel plotModel = new PlotModel { Title = Title };
+            ColumnSeries histogramSeries = new ColumnSeries();
+            plotModel.Axes.Add(new CategoryAxis() { Position = AxisPosition.Bottom });
+            foreach (double label in histogramData.Keys)
+            {
+                ((CategoryAxis)plotModel.Axes[0]).ActualLabels.Add(Math.Round(label, 1).ToString());
+            }
+            plotModel.Axes.Add(new LinearAxis() { Position = AxisPosition.Left });
+
+            foreach (Double y in histogramData.Values)
+            {
+                histogramSeries.Items.Add(new ColumnItem(y));
+            }
+            plotModel.Series.Add(histogramSeries);
+            histogram.Model = plotModel;
         }
     }
 }

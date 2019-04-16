@@ -54,6 +54,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +75,8 @@
             // 
             this.plikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zapiszDoPlikuToolStripMenuItem,
-            this.odczytajZPlikuToolStripMenuItem});
+            this.odczytajZPlikuToolStripMenuItem,
+            this.ustawieniaToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
             this.plikToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.plikToolStripMenuItem.Text = "Plik";
@@ -82,13 +84,13 @@
             // zapiszDoPlikuToolStripMenuItem
             // 
             this.zapiszDoPlikuToolStripMenuItem.Name = "zapiszDoPlikuToolStripMenuItem";
-            this.zapiszDoPlikuToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.zapiszDoPlikuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.zapiszDoPlikuToolStripMenuItem.Text = "Zapisz do pliku";
             // 
             // odczytajZPlikuToolStripMenuItem
             // 
             this.odczytajZPlikuToolStripMenuItem.Name = "odczytajZPlikuToolStripMenuItem";
-            this.odczytajZPlikuToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.odczytajZPlikuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.odczytajZPlikuToolStripMenuItem.Text = "Odczytaj z pliku";
             // 
             // operacjeToolStripMenuItem
@@ -250,6 +252,12 @@
             this.histogramToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.histogramToolStripMenuItem.Text = "Histogram";
             // 
+            // ustawieniaToolStripMenuItem
+            // 
+            this.ustawieniaToolStripMenuItem.Name = "ustawieniaToolStripMenuItem";
+            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ustawieniaToolStripMenuItem.Text = "Ustawienia";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,6 +304,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem wykresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem histogramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ustawieniaToolStripMenuItem;
     }
 }
 

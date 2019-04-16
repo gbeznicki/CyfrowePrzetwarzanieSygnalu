@@ -11,61 +11,114 @@ namespace Zadanie1
         public double InitialTime { get; set; }
         public double ImpletionRate { get; set; }
         public double JumpTime { get; set; }
+        public double TotalTime { get; set; }
+        public double SamplingFrequency { get; set; }
+        public double Probability { get; set; }
 
         private Random random = new Random();
 
-        public double Sinus(double x)
-        {
-            return Amplitude * Math.Sin(Math.PI * 2.0 / Period * (x - InitialTime));
-        }
-
-        public double SinusWyprostowanyJednopolowkowo(double x)
-        {
-            double sin = Amplitude * Math.Sin(Math.PI * 2.0 / Period * (x - InitialTime));
-
-            return sin + Math.Abs(sin);
-        }
-
-        public double SinusWyprostowanyDwupolowkowo(double x)
-        {
-            return Amplitude * Math.Abs(Math.Sin(Math.PI * 2.0 / Period * (x - InitialTime)));
-        }
-
-        public double SzumJednostajny(double x)
-        {
-            double range = 2 * Amplitude;
-            double result = random.NextDouble() * range + (-Amplitude);
-            return result;
-        }
-
-        public double SzumGaussowski(double x)
-        {
-            double range = 2 * Amplitude;
-            double result = random.NextGaussian() * range + (-Amplitude);
-            return result;
-        }
-
-        public List<DataPoint> Prostokatny(double duration, double samplingFrequency, double beginsAt, double period, double fillFactor, double amplitude)
+        public List<DataPoint> Sinus()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = duration * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
-            var k = 0;
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
 
-            var i = beginsAt;
+            var i = InitialTime;
             var j = 0;
             for (; j < howManyPoints; i += span, j++)
             {
-                if (i >= beginsAt + (k + 1) * period)
+                points.Add(new DataPoint(i, Amplitude * Math.Sin(Math.PI * 2.0 / Period * (i - InitialTime))));
+            }
+            return points;
+        }
+
+        public List<DataPoint> SinusWyprostowanyJednopolowkowo()
+        {
+            var points = new List<DataPoint>();
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
+
+            var i = InitialTime;
+            var j = 0;
+            for (; j < howManyPoints; i += span, j++)
+            {
+                double sin = Amplitude * Math.Sin(Math.PI * 2.0 / Period * (i - InitialTime));
+
+                points.Add(new DataPoint(i, sin + Math.Abs(sin)));
+            }
+            return points;
+        }
+
+        public List<DataPoint> SinusWyprostowanyDwupolowkowo()
+        {
+            var points = new List<DataPoint>();
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
+
+            var i = InitialTime;
+            var j = 0;
+            for (; j < howManyPoints; i += span, j++)
+            {
+                points.Add(new DataPoint(i, Math.Abs(Math.Sin(Math.PI * 2.0 / Period * (i - InitialTime)))));
+            }
+            return points;
+        }
+
+        public List<DataPoint> SzumJednostajny()
+        {
+            var points = new List<DataPoint>();
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
+
+            var i = InitialTime;
+            var j = 0;
+            for (; j < howManyPoints; i += span, j++)
+            {
+                double range = 2 * Amplitude;
+                points.Add(new DataPoint(i, random.NextDouble() * range + (-Amplitude)));
+
+            }
+            return points;
+        }
+
+        public List<DataPoint> SzumGaussowski()
+        {
+            var points = new List<DataPoint>();
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
+
+            var i = InitialTime;
+            var j = 0;
+            for (; j < howManyPoints; i += span, j++)
+            {
+                double range = 2 * Amplitude;
+                points.Add(new DataPoint(i, random.NextGaussian() * range + (-Amplitude)));
+
+            }
+            return points;
+        }
+
+        public List<DataPoint> Prostokatny()
+        {
+            var points = new List<DataPoint>();
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
+            var k = 0;
+
+            var i = InitialTime;
+            var j = 0;
+            for (; j < howManyPoints; i += span, j++)
+            {
+                if (i >= InitialTime + (k + 1) * Period)
                 {
                     k++;
                 }
 
-                if (i >= k * period + beginsAt && i < fillFactor * period + k * period + beginsAt)
+                if (i >= k * Period + InitialTime && i < ImpletionRate * Period+ k * Period + InitialTime)
                 {
-                    points.Add(new DataPoint(i, amplitude));
+                    points.Add(new DataPoint(i, Amplitude));
                 }
-                else if (i >= fillFactor * period + k * period + beginsAt && i < period + k * period + beginsAt)
+                else if (i >= ImpletionRate * Period + k * Period + InitialTime && i < Period + k * Period + InitialTime)
                 {
                     points.Add(new DataPoint(i, 0));
                 }
@@ -75,111 +128,123 @@ namespace Zadanie1
 
         }
 
-        public List<DataPoint> ProstokatnySymetryczny(double duration, double samplingFrequency, double beginsAt, double period, double fillFactor, double amplitude)
+        public List<DataPoint> ProstokatnySymetryczny()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = duration * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
             var k = 0;
 
-            var i = beginsAt;
+            var i = InitialTime;
             var j = 0;
             for (; j < howManyPoints; i += span, j++)
             {
-                if (i >= beginsAt + (k + 1) * period)
+                if (i >= InitialTime + (k + 1) * Period)
                 {
                     k++;
                 }
 
-                if (i >= k * period + beginsAt && i < fillFactor * period + k * period + beginsAt)
+                if (i >= k * Period + InitialTime && i < ImpletionRate * Period + k * Period + InitialTime)
                 {
-                    points.Add(new DataPoint(i, amplitude));
+                    points.Add(new DataPoint(i, Amplitude));
                 }
-                if (i >= fillFactor * period + k * period + beginsAt && i < period + k * period + beginsAt)
+                if (i >= ImpletionRate * Period + k * Period + InitialTime && i < Period + k * Period + InitialTime)
                 {
-                    points.Add(new DataPoint(i, -amplitude));
+                    points.Add(new DataPoint(i, -Amplitude));
                 }
             }
 
             return points;
         }
 
-        public List<DataPoint> SzumImpulsowy(double amplitude, double beginsAt, double duration, double probability, double samplingFrequency)
+        public List<DataPoint> SzumImpulsowy()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = duration * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
             var r = new Random();
 
-            var i = beginsAt;
+            var i = InitialTime;
             var j = 0;
             for (; j < howManyPoints; i += span, j++)
             {
-                points.Add(new DataPoint(i, r.NextDouble() < probability ? amplitude : 0.0));
+                points.Add(new DataPoint(i, r.NextDouble() < Probability ? Amplitude : 0.0));
             }
 
             return points;
         }
 
-        public double SkokJednostkowy(double x)
-        {
-            if (x > JumpTime)
-            {
-                return Amplitude;
-            }
-            else if (Math.Abs(x - JumpTime) < 1e-6)
-            {
-                return 0.5 * Amplitude;
-            }
-            else
-            {
-                return 0;
-            }
-        }
-
-        public List<DataPoint> Trojkatny(double duration, double samplingFrequency, double beginsAt, double period, double fillFactor, double amplitude)
+        public List<DataPoint> SkokJednostkowy()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = duration * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
-            var k = 0;
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
 
-            var i = beginsAt;
+            var i = InitialTime;
             var j = 0;
             for (; j < howManyPoints; i += span, j++)
             {
-                if (i >= beginsAt + (k + 1) * period)
+                if (i > JumpTime)
+                {
+                    points.Add(new DataPoint(i, Amplitude));
+                }
+                else if (Math.Abs(i - JumpTime) < 1e-6)
+                {
+                    points.Add(new DataPoint(i, 0.5 * Amplitude));
+                }
+                else
+                {
+                    points.Add(new DataPoint(i, 0));
+                }
+            }
+            return points;
+        }
+
+        public List<DataPoint> Trojkatny()
+        {
+            var points = new List<DataPoint>();
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
+            var k = 0;
+
+            var i = InitialTime;
+            var j = 0;
+            for (; j < howManyPoints; i += span, j++)
+            {
+                if (i >= InitialTime + (k + 1) * Period)
                 {
                     k++;
                 }
 
-                if (i >= k * period + beginsAt && i < fillFactor * period + k * period + beginsAt)
+                if (i >= k * Period + InitialTime && i < ImpletionRate * Period + k * Period + InitialTime)
                 {
-                    points.Add(new DataPoint(i, amplitude / (fillFactor * period) * (i - k * period - beginsAt)));
+                    points.Add(new DataPoint(i, Amplitude / (ImpletionRate * Period) * (i - k * Period - InitialTime)));
                 }
-                if (i >= fillFactor * period + k * period + beginsAt && i < period + k * period + beginsAt)
+                if (i >= ImpletionRate * Period + k * Period + InitialTime && i < Period + k * Period + InitialTime)
                 {
-                    points.Add(new DataPoint(i, ((-amplitude) / (period * (1 - fillFactor)) * (i - k * period - beginsAt)) + (amplitude / (1 - fillFactor))));
+                    points.Add(new DataPoint(i, ((-Amplitude) / (Period * (1 - ImpletionRate)) * (i - k * Period - InitialTime)) + (Amplitude / (1 - ImpletionRate))));
                 }
             }
 
             return points;
         }
 
-        public List<DataPoint> ImpulsJednostkowy(double amplitude, double beginsAt, double duration, double jumpsAt, double samplingFrequency)
+        public List<DataPoint> ImpulsJednostkowy()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = duration * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = TotalTime * SamplingFrequency;
+            var span = 1.0 / SamplingFrequency;
             var r = new Random();
 
-            var i = beginsAt;
+            var i = InitialTime;
             var j = 0;
             for (; j < howManyPoints; i += span, j++)
+            {
                 for (; j < howManyPoints; i += span, j++)
                 {
-                    points.Add(new DataPoint(i, Math.Abs(i - jumpsAt) > 1e-6 ? 0.0 : amplitude));
+                    points.Add(new DataPoint(i, Math.Abs(i - JumpTime) > 1e-6 ? 0.0 : Amplitude));
                 }
+            }
 
             return points;
         }
