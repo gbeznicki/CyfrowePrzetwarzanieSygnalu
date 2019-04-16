@@ -1,6 +1,9 @@
 ﻿using OxyPlot;
+using OxyPlot.Axes;
 using OxyPlot.Series;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Zadanie1
@@ -56,6 +59,11 @@ namespace Zadanie1
         /// Prawdopodobieństwo, dotyczy szumu jednostkowego
         /// </summary>
         public double Probability { get; set; }
+
+        /// <summary>
+        /// Liczba przedziałów histogramu
+        /// </summary>
+        public int RangesAmount { get; set; } = 10;
 
         private int samplingFrequency = 1000;
         private Equation equation;
@@ -173,6 +181,25 @@ namespace Zadanie1
             }
             myModel.Series.Add(plotData);
             plot1.Model = myModel;
+
+            Dictionary<Double, Int32> histogramData = GenerateHistogram(plotData.Points);
+
+            PlotModel plotModel = new PlotModel { Title = Title };
+            ColumnSeries histogramSeries = new ColumnSeries();
+            plotModel.Axes.Add(new CategoryAxis() { Position = AxisPosition.Bottom });
+            foreach(double label in histogramData.Keys)
+            {
+                ((CategoryAxis)plotModel.Axes[0]).ActualLabels.Add(label.ToString());
+            }
+            plotModel.Axes.Add(new LinearAxis() { Position = AxisPosition.Left });
+
+            foreach (Double y in histogramData.Values)
+            {
+                histogramSeries.Items.Add(new ColumnItem(y));
+            }
+            plotModel.Series.Add(histogramSeries);
+            histogram.Model = plotModel;
+            
         }
 
         private void RysujProstokatny()
@@ -222,6 +249,27 @@ namespace Zadanie1
             PlotModel myModel = new PlotModel { Title = Title };
             myModel.Series.Add(new FunctionSeries(equation.SzumJednostajny, InitialTime, InitialTime + TotalTime, 0.001));
             plot1.Model = myModel;
+        }
+
+        Dictionary<Double, Int32> GenerateHistogram(List<DataPoint> dataPoints)
+        {
+            Dictionary<Double, Int32> h = new Dictionary<Double, Int32> ();
+            List<Double> krancePrzedzialow = new List<Double>();
+            Double min = dataPoints.Min(x => x.Y), max = dataPoints.Max(x=> x.Y);
+            Double A = max - min;
+            Double krok = A / RangesAmount;
+            for (int i = 0; i < RangesAmount; i++)
+            {
+                krancePrzedzialow.Add(min + (i * krok));
+            }
+            krancePrzedzialow.Add(max);
+
+            foreach(double kraniec in krancePrzedzialow)
+            {
+                int licznik = dataPoints.Where(x => x.Y > kraniec - krok/2 && x.Y < kraniec + krok/2).Count();
+                h[kraniec] = licznik;
+            }
+            return h;
         }
     }
 }
