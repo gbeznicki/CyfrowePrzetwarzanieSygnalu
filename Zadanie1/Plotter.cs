@@ -11,72 +11,35 @@ namespace Zadanie1
     public partial class Plotter : Form
     {
         /// <summary>
-        /// Amplituda - określa maksymalną wartość bezwzględną sygnału
-        /// </summary>
-        public double Amplitude
-        {
-            get; set;
-        }
-        /// <summary>
-        /// Czas początkowy - czas w którym rozpoczyna się sygnał okresowy
-        /// </summary>
-        public double InitialTime
-        {
-            get; set;
-        }
-        /// <summary>
-        /// Czas trwania sygnału
-        /// </summary>
-        public double TotalTime { get; set; }
-        /// <summary>
-        /// Okres podstawowy
-        /// </summary>
-        public double Period { get; set; }
-        /// <summary>
-        /// Współczynnik wypełnienia - dotyczy sygnały prostokątnego i trójkątnego
-        /// </summary>
-        public double ImpletionRate
-        {
-            get; set;
-        }
-        /// <summary>
         /// Tytuł wykresu
         /// </summary>
-        public string Title { get; set; }
+        public string Title { get { return _title; } set { _title = value; } }
+        private string _title;
         /// <summary>
         /// Czas skoku jednostkowego
         /// </summary>
-        public double JumpTime
-        {
-            get; set;
-        }
         /// <summary>
         /// Typ wykresu
         /// </summary>
         public PlotType PlotType { get; set; }
 
-        /// <summary>
-        /// Prawdopodobieństwo, dotyczy szumu jednostkowego
-        /// </summary>
-        public double Probability { get; set; }
-
-        /// <summary>
-        /// Liczba przedziałów histogramu
-        /// </summary>
-        public int RangesAmount { get; set; } = 10;
-
-        private int samplingFrequency = 1000;
         private Equation equation;
+
+        public List<DataPoint> dataPoints;
+
+        private static int counter;
 
         public Plotter()
         {
             InitializeComponent();
             equation = new Equation();
+            counter++;
         }
+
+
 
         public void Plot()
         {
-            FillEquation();
             switch (PlotType)
             {
                 case PlotType.SzumJednostajny:
@@ -118,88 +81,86 @@ namespace Zadanie1
         private void RysujSzumImpulsowy()
         {
             Rysuj(equation.SzumImpulsowy());
+            dataPoints = equation.SzumImpulsowy();
         }
 
         private void RysujImpulsJednostkowy()
         {
             Rysuj(equation.ImpulsJednostkowy());
+            dataPoints = equation.ImpulsJednostkowy();
         }
 
 
         private void RysujSkokJednostkowy()
         {
             Rysuj(equation.SkokJednostkowy());
+            dataPoints = equation.SkokJednostkowy();
         }
 
         private void RysujTrojkatny()
         {
             Rysuj(equation.Trojkatny());
+            dataPoints = equation.Trojkatny();
         }
 
         private void RysujProstokatnySymetryczny()
         {
             Rysuj(equation.ProstokatnySymetryczny());
+            dataPoints = equation.ProstokatnySymetryczny();
         }
 
         private void RysujProstokatny()
         {
             Rysuj(equation.Prostokatny());
+            dataPoints = equation.Prostokatny();
         }
 
         private void RysujSinusoidalnyWyprostowanyDwupolowkowo()
         {
             Rysuj(equation.SinusWyprostowanyDwupolowkowo());
+            dataPoints = equation.SinusWyprostowanyDwupolowkowo();
         }
 
         private void RysujSinusoidalnyWyprostowanyJednopolowkowo()
         {
             Rysuj(equation.SinusWyprostowanyJednopolowkowo());
+            dataPoints = equation.SinusWyprostowanyJednopolowkowo();
         }
 
         private void RysujSinusoidalny()
         {
             Rysuj(equation.Sinus());
+            dataPoints = equation.Sinus();
         }
 
         private void RysujSzumGaussowski()
         {
             Rysuj(equation.SzumGaussowski());
+            dataPoints = equation.SzumGaussowski();
         }
 
         private void RysujSzumJednostajny()
         {
             Rysuj(equation.SzumJednostajny());
-        }
-
-        private void FillEquation()
-        {
-            equation.Amplitude = Amplitude;
-            equation.Period = Period;
-            equation.InitialTime = InitialTime;
-            equation.ImpletionRate = ImpletionRate;
-            equation.JumpTime = JumpTime;
-            equation.Probability = Probability;
-            equation.ImpletionRate = ImpletionRate;
-            equation.SamplingFrequency = samplingFrequency;
-            equation.TotalTime = TotalTime;
+            dataPoints = equation.SzumJednostajny();
         }
 
         Dictionary<Double, Int32> GenerateHistogram(List<DataPoint> dataPoints)
         {
-            Dictionary<Double, Int32> h = new Dictionary<Double, Int32> ();
+            Dictionary<Double, Int32> h = new Dictionary<Double, Int32>();
             List<Double> krancePrzedzialow = new List<Double>();
-            Double min = dataPoints.Min(x => x.Y), max = dataPoints.Max(x=> x.Y);
+            Double min = dataPoints.Min(x => x.Y), max = dataPoints.Max(x => x.Y);
             Double A = max - min;
-            Double krok = A / RangesAmount;
-            for (int i = 0; i < RangesAmount; i++)
+            Double krok = A / SharedSettings.RangesAmount;
+            for (int i = 0; i < SharedSettings.RangesAmount; i++)
             {
                 krancePrzedzialow.Add(min + (i * krok));
             }
             krancePrzedzialow.Add(max);
 
-            foreach(double kraniec in krancePrzedzialow)
+            foreach (double kraniec in krancePrzedzialow)
             {
-                int licznik = dataPoints.Where(x => x.Y > kraniec - krok/2 && x.Y < kraniec + krok/2).Count();
+                int licznik = dataPoints.Where(x => x.Y > kraniec - krok / 2 && x.Y < kraniec + krok / 2).Count();
                 h[kraniec] = licznik;
             }
             return h;
@@ -236,6 +197,16 @@ namespace Zadanie1
             }
             plotModel.Series.Add(histogramSeries);
             histogram.Model = plotModel;
+        }
+
+        private void Plotter_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            counter--;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{0} + {1}", Title, counter);
         }
     }
 }

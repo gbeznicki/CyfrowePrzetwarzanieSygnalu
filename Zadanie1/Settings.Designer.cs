@@ -46,6 +46,8 @@
             this.textBoxImpletionRate = new System.Windows.Forms.TextBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.textBoxRangesAmount = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelAmplitude
@@ -178,7 +180,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(13, 260);
+            this.buttonSave.Location = new System.Drawing.Point(13, 315);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(132, 23);
             this.buttonSave.TabIndex = 17;
@@ -188,18 +190,37 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(173, 260);
+            this.buttonExit.Location = new System.Drawing.Point(173, 315);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(132, 23);
             this.buttonExit.TabIndex = 18;
             this.buttonExit.Text = "Wyjdź";
             this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // textBoxRangesAmount
+            // 
+            this.textBoxRangesAmount.Location = new System.Drawing.Point(151, 265);
+            this.textBoxRangesAmount.Name = "textBoxRangesAmount";
+            this.textBoxRangesAmount.Size = new System.Drawing.Size(154, 20);
+            this.textBoxRangesAmount.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(2, 268);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 13);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Ilość przedziałów (histogram)";
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 295);
+            this.ClientSize = new System.Drawing.Size(323, 350);
+            this.Controls.Add(this.textBoxRangesAmount);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.textBoxSamplingFrequency);
@@ -245,5 +266,7 @@
         private System.Windows.Forms.TextBox textBoxImpletionRate;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.TextBox textBoxRangesAmount;
+        private System.Windows.Forms.Label label1;
     }
 }

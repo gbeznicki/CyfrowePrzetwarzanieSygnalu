@@ -10,5 +10,6 @@
         public static double Probability { get; set; } = 0.1;
         public static double SamplingFrequency { get; set; } = 1000;
         public static double TotalTime { get; set; } = 10;
+        public static int RangesAmount { get; set; } = 10;
     }
 }

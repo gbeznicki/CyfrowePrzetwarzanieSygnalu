@@ -33,6 +33,7 @@
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zapiszDoPlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.odczytajZPlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operacjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodawanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.odejmowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,11 +51,9 @@
             this.skokJednostkowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.impulsJednostkowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szumImpulsowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -84,14 +83,22 @@
             // zapiszDoPlikuToolStripMenuItem
             // 
             this.zapiszDoPlikuToolStripMenuItem.Name = "zapiszDoPlikuToolStripMenuItem";
-            this.zapiszDoPlikuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.zapiszDoPlikuToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.zapiszDoPlikuToolStripMenuItem.Text = "Zapisz do pliku";
             // 
             // odczytajZPlikuToolStripMenuItem
             // 
             this.odczytajZPlikuToolStripMenuItem.Name = "odczytajZPlikuToolStripMenuItem";
-            this.odczytajZPlikuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.odczytajZPlikuToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.odczytajZPlikuToolStripMenuItem.Text = "Odczytaj z pliku";
+            this.odczytajZPlikuToolStripMenuItem.Click += new System.EventHandler(this.odczytajZPlikuToolStripMenuItem_Click);
+            // 
+            // ustawieniaToolStripMenuItem
+            // 
+            this.ustawieniaToolStripMenuItem.Name = "ustawieniaToolStripMenuItem";
+            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.ustawieniaToolStripMenuItem.Text = "Ustawienia";
+            this.ustawieniaToolStripMenuItem.Click += new System.EventHandler(this.ustawieniaToolStripMenuItem_Click);
             // 
             // operacjeToolStripMenuItem
             // 
@@ -107,25 +114,26 @@
             // dodawanieToolStripMenuItem
             // 
             this.dodawanieToolStripMenuItem.Name = "dodawanieToolStripMenuItem";
-            this.dodawanieToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.dodawanieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dodawanieToolStripMenuItem.Text = "Dodawanie";
+            this.dodawanieToolStripMenuItem.Click += new System.EventHandler(this.dodawanieToolStripMenuItem_Click);
             // 
             // odejmowanieToolStripMenuItem
             // 
             this.odejmowanieToolStripMenuItem.Name = "odejmowanieToolStripMenuItem";
-            this.odejmowanieToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.odejmowanieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.odejmowanieToolStripMenuItem.Text = "Odejmowanie";
             // 
             // mnożenieToolStripMenuItem
             // 
             this.mnożenieToolStripMenuItem.Name = "mnożenieToolStripMenuItem";
-            this.mnożenieToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.mnożenieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mnożenieToolStripMenuItem.Text = "Mnożenie";
             // 
             // dzielenieToolStripMenuItem
             // 
             this.dzielenieToolStripMenuItem.Name = "dzielenieToolStripMenuItem";
-            this.dzielenieToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.dzielenieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dzielenieToolStripMenuItem.Text = "Dzielenie";
             // 
             // generujToolStripMenuItem
@@ -223,15 +231,6 @@
             this.szumImpulsowyToolStripMenuItem.Text = "Szum impulsowy";
             this.szumImpulsowyToolStripMenuItem.Click += new System.EventHandler(this.szumImpulsowyToolStripMenuItem_Click);
             // 
-            // listBox1
-            // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(0, 24);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 554);
-            this.listBox1.TabIndex = 6;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -252,18 +251,11 @@
             this.histogramToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.histogramToolStripMenuItem.Text = "Histogram";
             // 
-            // ustawieniaToolStripMenuItem
-            // 
-            this.ustawieniaToolStripMenuItem.Name = "ustawieniaToolStripMenuItem";
-            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ustawieniaToolStripMenuItem.Text = "Ustawienia";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(966, 578);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -300,7 +292,6 @@
         private System.Windows.Forms.ToolStripMenuItem skokJednostkowyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem impulsJednostkowyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem szumImpulsowyToolStripMenuItem;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem wykresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem histogramToolStripMenuItem;
