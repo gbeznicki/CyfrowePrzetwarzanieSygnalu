@@ -27,13 +27,17 @@ namespace Zadanie1
 
         public List<DataPoint> dataPoints;
 
-        private static int counter;
+        public double samplingFrequency;
+        public double initialTime;
+        public double finalTime;
 
         public Plotter()
         {
             InitializeComponent();
             equation = new Equation();
-            counter++;
+            samplingFrequency = SharedSettings.SamplingFrequency;
+            initialTime = SharedSettings.InitialTime;
+            finalTime = SharedSettings.InitialTime + SharedSettings.TotalTime;
         }
 
 
@@ -74,6 +78,9 @@ namespace Zadanie1
                     break;
                 case PlotType.SzumImpulsowy:
                     RysujSzumImpulsowy();
+                    break;
+                case PlotType.WynikDzialania:
+                    Rysuj(dataPoints);
                     break;
             }
         }
@@ -197,16 +204,6 @@ namespace Zadanie1
             }
             plotModel.Series.Add(histogramSeries);
             histogram.Model = plotModel;
-        }
-
-        private void Plotter_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            counter--;
-        }
-
-        public override string ToString()
-        {
-            return String.Format("{0} + {1}", Title, counter);
         }
     }
 }

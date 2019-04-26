@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.comboBoxLeft = new System.Windows.Forms.ComboBox();
-            this.comboBoxRight = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.comboBoxRight = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // comboBoxLeft
@@ -43,15 +43,6 @@
             this.comboBoxLeft.Name = "comboBoxLeft";
             this.comboBoxLeft.Size = new System.Drawing.Size(121, 21);
             this.comboBoxLeft.TabIndex = 0;
-            // 
-            // comboBoxRight
-            // 
-            this.comboBoxRight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxRight.FormattingEnabled = true;
-            this.comboBoxRight.Location = new System.Drawing.Point(173, 25);
-            this.comboBoxRight.Name = "comboBoxRight";
-            this.comboBoxRight.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxRight.TabIndex = 1;
             // 
             // label1
             // 
@@ -79,16 +70,26 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comboBoxRight
+            // 
+            this.comboBoxRight.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRight.FormattingEnabled = true;
+            this.comboBoxRight.Location = new System.Drawing.Point(173, 25);
+            this.comboBoxRight.Name = "comboBoxRight";
+            this.comboBoxRight.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxRight.TabIndex = 5;
             // 
             // Operation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(323, 99);
+            this.Controls.Add(this.comboBoxRight);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBoxRight);
             this.Controls.Add(this.comboBoxLeft);
             this.Name = "Operation";
             this.Text = "Operation";
@@ -100,9 +101,9 @@
         #endregion
 
         private System.Windows.Forms.ComboBox comboBoxLeft;
-        private System.Windows.Forms.ComboBox comboBoxRight;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBoxRight;
     }
 }

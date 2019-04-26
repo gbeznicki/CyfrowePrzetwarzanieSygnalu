@@ -194,7 +194,77 @@ namespace Zadanie1
             }
 
             Operation operation = new Operation(OperationType.Adding, plotters);
-            operation.Show();
+            operation.ShowDialog();
+            Plotter plotter = operation.result;
+            if(plotter != null)
+            {
+                plotter.PlotType = PlotType.WynikDzialania;
+                plotter.Plot();
+                plotter.MdiParent = this;
+                plotter.Show();
+            }
+        }
+
+        private void odejmowanieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Plotter> plotters = new List<Plotter>();
+            foreach (Plotter p in MdiChildren)
+            {
+                plotters.Add(p);
+            }
+
+            Operation operation = new Operation(OperationType.Substracting, plotters);
+            operation.ShowDialog();
+            Plotter plotter = operation.result;
+            if (plotter != null)
+            {
+                plotter.PlotType = PlotType.WynikDzialania;
+                plotter.Plot();
+                plotter.MdiParent = this;
+                plotter.Show();
+            }
+        }
+
+        private void mnożenieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Plotter> plotters = new List<Plotter>();
+            foreach (Plotter p in MdiChildren)
+            {
+                plotters.Add(p);
+            }
+
+            Operation operation = new Operation(OperationType.Multiplying, plotters);
+            operation.ShowDialog();
+            Plotter plotter = operation.result;
+            if (plotter != null)
+            {
+                plotter.PlotType = PlotType.WynikDzialania;
+                plotter.Plot();
+                plotter.MdiParent = this;
+                plotter.Show();
+            }
+
+        }
+
+        private void dzielenieToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Plotter> plotters = new List<Plotter>();
+            foreach (Plotter p in MdiChildren)
+            {
+                plotters.Add(p);
+            }
+
+            Operation operation = new Operation(OperationType.Dividing, plotters);
+            operation.ShowDialog();
+            Plotter plotter = operation.result;
+            if (plotter != null)
+            {
+                plotter.PlotType = PlotType.WynikDzialania;
+                plotter.Plot();
+                plotter.MdiParent = this;
+                plotter.Show();
+            }
+
         }
     }
 }

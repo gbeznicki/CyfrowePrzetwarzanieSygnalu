@@ -18,6 +18,7 @@ namespace Zadanie1
         Trojkatny,
         SkokJednostkowy,
         ImpulsJednostkowy,
-        SzumImpulsowy
+        SzumImpulsowy,
+        WynikDzialania
     }
 }

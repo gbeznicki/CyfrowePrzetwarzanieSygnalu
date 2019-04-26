@@ -123,18 +123,21 @@
             this.odejmowanieToolStripMenuItem.Name = "odejmowanieToolStripMenuItem";
             this.odejmowanieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.odejmowanieToolStripMenuItem.Text = "Odejmowanie";
+            this.odejmowanieToolStripMenuItem.Click += new System.EventHandler(this.odejmowanieToolStripMenuItem_Click);
             // 
             // mnożenieToolStripMenuItem
             // 
             this.mnożenieToolStripMenuItem.Name = "mnożenieToolStripMenuItem";
             this.mnożenieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.mnożenieToolStripMenuItem.Text = "Mnożenie";
+            this.mnożenieToolStripMenuItem.Click += new System.EventHandler(this.mnożenieToolStripMenuItem_Click);
             // 
             // dzielenieToolStripMenuItem
             // 
             this.dzielenieToolStripMenuItem.Name = "dzielenieToolStripMenuItem";
             this.dzielenieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dzielenieToolStripMenuItem.Text = "Dzielenie";
+            this.dzielenieToolStripMenuItem.Click += new System.EventHandler(this.dzielenieToolStripMenuItem_Click);
             // 
             // generujToolStripMenuItem
             // 
