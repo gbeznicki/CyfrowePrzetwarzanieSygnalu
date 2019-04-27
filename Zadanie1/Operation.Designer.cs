@@ -33,6 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.comboBoxRight = new System.Windows.Forms.ComboBox();
+            this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBoxLeft
@@ -64,7 +65,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(114, 64);
+            this.button1.Location = new System.Drawing.Point(114, 105);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
@@ -81,11 +82,20 @@
             this.comboBoxRight.Size = new System.Drawing.Size(121, 21);
             this.comboBoxRight.TabIndex = 5;
             // 
+            // textBox1
+            // 
+            this.textBoxTitle.Location = new System.Drawing.Point(15, 66);
+            this.textBoxTitle.Name = "textBox1";
+            this.textBoxTitle.Size = new System.Drawing.Size(279, 20);
+            this.textBoxTitle.TabIndex = 6;
+            this.textBoxTitle.Text = "Wprowadź tytuł wykresu";
+            // 
             // Operation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 99);
+            this.ClientSize = new System.Drawing.Size(323, 140);
+            this.Controls.Add(this.textBoxTitle);
             this.Controls.Add(this.comboBoxRight);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -105,5 +115,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBoxRight;
+        private System.Windows.Forms.TextBox textBoxTitle;
     }
 }

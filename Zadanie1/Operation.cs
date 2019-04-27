@@ -108,7 +108,7 @@ namespace Zadanie1
                 resultPoints.Add(new DataPoint(resultTime[i], resultAmplitudes[i]));
             }
 
-            result = new Plotter();
+            result = new Plotter() { Title = textBoxTitle.Text };
             result.dataPoints = resultPoints;
             result.initialTime = initialTime;
             result.finalTime = finalTime;
@@ -182,7 +182,7 @@ namespace Zadanie1
                 resultPoints.Add(new DataPoint(resultTime[i], resultAmplitudes[i]));
             }
 
-            result = new Plotter();
+            result = new Plotter() { Title = textBoxTitle.Text };
             result.dataPoints = resultPoints;
             result.initialTime = initialTime;
             result.finalTime = finalTime;
@@ -243,7 +243,7 @@ namespace Zadanie1
                 resultPoints.Add(new DataPoint(resultTime[i], resultAmplitudes[i]));
             }
 
-            result = new Plotter();
+            result = new Plotter() { Title = textBoxTitle.Text };
             result.dataPoints = resultPoints;
             result.initialTime = initialTime;
             result.finalTime = finalTime;
@@ -315,7 +315,7 @@ namespace Zadanie1
                 resultPoints.Add(new DataPoint(resultTime[i], resultAmplitudes[i]));
             }
 
-            result = new Plotter();
+            result = new Plotter() { Title = textBoxTitle.Text };
             result.dataPoints = resultPoints;
             result.initialTime = initialTime;
             result.finalTime = finalTime;

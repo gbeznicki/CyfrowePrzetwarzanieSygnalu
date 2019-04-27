@@ -31,6 +31,12 @@ namespace Zadanie1
         public double initialTime;
         public double finalTime;
 
+        private double averageValue;
+        private double absoluteAverageValue;
+        private double averagePower;
+        private double variance;
+        private double rootAveragePower;
+
         public Plotter()
         {
             InitializeComponent();
@@ -48,41 +54,73 @@ namespace Zadanie1
             {
                 case PlotType.SzumJednostajny:
                     RysujSzumJednostajny();
+                    ObliczWartosci();
                     break;
                 case PlotType.SzumGaussowski:
                     RysujSzumGaussowski();
+                    ObliczWartosci();
                     break;
                 case PlotType.Sinusoidalny:
                     RysujSinusoidalny();
+                    ObliczWartosci();
                     break;
                 case PlotType.SinusoidalnyWyprostowanyJednopolowkowo:
                     RysujSinusoidalnyWyprostowanyJednopolowkowo();
+                    ObliczWartosci();
                     break;
                 case PlotType.SinusoidalnyWyprostowanyDwupolowkowo:
                     RysujSinusoidalnyWyprostowanyDwupolowkowo();
+                    ObliczWartosci();
                     break;
                 case PlotType.Prostokatny:
                     RysujProstokatny();
+                    ObliczWartosci();
                     break;
                 case PlotType.ProstokatnySymetryczny:
                     RysujProstokatnySymetryczny();
+                    ObliczWartosci();
                     break;
                 case PlotType.Trojkatny:
                     RysujTrojkatny();
+                    ObliczWartosci();
                     break;
                 case PlotType.SkokJednostkowy:
                     RysujSkokJednostkowy();
+                    ObliczWartosci();
                     break;
                 case PlotType.ImpulsJednostkowy:
                     RysujImpulsJednostkowy();
+                    ObliczWartosci();
                     break;
                 case PlotType.SzumImpulsowy:
                     RysujSzumImpulsowy();
+                    ObliczWartosci();
                     break;
                 case PlotType.WynikDzialania:
                     Rysuj(dataPoints);
+                    ObliczWartosci();
                     break;
             }
+        }
+
+        private void ObliczWartosci()
+        {
+            int howManyPeriods = (int)(SharedSettings.TotalTime / SharedSettings.Period);
+            int lenght = (int)(howManyPeriods * SharedSettings.Period * samplingFrequency);
+
+            List<DataPoint> pointsRange = dataPoints.GetRange(0, lenght);
+
+            averageValue = pointsRange.Select(y => y.Y).Sum() / pointsRange.Count;
+            absoluteAverageValue = pointsRange.Select(y => y.Y).Sum(x => Math.Abs(x)) / pointsRange.Count;
+            variance = pointsRange.Select(y => y.Y).Sum(x => Math.Pow(x - averageValue, 2)) / pointsRange.Count;
+            averagePower = pointsRange.Select(y => y.Y).Sum(x => x * x) / pointsRange.Count;
+            rootAveragePower = Math.Sqrt(averagePower);
+
+            labelAverage.Text = averageValue.ToString();
+            labelAbsoluteAverage.Text = absoluteAverageValue.ToString();
+            labelVariance.Text = variance.ToString();
+            labelAveragePower.Text = averagePower.ToString();
+            labelRootAveragePower.Text = rootAveragePower.ToString();
         }
 
         private void RysujSzumImpulsowy()
