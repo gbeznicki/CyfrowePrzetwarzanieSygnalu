@@ -32,6 +32,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.histogram = new OxyPlot.WindowsForms.PlotView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.labelVariance = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.labelAveragePower = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.labelRootAveragePower = new System.Windows.Forms.Label();
@@ -40,8 +42,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.labelAverage = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.labelVariance = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -111,6 +113,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.splitContainer2.Panel2.Controls.Add(this.button1);
             this.splitContainer2.Panel2.Controls.Add(this.labelVariance);
             this.splitContainer2.Panel2.Controls.Add(this.label10);
             this.splitContainer2.Panel2.Controls.Add(this.labelAveragePower);
@@ -124,6 +127,26 @@
             this.splitContainer2.Size = new System.Drawing.Size(788, 450);
             this.splitContainer2.SplitterDistance = 617;
             this.splitContainer2.TabIndex = 2;
+            // 
+            // labelVariance
+            // 
+            this.labelVariance.AutoSize = true;
+            this.labelVariance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelVariance.Location = new System.Drawing.Point(55, 313);
+            this.labelVariance.Name = "labelVariance";
+            this.labelVariance.Size = new System.Drawing.Size(54, 16);
+            this.labelVariance.TabIndex = 9;
+            this.labelVariance.Text = "wartość";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label10.Location = new System.Drawing.Point(12, 291);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 16);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Wariancja:";
             // 
             // labelAveragePower
             // 
@@ -205,25 +228,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Średnia: ";
             // 
-            // labelVariance
+            // button1
             // 
-            this.labelVariance.AutoSize = true;
-            this.labelVariance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelVariance.Location = new System.Drawing.Point(55, 313);
-            this.labelVariance.Name = "labelVariance";
-            this.labelVariance.Size = new System.Drawing.Size(54, 16);
-            this.labelVariance.TabIndex = 9;
-            this.labelVariance.Text = "wartość";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(12, 291);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 16);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Wariancja:";
+            this.button1.Location = new System.Drawing.Point(2, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(162, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Eksportuj wykres do pliku";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Plotter
             // 
@@ -262,5 +275,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelVariance;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

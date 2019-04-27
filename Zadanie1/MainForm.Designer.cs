@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.plikToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zapiszDoPlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.odczytajZPlikuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ustawieniaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.operacjeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,30 +72,23 @@
             // plikToolStripMenuItem
             // 
             this.plikToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.zapiszDoPlikuToolStripMenuItem,
             this.odczytajZPlikuToolStripMenuItem,
             this.ustawieniaToolStripMenuItem});
             this.plikToolStripMenuItem.Name = "plikToolStripMenuItem";
             this.plikToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.plikToolStripMenuItem.Text = "Plik";
             // 
-            // zapiszDoPlikuToolStripMenuItem
-            // 
-            this.zapiszDoPlikuToolStripMenuItem.Name = "zapiszDoPlikuToolStripMenuItem";
-            this.zapiszDoPlikuToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.zapiszDoPlikuToolStripMenuItem.Text = "Zapisz do pliku";
-            // 
             // odczytajZPlikuToolStripMenuItem
             // 
             this.odczytajZPlikuToolStripMenuItem.Name = "odczytajZPlikuToolStripMenuItem";
-            this.odczytajZPlikuToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
-            this.odczytajZPlikuToolStripMenuItem.Text = "Odczytaj z pliku";
+            this.odczytajZPlikuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.odczytajZPlikuToolStripMenuItem.Text = "Import z pliku";
             this.odczytajZPlikuToolStripMenuItem.Click += new System.EventHandler(this.odczytajZPlikuToolStripMenuItem_Click);
             // 
             // ustawieniaToolStripMenuItem
             // 
             this.ustawieniaToolStripMenuItem.Name = "ustawieniaToolStripMenuItem";
-            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ustawieniaToolStripMenuItem.Text = "Ustawienia";
             this.ustawieniaToolStripMenuItem.Click += new System.EventHandler(this.ustawieniaToolStripMenuItem_Click);
             // 
@@ -114,28 +106,28 @@
             // dodawanieToolStripMenuItem
             // 
             this.dodawanieToolStripMenuItem.Name = "dodawanieToolStripMenuItem";
-            this.dodawanieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dodawanieToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.dodawanieToolStripMenuItem.Text = "Dodawanie";
             this.dodawanieToolStripMenuItem.Click += new System.EventHandler(this.dodawanieToolStripMenuItem_Click);
             // 
             // odejmowanieToolStripMenuItem
             // 
             this.odejmowanieToolStripMenuItem.Name = "odejmowanieToolStripMenuItem";
-            this.odejmowanieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.odejmowanieToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.odejmowanieToolStripMenuItem.Text = "Odejmowanie";
             this.odejmowanieToolStripMenuItem.Click += new System.EventHandler(this.odejmowanieToolStripMenuItem_Click);
             // 
             // mnożenieToolStripMenuItem
             // 
             this.mnożenieToolStripMenuItem.Name = "mnożenieToolStripMenuItem";
-            this.mnożenieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.mnożenieToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.mnożenieToolStripMenuItem.Text = "Mnożenie";
             this.mnożenieToolStripMenuItem.Click += new System.EventHandler(this.mnożenieToolStripMenuItem_Click);
             // 
             // dzielenieToolStripMenuItem
             // 
             this.dzielenieToolStripMenuItem.Name = "dzielenieToolStripMenuItem";
-            this.dzielenieToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dzielenieToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.dzielenieToolStripMenuItem.Text = "Dzielenie";
             this.dzielenieToolStripMenuItem.Click += new System.EventHandler(this.dzielenieToolStripMenuItem_Click);
             // 
@@ -278,7 +270,6 @@
         private System.Windows.Forms.ToolStripMenuItem plikToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem operacjeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generujToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem zapiszDoPlikuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem odczytajZPlikuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodawanieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem odejmowanieToolStripMenuItem;

@@ -3,6 +3,7 @@ using OxyPlot.Axes;
 using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -30,6 +31,7 @@ namespace Zadanie1
         public double samplingFrequency;
         public double initialTime;
         public double finalTime;
+        public double period;
 
         private double averageValue;
         private double absoluteAverageValue;
@@ -44,6 +46,7 @@ namespace Zadanie1
             samplingFrequency = SharedSettings.SamplingFrequency;
             initialTime = SharedSettings.InitialTime;
             finalTime = SharedSettings.InitialTime + SharedSettings.TotalTime;
+            period = SharedSettings.Period;
         }
 
 
@@ -242,6 +245,31 @@ namespace Zadanie1
             }
             plotModel.Series.Add(histogramSeries);
             histogram.Model = plotModel;
+        }
+
+        public void Export(string filePath)
+        {
+            using (var sw = new StreamWriter(filePath))
+            {
+                sw.WriteLine(nameof(Plotter));
+                sw.WriteLine(initialTime);
+                sw.WriteLine(finalTime);
+                sw.WriteLine(period);
+                sw.WriteLine(samplingFrequency);
+                foreach (var y in dataPoints.Select(y => y.Y))
+                {
+                    sw.Write($"{y} ");
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                Export(folderBrowserDialog1.SelectedPath+"\\"+Title+".txt");
+                MessageBox.Show("Pomyślnie wyeksportowano wykres do pliku");
+            }
         }
     }
 }

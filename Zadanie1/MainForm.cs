@@ -1,5 +1,7 @@
-﻿using System;
+﻿using OxyPlot;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -175,16 +177,6 @@ namespace Zadanie1
             settings.Show();
         }
 
-        //private void zapiszDoPlikuToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    ((Plotter)ActiveMdiChild).Equation.
-        //}
-
-        private void odczytajZPlikuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dodawanieToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<Plotter> plotters = new List<Plotter>();
@@ -265,6 +257,69 @@ namespace Zadanie1
                 plotter.Show();
             }
 
+        }
+
+        private void odczytajZPlikuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Plotter plotter = Import(openFileDialog.FileName);
+                if (plotter != null)
+                {
+                    plotter.PlotType = PlotType.WynikDzialania;
+                    plotter.Plot();
+                    plotter.MdiParent = this;
+                    plotter.Show();
+                }
+            }
+        }
+
+        private Plotter Import(string path)
+        {
+            Plotter plotter;
+            using (var sr = new StreamReader(path))
+            {
+                var type = sr.ReadLine();
+                switch (type)
+                {
+                    case nameof(Plotter):
+                        double.TryParse(sr.ReadLine(), out var initialTime);
+                        double.TryParse(sr.ReadLine(), out var finalTime);
+                        double? period;
+                        if (!double.TryParse(sr.ReadLine(), out var p))
+                        {
+                            period = null;
+                        }
+                        else
+                        {
+                            period = p;
+                        }
+
+                        double.TryParse(sr.ReadLine(), out var samplingFrequency);
+                        List<double> amplitudes = sr.ReadLine()?.Split(" ".ToArray(), StringSplitOptions.RemoveEmptyEntries).Select(double.Parse).ToList();
+                        List<double> resultTime = new List<double>();
+                        for (double i = initialTime; i < finalTime; i += 1.0 / samplingFrequency)
+                        {
+                            resultTime.Add(i);
+                        }
+
+                        List<DataPoint> resultPoints = new List<DataPoint>();
+                        for (int i = 0; i < amplitudes.Count; i++)
+                        {
+                            resultPoints.Add(new DataPoint(resultTime[i], amplitudes[i]));
+                        }
+
+                        plotter = new Plotter() { Title = "zaimportowany" };
+                        plotter.dataPoints = resultPoints;
+                        break;
+                    default:
+                        plotter = null;
+                        break;
+                }
+            }
+
+            return plotter;
         }
     }
 }
