@@ -40,7 +40,7 @@
             this.textBoxPeriod = new System.Windows.Forms.TextBox();
             this.textBoxTotalTime = new System.Windows.Forms.TextBox();
             this.textBoxInitialTime = new System.Windows.Forms.TextBox();
-            this.textBoxSamplingFrequency = new System.Windows.Forms.TextBox();
+            this.textBoxSampling = new System.Windows.Forms.TextBox();
             this.textBoxProbability = new System.Windows.Forms.TextBox();
             this.textBoxJumpTime = new System.Windows.Forms.TextBox();
             this.textBoxImpletionRate = new System.Windows.Forms.TextBox();
@@ -48,6 +48,14 @@
             this.buttonExit = new System.Windows.Forms.Button();
             this.textBoxRangesAmount = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBoxSamplingFrequency = new System.Windows.Forms.TextBox();
+            this.labelSamplingFrequency = new System.Windows.Forms.Label();
+            this.textBoxReconstructionFrequency = new System.Windows.Forms.TextBox();
+            this.labelReconstructionFrequency = new System.Windows.Forms.Label();
+            this.textBoxQuantizationLevel = new System.Windows.Forms.TextBox();
+            this.labelQuantizationLevel = new System.Windows.Forms.Label();
+            this.textBoxConsideredSamplesAmount = new System.Windows.Forms.TextBox();
+            this.labelConsideredSamplesNumber = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelAmplitude
@@ -89,11 +97,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 235);
+            this.label5.Location = new System.Drawing.Point(33, 235);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(135, 13);
+            this.label5.Size = new System.Drawing.Size(112, 13);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Częstotliwość próbkowania";
+            this.label5.Text = "Częstotliwość sygnału";
             // 
             // labelProbability
             // 
@@ -150,12 +158,12 @@
             this.textBoxInitialTime.Size = new System.Drawing.Size(154, 20);
             this.textBoxInitialTime.TabIndex = 10;
             // 
-            // textBoxSamplingFrequency
+            // textBoxSampling
             // 
-            this.textBoxSamplingFrequency.Location = new System.Drawing.Point(151, 232);
-            this.textBoxSamplingFrequency.Name = "textBoxSamplingFrequency";
-            this.textBoxSamplingFrequency.Size = new System.Drawing.Size(154, 20);
-            this.textBoxSamplingFrequency.TabIndex = 15;
+            this.textBoxSampling.Location = new System.Drawing.Point(151, 232);
+            this.textBoxSampling.Name = "textBoxSampling";
+            this.textBoxSampling.Size = new System.Drawing.Size(154, 20);
+            this.textBoxSampling.TabIndex = 15;
             // 
             // textBoxProbability
             // 
@@ -180,7 +188,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(13, 315);
+            this.buttonSave.Location = new System.Drawing.Point(13, 411);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(132, 23);
             this.buttonSave.TabIndex = 17;
@@ -190,7 +198,7 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(173, 315);
+            this.buttonExit.Location = new System.Drawing.Point(173, 411);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(132, 23);
             this.buttonExit.TabIndex = 18;
@@ -214,16 +222,88 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "Ilość przedziałów (histogram)";
             // 
+            // textBoxSamplingFrequency
+            // 
+            this.textBoxSamplingFrequency.Location = new System.Drawing.Point(151, 296);
+            this.textBoxSamplingFrequency.Name = "textBoxSamplingFrequency";
+            this.textBoxSamplingFrequency.Size = new System.Drawing.Size(154, 20);
+            this.textBoxSamplingFrequency.TabIndex = 22;
+            // 
+            // labelSamplingFrequency
+            // 
+            this.labelSamplingFrequency.AutoSize = true;
+            this.labelSamplingFrequency.Location = new System.Drawing.Point(10, 299);
+            this.labelSamplingFrequency.Name = "labelSamplingFrequency";
+            this.labelSamplingFrequency.Size = new System.Drawing.Size(135, 13);
+            this.labelSamplingFrequency.TabIndex = 21;
+            this.labelSamplingFrequency.Text = "Częstotliwość próbkowania";
+            // 
+            // textBoxReconstructionFrequency
+            // 
+            this.textBoxReconstructionFrequency.Location = new System.Drawing.Point(151, 322);
+            this.textBoxReconstructionFrequency.Name = "textBoxReconstructionFrequency";
+            this.textBoxReconstructionFrequency.Size = new System.Drawing.Size(154, 20);
+            this.textBoxReconstructionFrequency.TabIndex = 24;
+            // 
+            // labelReconstructionFrequency
+            // 
+            this.labelReconstructionFrequency.AutoSize = true;
+            this.labelReconstructionFrequency.Location = new System.Drawing.Point(11, 325);
+            this.labelReconstructionFrequency.Name = "labelReconstructionFrequency";
+            this.labelReconstructionFrequency.Size = new System.Drawing.Size(134, 13);
+            this.labelReconstructionFrequency.TabIndex = 23;
+            this.labelReconstructionFrequency.Text = "Częstotliwość rekonstrukcji";
+            // 
+            // textBoxQuantizationLevel
+            // 
+            this.textBoxQuantizationLevel.Location = new System.Drawing.Point(151, 348);
+            this.textBoxQuantizationLevel.Name = "textBoxQuantizationLevel";
+            this.textBoxQuantizationLevel.Size = new System.Drawing.Size(154, 20);
+            this.textBoxQuantizationLevel.TabIndex = 26;
+            // 
+            // labelQuantizationLevel
+            // 
+            this.labelQuantizationLevel.AutoSize = true;
+            this.labelQuantizationLevel.Location = new System.Drawing.Point(41, 351);
+            this.labelQuantizationLevel.Name = "labelQuantizationLevel";
+            this.labelQuantizationLevel.Size = new System.Drawing.Size(104, 13);
+            this.labelQuantizationLevel.TabIndex = 25;
+            this.labelQuantizationLevel.Text = "Poziomy kwantyzacji";
+            // 
+            // textBoxConsideredSamplesAmount
+            // 
+            this.textBoxConsideredSamplesAmount.Location = new System.Drawing.Point(151, 374);
+            this.textBoxConsideredSamplesAmount.Name = "textBoxConsideredSamplesAmount";
+            this.textBoxConsideredSamplesAmount.Size = new System.Drawing.Size(154, 20);
+            this.textBoxConsideredSamplesAmount.TabIndex = 28;
+            // 
+            // labelConsideredSamplesNumber
+            // 
+            this.labelConsideredSamplesNumber.AutoSize = true;
+            this.labelConsideredSamplesNumber.Location = new System.Drawing.Point(6, 377);
+            this.labelConsideredSamplesNumber.Name = "labelConsideredSamplesNumber";
+            this.labelConsideredSamplesNumber.Size = new System.Drawing.Size(139, 13);
+            this.labelConsideredSamplesNumber.TabIndex = 27;
+            this.labelConsideredSamplesNumber.Text = "Liczba rozważanych próbek";
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 350);
+            this.ClientSize = new System.Drawing.Size(323, 446);
+            this.Controls.Add(this.textBoxConsideredSamplesAmount);
+            this.Controls.Add(this.labelConsideredSamplesNumber);
+            this.Controls.Add(this.textBoxQuantizationLevel);
+            this.Controls.Add(this.labelQuantizationLevel);
+            this.Controls.Add(this.textBoxReconstructionFrequency);
+            this.Controls.Add(this.labelReconstructionFrequency);
+            this.Controls.Add(this.textBoxSamplingFrequency);
+            this.Controls.Add(this.labelSamplingFrequency);
             this.Controls.Add(this.textBoxRangesAmount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.textBoxSamplingFrequency);
+            this.Controls.Add(this.textBoxSampling);
             this.Controls.Add(this.textBoxProbability);
             this.Controls.Add(this.textBoxJumpTime);
             this.Controls.Add(this.textBoxImpletionRate);
@@ -260,7 +340,7 @@
         private System.Windows.Forms.TextBox textBoxPeriod;
         private System.Windows.Forms.TextBox textBoxTotalTime;
         private System.Windows.Forms.TextBox textBoxInitialTime;
-        private System.Windows.Forms.TextBox textBoxSamplingFrequency;
+        private System.Windows.Forms.TextBox textBoxSampling;
         private System.Windows.Forms.TextBox textBoxProbability;
         private System.Windows.Forms.TextBox textBoxJumpTime;
         private System.Windows.Forms.TextBox textBoxImpletionRate;
@@ -268,5 +348,13 @@
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.TextBox textBoxRangesAmount;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxSamplingFrequency;
+        private System.Windows.Forms.Label labelSamplingFrequency;
+        private System.Windows.Forms.TextBox textBoxReconstructionFrequency;
+        private System.Windows.Forms.Label labelReconstructionFrequency;
+        private System.Windows.Forms.TextBox textBoxQuantizationLevel;
+        private System.Windows.Forms.Label labelQuantizationLevel;
+        private System.Windows.Forms.TextBox textBoxConsideredSamplesAmount;
+        private System.Windows.Forms.Label labelConsideredSamplesNumber;
     }
 }

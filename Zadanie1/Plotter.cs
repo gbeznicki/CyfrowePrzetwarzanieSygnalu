@@ -14,8 +14,8 @@ namespace Zadanie1
         /// <summary>
         /// Tytuł wykresu
         /// </summary>
-        public string Title { get { return _title; } set { _title = value; } }
-        private string _title;
+        public string Title { get; set; }
+
         /// <summary>
         /// Czas skoku jednostkowego
         /// </summary>
@@ -24,15 +24,20 @@ namespace Zadanie1
         /// </summary>
         public PlotType PlotType { get; set; }
 
-        private Equation equation;
+        public List<DataPoint> DataPoints;
+        public double Frequency;
+        public double InitialTime;
+        public double FinalTime;
+        public double Period;
 
-        public List<DataPoint> dataPoints;
+        public int SamplingFrequency;
+        public int ReconstructionFrequency;
+        public int QuantizationLevel;
+        public int ConsideredSamplesNumber;
 
-        public double samplingFrequency;
-        public double initialTime;
-        public double finalTime;
-        public double period;
+        private readonly Equation equation;
 
+        // results and measures
         private double averageValue;
         private double absoluteAverageValue;
         private double averagePower;
@@ -43,13 +48,16 @@ namespace Zadanie1
         {
             InitializeComponent();
             equation = new Equation();
-            samplingFrequency = SharedSettings.SamplingFrequency;
-            initialTime = SharedSettings.InitialTime;
-            finalTime = SharedSettings.InitialTime + SharedSettings.TotalTime;
-            period = SharedSettings.Period;
+            Frequency = SharedSettings.Frequency;
+            InitialTime = SharedSettings.InitialTime;
+            FinalTime = SharedSettings.InitialTime + SharedSettings.TotalTime;
+            Period = SharedSettings.Period;
+
+            SamplingFrequency = SharedSettings.SamplingFrequency;
+            ReconstructionFrequency = SharedSettings.ReconstructionFrequency;
+            QuantizationLevel = SharedSettings.QuantizationLevel;
+            ConsideredSamplesNumber = SharedSettings.ConsideredSamplesNumber;
         }
-
-
 
         public void Plot()
         {
@@ -57,189 +65,179 @@ namespace Zadanie1
             {
                 case PlotType.SzumJednostajny:
                     RysujSzumJednostajny();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.SzumGaussowski:
                     RysujSzumGaussowski();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.Sinusoidalny:
                     RysujSinusoidalny();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.SinusoidalnyWyprostowanyJednopolowkowo:
                     RysujSinusoidalnyWyprostowanyJednopolowkowo();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.SinusoidalnyWyprostowanyDwupolowkowo:
                     RysujSinusoidalnyWyprostowanyDwupolowkowo();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.Prostokatny:
                     RysujProstokatny();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.ProstokatnySymetryczny:
                     RysujProstokatnySymetryczny();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.Trojkatny:
                     RysujTrojkatny();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.SkokJednostkowy:
                     RysujSkokJednostkowy();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.ImpulsJednostkowy:
                     RysujImpulsJednostkowy();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.SzumImpulsowy:
                     RysujSzumImpulsowy();
-                    ObliczWartosci();
+                    CalculateResults();
                     break;
                 case PlotType.WynikDzialania:
-                    Rysuj(dataPoints);
-                    ObliczWartosci();
+                    DrawChart(DataPoints);
+                    CalculateResults();
                     break;
             }
         }
 
-        private void ObliczWartosci()
+        private void CalculateResults()
         {
-            int howManyPeriods = (int)(SharedSettings.TotalTime / SharedSettings.Period);
-            int lenght = (int)(howManyPeriods * SharedSettings.Period * samplingFrequency);
+            //int howManyPeriods = (int)(SharedSettings.TotalTime / SharedSettings.Period);
+            //int length = (int)(howManyPeriods * SharedSettings.Period * Frequency);
 
-            List<DataPoint> pointsRange = dataPoints.GetRange(0, lenght);
+            //var pointsRange = DataPoints.GetRange(0, length);
 
-            averageValue = pointsRange.Select(y => y.Y).Sum() / pointsRange.Count;
-            absoluteAverageValue = pointsRange.Select(y => y.Y).Sum(x => Math.Abs(x)) / pointsRange.Count;
-            variance = pointsRange.Select(y => y.Y).Sum(x => Math.Pow(x - averageValue, 2)) / pointsRange.Count;
-            averagePower = pointsRange.Select(y => y.Y).Sum(x => x * x) / pointsRange.Count;
-            rootAveragePower = Math.Sqrt(averagePower);
+            //averageValue = pointsRange.Select(y => y.Y).Sum() / pointsRange.Count;
+            //absoluteAverageValue = pointsRange.Select(y => y.Y).Sum(x => Math.Abs(x)) / pointsRange.Count;
+            //variance = pointsRange.Select(y => y.Y).Sum(x => Math.Pow(x - averageValue, 2)) / pointsRange.Count;
+            //averagePower = pointsRange.Select(y => y.Y).Sum(x => x * x) / pointsRange.Count;
+            //rootAveragePower = Math.Sqrt(averagePower);
 
-            labelAverage.Text = averageValue.ToString();
-            labelAbsoluteAverage.Text = absoluteAverageValue.ToString();
-            labelVariance.Text = variance.ToString();
-            labelAveragePower.Text = averagePower.ToString();
-            labelRootAveragePower.Text = rootAveragePower.ToString();
+            //labelAverage.Text = averageValue.ToString();
+            //labelAbsoluteAverage.Text = absoluteAverageValue.ToString();
+            //labelVariance.Text = variance.ToString();
+            //labelAveragePower.Text = averagePower.ToString();
+            //labelRootAveragePower.Text = rootAveragePower.ToString();
         }
 
         private void RysujSzumImpulsowy()
         {
-            Rysuj(equation.SzumImpulsowy());
-            dataPoints = equation.SzumImpulsowy();
+            DrawChart(equation.SzumImpulsowy());
+            DataPoints = equation.SzumImpulsowy();
         }
 
         private void RysujImpulsJednostkowy()
         {
-            Rysuj(equation.ImpulsJednostkowy());
-            dataPoints = equation.ImpulsJednostkowy();
+            DrawChart(equation.ImpulsJednostkowy());
+            DataPoints = equation.ImpulsJednostkowy();
         }
 
 
         private void RysujSkokJednostkowy()
         {
-            Rysuj(equation.SkokJednostkowy());
-            dataPoints = equation.SkokJednostkowy();
+            DrawChart(equation.SkokJednostkowy());
+            DataPoints = equation.SkokJednostkowy();
         }
 
         private void RysujTrojkatny()
         {
-            Rysuj(equation.Trojkatny());
-            dataPoints = equation.Trojkatny();
+            DrawChart(equation.Trojkatny());
+            DataPoints = equation.Trojkatny();
         }
 
         private void RysujProstokatnySymetryczny()
         {
-            Rysuj(equation.ProstokatnySymetryczny());
-            dataPoints = equation.ProstokatnySymetryczny();
+            DrawChart(equation.ProstokatnySymetryczny());
+            DataPoints = equation.ProstokatnySymetryczny();
         }
 
         private void RysujProstokatny()
         {
-            Rysuj(equation.Prostokatny());
-            dataPoints = equation.Prostokatny();
+            DrawChart(equation.Prostokatny());
+            DataPoints = equation.Prostokatny();
         }
 
         private void RysujSinusoidalnyWyprostowanyDwupolowkowo()
         {
-            Rysuj(equation.SinusWyprostowanyDwupolowkowo());
-            dataPoints = equation.SinusWyprostowanyDwupolowkowo();
+            DrawChart(equation.SinusWyprostowanyDwupolowkowo());
+            DataPoints = equation.SinusWyprostowanyDwupolowkowo();
         }
 
         private void RysujSinusoidalnyWyprostowanyJednopolowkowo()
         {
-            Rysuj(equation.SinusWyprostowanyJednopolowkowo());
-            dataPoints = equation.SinusWyprostowanyJednopolowkowo();
+            DrawChart(equation.SinusWyprostowanyJednopolowkowo());
+            DataPoints = equation.SinusWyprostowanyJednopolowkowo();
         }
 
         private void RysujSinusoidalny()
         {
-            Rysuj(equation.Sinus());
-            dataPoints = equation.Sinus();
+            DrawChart(equation.Sinus());
+            DataPoints = equation.Sinus();
         }
 
         private void RysujSzumGaussowski()
         {
-            Rysuj(equation.SzumGaussowski());
-            dataPoints = equation.SzumGaussowski();
+            DrawChart(equation.SzumGaussowski());
+            DataPoints = equation.SzumGaussowski();
         }
 
         private void RysujSzumJednostajny()
         {
-            Rysuj(equation.SzumJednostajny());
-            dataPoints = equation.SzumJednostajny();
+            DrawChart(equation.SzumJednostajny());
+            DataPoints = equation.SzumJednostajny();
         }
 
-        Dictionary<Double, Int32> GenerateHistogram(List<DataPoint> dataPoints)
+        Dictionary<double, int> GenerateHistogram(List<DataPoint> dataPoints)
         {
-            Dictionary<Double, Int32> h = new Dictionary<Double, Int32>();
-            List<Double> krancePrzedzialow = new List<Double>();
-            Double min = dataPoints.Min(x => x.Y), max = dataPoints.Max(x => x.Y);
-            Double A = max - min;
-            Double krok = A / SharedSettings.RangesAmount;
+            var h = new Dictionary<Double, Int32>();
+            var ranges = new List<Double>();
+            double min = dataPoints.Min(x => x.Y), max = dataPoints.Max(x => x.Y);
+            var a = max - min;
+            var step = a / SharedSettings.RangesAmount;
             for (int i = 0; i < SharedSettings.RangesAmount; i++)
             {
-                krancePrzedzialow.Add(min + (i * krok));
+                ranges.Add(min + (i * step));
             }
-            krancePrzedzialow.Add(max);
+            ranges.Add(max);
 
-            foreach (double kraniec in krancePrzedzialow)
+            foreach (double range in ranges)
             {
-                int licznik = dataPoints.Where(x => x.Y > kraniec - krok / 2 && x.Y < kraniec + krok / 2).Count();
-                h[kraniec] = licznik;
+                var counter = dataPoints.Count(x => x.Y > range - step / 2 && x.Y < range + step / 2);
+                h[range] = counter;
             }
             return h;
         }
 
-        private void Rysuj(List<DataPoint> points)
+        void DrawHistogram(IEnumerable<DataPoint> points)
         {
-            //Rysowanie wykresu liniowego/punktowego
-            PlotModel myModel = new PlotModel { Title = Title };
-            LineSeries plotData = new LineSeries();
-            foreach (DataPoint point in points)
-            {
-                plotData.Points.Add(point);
-            }
-            myModel.Series.Add(plotData);
-            plot1.Model = myModel;
-
             //Pobranie punktów do histogramu
-            Dictionary<Double, Int32> histogramData = GenerateHistogram(plotData.Points);
+            var histogramData = GenerateHistogram(points.ToList());
 
             //Rysowanie histogramu
-            PlotModel plotModel = new PlotModel { Title = Title };
-            ColumnSeries histogramSeries = new ColumnSeries();
-            plotModel.Axes.Add(new CategoryAxis() { Position = AxisPosition.Bottom });
-            foreach (double label in histogramData.Keys)
+            var plotModel = new PlotModel { Title = Title };
+            var histogramSeries = new ColumnSeries();
+            plotModel.Axes.Add(new CategoryAxis { Position = AxisPosition.Bottom });
+            foreach (var label in histogramData.Keys)
             {
                 ((CategoryAxis)plotModel.Axes[0]).ActualLabels.Add(Math.Round(label, 1).ToString());
             }
             plotModel.Axes.Add(new LinearAxis() { Position = AxisPosition.Left });
 
-            foreach (Double y in histogramData.Values)
+            foreach (var y in histogramData.Values)
             {
                 histogramSeries.Items.Add(new ColumnItem(y));
             }
@@ -247,16 +245,36 @@ namespace Zadanie1
             histogram.Model = plotModel;
         }
 
+        void DrawChart(IEnumerable<DataPoint> points, bool drawHistogram = true)
+        {
+            //Rysowanie wykresu liniowego/punktowego
+            var myModel = new PlotModel { Title = Title };
+            var plotData = new LineSeries();
+
+            foreach (var point in points)
+            {
+                plotData.Points.Add(point);
+            }
+
+            myModel.Series.Add(plotData);
+            plot1.Model = myModel;
+
+            if (drawHistogram)
+            {
+                DrawHistogram(plotData.Points);
+            }
+        }
+
         public void Export(string filePath)
         {
             using (var sw = new StreamWriter(filePath))
             {
                 sw.WriteLine(nameof(Plotter));
-                sw.WriteLine(initialTime);
-                sw.WriteLine(finalTime);
-                sw.WriteLine(period);
-                sw.WriteLine(samplingFrequency);
-                foreach (var y in dataPoints.Select(y => y.Y))
+                sw.WriteLine(InitialTime);
+                sw.WriteLine(FinalTime);
+                sw.WriteLine(Period);
+                sw.WriteLine(Frequency);
+                foreach (var y in DataPoints.Select(y => y.Y))
                 {
                     sw.Write($"{y} ");
                 }

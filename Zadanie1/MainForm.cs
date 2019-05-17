@@ -311,7 +311,7 @@ namespace Zadanie1
                         }
 
                         plotter = new Plotter() { Title = "zaimportowany" };
-                        plotter.dataPoints = resultPoints;
+                        plotter.DataPoints = resultPoints;
                         break;
                     default:
                         plotter = null;

@@ -12,7 +12,7 @@ namespace Zadanie1
         private readonly double impletionRate = SharedSettings.ImpletionRate;
         private readonly double jumpTime = SharedSettings.JumpTime;
         private readonly double totalTime = SharedSettings.TotalTime;
-        private readonly double samplingFrequency = SharedSettings.SamplingFrequency;
+        private readonly double frequency = SharedSettings.SamplingFrequency;
         private readonly double probability = SharedSettings.Probability;
 
         private Random random = new Random();
@@ -20,8 +20,8 @@ namespace Zadanie1
         public List<DataPoint> Sinus()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
 
             var i = initialTime;
             var j = 0;
@@ -35,8 +35,8 @@ namespace Zadanie1
         public List<DataPoint> SinusWyprostowanyJednopolowkowo()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
 
             var i = initialTime;
             var j = 0;
@@ -52,8 +52,8 @@ namespace Zadanie1
         public List<DataPoint> SinusWyprostowanyDwupolowkowo()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
 
             var i = initialTime;
             var j = 0;
@@ -67,8 +67,8 @@ namespace Zadanie1
         public List<DataPoint> SzumJednostajny()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
 
             var i = initialTime;
             var j = 0;
@@ -84,8 +84,8 @@ namespace Zadanie1
         public List<DataPoint> SzumGaussowski()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
 
             var i = initialTime;
             var j = 0;
@@ -101,8 +101,8 @@ namespace Zadanie1
         public List<DataPoint> Prostokatny()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
             var k = 0;
 
             var i = initialTime;
@@ -131,8 +131,8 @@ namespace Zadanie1
         public List<DataPoint> ProstokatnySymetryczny()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
             var k = 0;
 
             var i = initialTime;
@@ -160,8 +160,8 @@ namespace Zadanie1
         public List<DataPoint> SzumImpulsowy()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
             var r = new Random();
 
             var i = initialTime;
@@ -177,8 +177,8 @@ namespace Zadanie1
         public List<DataPoint> SkokJednostkowy()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
 
             var i = initialTime;
             var j = 0;
@@ -203,8 +203,8 @@ namespace Zadanie1
         public List<DataPoint> Trojkatny()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
             var k = 0;
 
             var i = initialTime;
@@ -232,8 +232,8 @@ namespace Zadanie1
         public List<DataPoint> ImpulsJednostkowy()
         {
             var points = new List<DataPoint>();
-            var howManyPoints = totalTime * samplingFrequency;
-            var span = 1.0 / samplingFrequency;
+            var howManyPoints = totalTime * frequency;
+            var span = 1.0 / frequency;
             var r = new Random();
 
             var i = initialTime;
