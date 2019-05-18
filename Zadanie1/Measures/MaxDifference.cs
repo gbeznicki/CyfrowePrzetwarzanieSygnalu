@@ -6,22 +6,22 @@ namespace Zadanie1
 {
     public class MaxDifference : IMeasure
     {
-        public double GetValue(List<DataPoint> sincValues, List<DataPoint> signalValues)
+        public double GetValue(List<DataPoint> sincValues, List<DataPoint> sampledValues)
         {
             List<DataPoint> sinc, signal;
-            if (sincValues.Count > signalValues.Count)
+            if (sincValues.Count > sampledValues.Count)
             {
                 sinc = sincValues;
-                signal = SignalUtils.AdjustSize(signalValues, sincValues.Count);
+                signal = SignalUtils.AdjustSize(sampledValues, sincValues.Count);
             }
-            else if (sincValues.Count < signalValues.Count)
+            else if (sincValues.Count < sampledValues.Count)
             {
-                signal = signalValues;
-                sinc = SignalUtils.AdjustSize(sincValues, signalValues.Count);
+                signal = sampledValues;
+                sinc = SignalUtils.AdjustSize(sincValues, sampledValues.Count);
             }
             else
             {
-                signal = signalValues;
+                signal = sampledValues;
                 sinc = sincValues;
             }
 

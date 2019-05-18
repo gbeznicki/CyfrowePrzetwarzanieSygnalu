@@ -5,6 +5,6 @@ namespace Zadanie1
 {
     public interface IMeasure
     {
-        double GetValue(List<DataPoint> sincValues, List<DataPoint> signalValues);
+        double GetValue(List<DataPoint> sincValues, List<DataPoint> sampledValues);
     }
 }

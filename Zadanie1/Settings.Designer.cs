@@ -61,7 +61,7 @@
             // labelAmplitude
             // 
             this.labelAmplitude.AutoSize = true;
-            this.labelAmplitude.Location = new System.Drawing.Point(92, 9);
+            this.labelAmplitude.Location = new System.Drawing.Point(110, 12);
             this.labelAmplitude.Name = "labelAmplitude";
             this.labelAmplitude.Size = new System.Drawing.Size(53, 13);
             this.labelAmplitude.TabIndex = 0;
@@ -70,7 +70,7 @@
             // labelPeriod
             // 
             this.labelPeriod.AutoSize = true;
-            this.labelPeriod.Location = new System.Drawing.Point(110, 43);
+            this.labelPeriod.Location = new System.Drawing.Point(128, 46);
             this.labelPeriod.Name = "labelPeriod";
             this.labelPeriod.Size = new System.Drawing.Size(35, 13);
             this.labelPeriod.TabIndex = 1;
@@ -79,7 +79,7 @@
             // labelTotalTime
             // 
             this.labelTotalTime.AutoSize = true;
-            this.labelTotalTime.Location = new System.Drawing.Point(66, 106);
+            this.labelTotalTime.Location = new System.Drawing.Point(84, 109);
             this.labelTotalTime.Name = "labelTotalTime";
             this.labelTotalTime.Size = new System.Drawing.Size(79, 13);
             this.labelTotalTime.TabIndex = 3;
@@ -88,7 +88,7 @@
             // labelInitialTime
             // 
             this.labelInitialTime.AutoSize = true;
-            this.labelInitialTime.Location = new System.Drawing.Point(55, 72);
+            this.labelInitialTime.Location = new System.Drawing.Point(73, 75);
             this.labelInitialTime.Name = "labelInitialTime";
             this.labelInitialTime.Size = new System.Drawing.Size(90, 13);
             this.labelInitialTime.TabIndex = 2;
@@ -97,16 +97,16 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 235);
+            this.label5.Location = new System.Drawing.Point(28, 238);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(112, 13);
+            this.label5.Size = new System.Drawing.Size(135, 13);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Częstotliwość sygnału";
+            this.label5.Text = "Częstotliwość próbkowania";
             // 
             // labelProbability
             // 
             this.labelProbability.AutoSize = true;
-            this.labelProbability.Location = new System.Drawing.Point(36, 205);
+            this.labelProbability.Location = new System.Drawing.Point(54, 204);
             this.labelProbability.Name = "labelProbability";
             this.labelProbability.Size = new System.Drawing.Size(109, 13);
             this.labelProbability.TabIndex = 6;
@@ -115,7 +115,7 @@
             // labelJumpTime
             // 
             this.labelJumpTime.AutoSize = true;
-            this.labelJumpTime.Location = new System.Drawing.Point(83, 176);
+            this.labelJumpTime.Location = new System.Drawing.Point(101, 175);
             this.labelJumpTime.Name = "labelJumpTime";
             this.labelJumpTime.Size = new System.Drawing.Size(62, 13);
             this.labelJumpTime.TabIndex = 5;
@@ -124,7 +124,7 @@
             // labelImpletionRate
             // 
             this.labelImpletionRate.AutoSize = true;
-            this.labelImpletionRate.Location = new System.Drawing.Point(10, 138);
+            this.labelImpletionRate.Location = new System.Drawing.Point(28, 141);
             this.labelImpletionRate.Name = "labelImpletionRate";
             this.labelImpletionRate.Size = new System.Drawing.Size(135, 13);
             this.labelImpletionRate.TabIndex = 4;
@@ -132,56 +132,56 @@
             // 
             // textBoxAmplitude
             // 
-            this.textBoxAmplitude.Location = new System.Drawing.Point(151, 6);
+            this.textBoxAmplitude.Location = new System.Drawing.Point(186, 9);
             this.textBoxAmplitude.Name = "textBoxAmplitude";
             this.textBoxAmplitude.Size = new System.Drawing.Size(154, 20);
             this.textBoxAmplitude.TabIndex = 8;
             // 
             // textBoxPeriod
             // 
-            this.textBoxPeriod.Location = new System.Drawing.Point(151, 40);
+            this.textBoxPeriod.Location = new System.Drawing.Point(186, 43);
             this.textBoxPeriod.Name = "textBoxPeriod";
             this.textBoxPeriod.Size = new System.Drawing.Size(154, 20);
             this.textBoxPeriod.TabIndex = 9;
             // 
             // textBoxTotalTime
             // 
-            this.textBoxTotalTime.Location = new System.Drawing.Point(151, 103);
+            this.textBoxTotalTime.Location = new System.Drawing.Point(186, 106);
             this.textBoxTotalTime.Name = "textBoxTotalTime";
             this.textBoxTotalTime.Size = new System.Drawing.Size(154, 20);
             this.textBoxTotalTime.TabIndex = 11;
             // 
             // textBoxInitialTime
             // 
-            this.textBoxInitialTime.Location = new System.Drawing.Point(151, 69);
+            this.textBoxInitialTime.Location = new System.Drawing.Point(186, 72);
             this.textBoxInitialTime.Name = "textBoxInitialTime";
             this.textBoxInitialTime.Size = new System.Drawing.Size(154, 20);
             this.textBoxInitialTime.TabIndex = 10;
             // 
             // textBoxSampling
             // 
-            this.textBoxSampling.Location = new System.Drawing.Point(151, 232);
+            this.textBoxSampling.Location = new System.Drawing.Point(186, 235);
             this.textBoxSampling.Name = "textBoxSampling";
             this.textBoxSampling.Size = new System.Drawing.Size(154, 20);
             this.textBoxSampling.TabIndex = 15;
             // 
             // textBoxProbability
             // 
-            this.textBoxProbability.Location = new System.Drawing.Point(151, 198);
+            this.textBoxProbability.Location = new System.Drawing.Point(186, 201);
             this.textBoxProbability.Name = "textBoxProbability";
             this.textBoxProbability.Size = new System.Drawing.Size(154, 20);
             this.textBoxProbability.TabIndex = 14;
             // 
             // textBoxJumpTime
             // 
-            this.textBoxJumpTime.Location = new System.Drawing.Point(151, 169);
+            this.textBoxJumpTime.Location = new System.Drawing.Point(186, 172);
             this.textBoxJumpTime.Name = "textBoxJumpTime";
             this.textBoxJumpTime.Size = new System.Drawing.Size(154, 20);
             this.textBoxJumpTime.TabIndex = 13;
             // 
             // textBoxImpletionRate
             // 
-            this.textBoxImpletionRate.Location = new System.Drawing.Point(151, 135);
+            this.textBoxImpletionRate.Location = new System.Drawing.Point(186, 138);
             this.textBoxImpletionRate.Name = "textBoxImpletionRate";
             this.textBoxImpletionRate.Size = new System.Drawing.Size(154, 20);
             this.textBoxImpletionRate.TabIndex = 12;
@@ -208,7 +208,7 @@
             // 
             // textBoxRangesAmount
             // 
-            this.textBoxRangesAmount.Location = new System.Drawing.Point(151, 265);
+            this.textBoxRangesAmount.Location = new System.Drawing.Point(186, 268);
             this.textBoxRangesAmount.Name = "textBoxRangesAmount";
             this.textBoxRangesAmount.Size = new System.Drawing.Size(154, 20);
             this.textBoxRangesAmount.TabIndex = 20;
@@ -216,7 +216,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 268);
+            this.label1.Location = new System.Drawing.Point(20, 271);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 13);
             this.label1.TabIndex = 19;
@@ -224,7 +224,7 @@
             // 
             // textBoxSamplingFrequency
             // 
-            this.textBoxSamplingFrequency.Location = new System.Drawing.Point(151, 296);
+            this.textBoxSamplingFrequency.Location = new System.Drawing.Point(186, 299);
             this.textBoxSamplingFrequency.Name = "textBoxSamplingFrequency";
             this.textBoxSamplingFrequency.Size = new System.Drawing.Size(154, 20);
             this.textBoxSamplingFrequency.TabIndex = 22;
@@ -232,15 +232,16 @@
             // labelSamplingFrequency
             // 
             this.labelSamplingFrequency.AutoSize = true;
-            this.labelSamplingFrequency.Location = new System.Drawing.Point(10, 299);
+            this.labelSamplingFrequency.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.labelSamplingFrequency.Location = new System.Drawing.Point(0, 302);
             this.labelSamplingFrequency.Name = "labelSamplingFrequency";
-            this.labelSamplingFrequency.Size = new System.Drawing.Size(135, 13);
+            this.labelSamplingFrequency.Size = new System.Drawing.Size(163, 13);
             this.labelSamplingFrequency.TabIndex = 21;
-            this.labelSamplingFrequency.Text = "Częstotliwość próbkowania";
+            this.labelSamplingFrequency.Text = "Częstotliwość próbkowania (A/C)";
             // 
             // textBoxReconstructionFrequency
             // 
-            this.textBoxReconstructionFrequency.Location = new System.Drawing.Point(151, 322);
+            this.textBoxReconstructionFrequency.Location = new System.Drawing.Point(186, 325);
             this.textBoxReconstructionFrequency.Name = "textBoxReconstructionFrequency";
             this.textBoxReconstructionFrequency.Size = new System.Drawing.Size(154, 20);
             this.textBoxReconstructionFrequency.TabIndex = 24;
@@ -248,7 +249,7 @@
             // labelReconstructionFrequency
             // 
             this.labelReconstructionFrequency.AutoSize = true;
-            this.labelReconstructionFrequency.Location = new System.Drawing.Point(11, 325);
+            this.labelReconstructionFrequency.Location = new System.Drawing.Point(29, 328);
             this.labelReconstructionFrequency.Name = "labelReconstructionFrequency";
             this.labelReconstructionFrequency.Size = new System.Drawing.Size(134, 13);
             this.labelReconstructionFrequency.TabIndex = 23;
@@ -256,7 +257,7 @@
             // 
             // textBoxQuantizationLevel
             // 
-            this.textBoxQuantizationLevel.Location = new System.Drawing.Point(151, 348);
+            this.textBoxQuantizationLevel.Location = new System.Drawing.Point(186, 351);
             this.textBoxQuantizationLevel.Name = "textBoxQuantizationLevel";
             this.textBoxQuantizationLevel.Size = new System.Drawing.Size(154, 20);
             this.textBoxQuantizationLevel.TabIndex = 26;
@@ -264,7 +265,7 @@
             // labelQuantizationLevel
             // 
             this.labelQuantizationLevel.AutoSize = true;
-            this.labelQuantizationLevel.Location = new System.Drawing.Point(41, 351);
+            this.labelQuantizationLevel.Location = new System.Drawing.Point(59, 354);
             this.labelQuantizationLevel.Name = "labelQuantizationLevel";
             this.labelQuantizationLevel.Size = new System.Drawing.Size(104, 13);
             this.labelQuantizationLevel.TabIndex = 25;
@@ -272,7 +273,7 @@
             // 
             // textBoxConsideredSamplesAmount
             // 
-            this.textBoxConsideredSamplesAmount.Location = new System.Drawing.Point(151, 374);
+            this.textBoxConsideredSamplesAmount.Location = new System.Drawing.Point(186, 377);
             this.textBoxConsideredSamplesAmount.Name = "textBoxConsideredSamplesAmount";
             this.textBoxConsideredSamplesAmount.Size = new System.Drawing.Size(154, 20);
             this.textBoxConsideredSamplesAmount.TabIndex = 28;
@@ -280,7 +281,7 @@
             // labelConsideredSamplesNumber
             // 
             this.labelConsideredSamplesNumber.AutoSize = true;
-            this.labelConsideredSamplesNumber.Location = new System.Drawing.Point(6, 377);
+            this.labelConsideredSamplesNumber.Location = new System.Drawing.Point(24, 380);
             this.labelConsideredSamplesNumber.Name = "labelConsideredSamplesNumber";
             this.labelConsideredSamplesNumber.Size = new System.Drawing.Size(139, 13);
             this.labelConsideredSamplesNumber.TabIndex = 27;
@@ -290,7 +291,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 446);
+            this.ClientSize = new System.Drawing.Size(352, 446);
             this.Controls.Add(this.textBoxConsideredSamplesAmount);
             this.Controls.Add(this.labelConsideredSamplesNumber);
             this.Controls.Add(this.textBoxQuantizationLevel);

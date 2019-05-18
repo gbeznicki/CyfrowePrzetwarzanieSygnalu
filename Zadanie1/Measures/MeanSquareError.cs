@@ -6,23 +6,23 @@ namespace Zadanie1
 {
     public class MeanSquareError : IMeasure
     {
-        public double GetValue(List<DataPoint> sincValues, List<DataPoint> signalValues)
+        public double GetValue(List<DataPoint> sincValues, List<DataPoint> sampledValues)
         {
             List<DataPoint> valuesOne, valuesTwo;
 
-            if (sincValues.Count > signalValues.Count)
+            if (sincValues.Count > sampledValues.Count)
             {
                 valuesOne = sincValues;
-                valuesTwo = SignalUtils.AdjustSize(signalValues, sincValues.Count);
+                valuesTwo = SignalUtils.AdjustSize(sampledValues, sincValues.Count);
             }
-            else if (sincValues.Count < signalValues.Count)
+            else if (sincValues.Count < sampledValues.Count)
             {
-                valuesOne = signalValues;
-                valuesTwo = SignalUtils.AdjustSize(sincValues, signalValues.Count);
+                valuesOne = sampledValues;
+                valuesTwo = SignalUtils.AdjustSize(sincValues, sampledValues.Count);
             }
             else
             {
-                valuesOne = signalValues;
+                valuesOne = sampledValues;
                 valuesTwo = sincValues;
             }
 

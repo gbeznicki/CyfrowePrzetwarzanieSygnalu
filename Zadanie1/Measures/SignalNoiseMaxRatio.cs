@@ -6,23 +6,23 @@ namespace Zadanie1
 {
     public class SignalNoiseMaxRatio : IMeasure
     {
-        public double GetValue(List<DataPoint> sincValues, List<DataPoint> signalValues)
+        public double GetValue(List<DataPoint> sincValues, List<DataPoint> sampledValues)
         {
             List<DataPoint> values;
-            if (sincValues.Count > signalValues.Count)
+            if (sincValues.Count > sampledValues.Count)
             {
-                values = SignalUtils.AdjustSize(signalValues, sincValues.Count);
+                values = SignalUtils.AdjustSize(sampledValues, sincValues.Count);
             }
-            else if (sincValues.Count < signalValues.Count)
+            else if (sincValues.Count < sampledValues.Count)
             {
-                values = SignalUtils.AdjustSize(sincValues, signalValues.Count);
+                values = SignalUtils.AdjustSize(sincValues, sampledValues.Count);
             }
             else
             {
                 values = sincValues;
             }
 
-            double mse = SignalUtils.GetMeanSquareError(sincValues, signalValues), numerator = values[0].Y;
+            double mse = SignalUtils.GetMeanSquareError(sincValues, sampledValues), numerator = values[0].Y;
             for (int i = 1; i < values.Count; i++)
             {
                 if (values[i].Y > numerator) numerator = values[i].Y;

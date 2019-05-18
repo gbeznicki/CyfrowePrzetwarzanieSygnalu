@@ -82,10 +82,10 @@
             this.comboBoxRight.Size = new System.Drawing.Size(121, 21);
             this.comboBoxRight.TabIndex = 5;
             // 
-            // textBox1
+            // textBoxTitle
             // 
             this.textBoxTitle.Location = new System.Drawing.Point(15, 66);
-            this.textBoxTitle.Name = "textBox1";
+            this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(279, 20);
             this.textBoxTitle.TabIndex = 6;
             this.textBoxTitle.Text = "Wprowadź tytuł wykresu";

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using OxyPlot;
+using OxyPlot.Series;
 
 namespace Zadanie1
 {
@@ -59,7 +60,7 @@ namespace Zadanie1
             return result;
         }
 
-        public static double GetSincReconstructionValue(IEnumerable<DataPoint> samples, double time, double frequency)
+        public static double GetSincReconstructionValue(IEnumerable<ScatterPoint> samples, double time, double frequency)
         {
             double result = 0.0, T = 1.0 / frequency;
             foreach (var sample in samples)
@@ -75,7 +76,7 @@ namespace Zadanie1
             return p == 0.0 ? 1.0 : Math.Sin(Math.PI * p) / (Math.PI * p);
         }
 
-        public static IEnumerable<DataPoint> SegregateSamples(this List<DataPoint> samples, int consideredSamplesAmount, double time)
+        public static IEnumerable<ScatterPoint> SegregateSamples(this List<ScatterPoint> samples, int consideredSamplesAmount, double time)
         {
             return samples.OrderBy(s => (Math.Abs(s.X - time))).Take(consideredSamplesAmount * 2);
         }

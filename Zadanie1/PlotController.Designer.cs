@@ -1,6 +1,6 @@
 ﻿namespace Zadanie1
 {
-    partial class Plotter
+    partial class PlotController
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.histogram = new OxyPlot.WindowsForms.PlotView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.button1 = new System.Windows.Forms.Button();
             this.labelVariance = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.labelAveragePower = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.labelAverage = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -88,7 +88,7 @@
             // 
             // histogram
             // 
-            this.histogram.BackColor = System.Drawing.Color.PaleGreen;
+            this.histogram.BackColor = System.Drawing.Color.Wheat;
             this.histogram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.histogram.Location = new System.Drawing.Point(0, 0);
             this.histogram.Name = "histogram";
@@ -102,6 +102,7 @@
             // 
             // splitContainer2
             // 
+            this.splitContainer2.BackColor = System.Drawing.Color.Wheat;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Name = "splitContainer2";
@@ -127,6 +128,16 @@
             this.splitContainer2.Size = new System.Drawing.Size(788, 450);
             this.splitContainer2.SplitterDistance = 617;
             this.splitContainer2.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(2, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(162, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Eksportuj wykres do pliku";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labelVariance
             // 
@@ -228,23 +239,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Średnia: ";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(2, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Eksportuj wykres do pliku";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Plotter
+            // PlotController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 450);
             this.Controls.Add(this.splitContainer2);
-            this.Name = "Plotter";
+            this.Name = "PlotController";
             this.Text = "Form2";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);

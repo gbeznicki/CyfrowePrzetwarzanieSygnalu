@@ -53,6 +53,12 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.samplingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quantizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.interpolationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sincReconstructionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,7 +68,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.plikToolStripMenuItem,
             this.operacjeToolStripMenuItem,
-            this.generujToolStripMenuItem});
+            this.generujToolStripMenuItem,
+            this.aCToolStripMenuItem,
+            this.cAToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(966, 24);
@@ -81,14 +89,14 @@
             // odczytajZPlikuToolStripMenuItem
             // 
             this.odczytajZPlikuToolStripMenuItem.Name = "odczytajZPlikuToolStripMenuItem";
-            this.odczytajZPlikuToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.odczytajZPlikuToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.odczytajZPlikuToolStripMenuItem.Text = "Import z pliku";
             this.odczytajZPlikuToolStripMenuItem.Click += new System.EventHandler(this.odczytajZPlikuToolStripMenuItem_Click);
             // 
             // ustawieniaToolStripMenuItem
             // 
             this.ustawieniaToolStripMenuItem.Name = "ustawieniaToolStripMenuItem";
-            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ustawieniaToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.ustawieniaToolStripMenuItem.Text = "Ustawienia";
             this.ustawieniaToolStripMenuItem.Click += new System.EventHandler(this.ustawieniaToolStripMenuItem_Click);
             // 
@@ -246,6 +254,52 @@
             this.histogramToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.histogramToolStripMenuItem.Text = "Histogram";
             // 
+            // aCToolStripMenuItem
+            // 
+            this.aCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.samplingToolStripMenuItem,
+            this.quantizationToolStripMenuItem});
+            this.aCToolStripMenuItem.Name = "aCToolStripMenuItem";
+            this.aCToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.aCToolStripMenuItem.Text = "A/C";
+            // 
+            // samplingToolStripMenuItem
+            // 
+            this.samplingToolStripMenuItem.Name = "samplingToolStripMenuItem";
+            this.samplingToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.samplingToolStripMenuItem.Text = "Sampling";
+            this.samplingToolStripMenuItem.Click += new System.EventHandler(this.samplingToolStripMenuItem_Click);
+            // 
+            // quantizationToolStripMenuItem
+            // 
+            this.quantizationToolStripMenuItem.Name = "quantizationToolStripMenuItem";
+            this.quantizationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quantizationToolStripMenuItem.Text = "Quantization";
+            this.quantizationToolStripMenuItem.Click += new System.EventHandler(this.quantizationToolStripMenuItem_Click);
+            // 
+            // cAToolStripMenuItem
+            // 
+            this.cAToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.interpolationToolStripMenuItem,
+            this.sincReconstructionToolStripMenuItem});
+            this.cAToolStripMenuItem.Name = "cAToolStripMenuItem";
+            this.cAToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
+            this.cAToolStripMenuItem.Text = "C/A";
+            // 
+            // interpolationToolStripMenuItem
+            // 
+            this.interpolationToolStripMenuItem.Name = "interpolationToolStripMenuItem";
+            this.interpolationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.interpolationToolStripMenuItem.Text = "Interpolation";
+            this.interpolationToolStripMenuItem.Click += new System.EventHandler(this.interpolationToolStripMenuItem_Click);
+            // 
+            // sincReconstructionToolStripMenuItem
+            // 
+            this.sincReconstructionToolStripMenuItem.Name = "sincReconstructionToolStripMenuItem";
+            this.sincReconstructionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sincReconstructionToolStripMenuItem.Text = "Sinc Reconstruction";
+            this.sincReconstructionToolStripMenuItem.Click += new System.EventHandler(this.sincReconstructionToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,6 +344,12 @@
         private System.Windows.Forms.ToolStripMenuItem wykresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem histogramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ustawieniaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aCToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem samplingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quantizationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem interpolationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sincReconstructionToolStripMenuItem;
     }
 }
 

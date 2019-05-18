@@ -26,7 +26,7 @@ namespace Zadanie1
             textBoxReconstructionFrequency.Text = SharedSettings.ReconstructionFrequency.ToString();
             textBoxConsideredSamplesAmount.Text = SharedSettings.ConsideredSamplesNumber.ToString();
             textBoxQuantizationLevel.Text = SharedSettings.QuantizationLevel.ToString();
-            textBoxSamplingFrequency.Text = SharedSettings.SamplingFrequency.ToString();
+            textBoxSamplingFrequency.Text = SharedSettings.SamplingFrequencyAc.ToString();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -67,8 +67,8 @@ namespace Zadanie1
             if (int.TryParse(textBoxConsideredSamplesAmount.Text, out int consideredSamplesAmount))
                 SharedSettings.ConsideredSamplesNumber = consideredSamplesAmount;
             else MessageBox.Show("Liczba musi być liczbą całkowitą");
-            if (int.TryParse(textBoxSamplingFrequency.Text, out int samplingFrequency))
-                SharedSettings.SamplingFrequency = samplingFrequency;
+            if (int.TryParse(textBoxSamplingFrequency.Text, out int samplingFrequencyAc))
+                SharedSettings.SamplingFrequencyAc = samplingFrequencyAc;
             else MessageBox.Show("Liczba musi być liczbą całkowitą");
         }
 
