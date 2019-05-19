@@ -33,16 +33,16 @@
             this.histogram = new OxyPlot.WindowsForms.PlotView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.button1 = new System.Windows.Forms.Button();
-            this.labelVariance = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.labelAveragePower = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.labelRootAveragePower = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.labelAbsoluteAverage = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.labelAverage = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelMeasureValue_3 = new System.Windows.Forms.Label();
+            this.labelMeasure_3 = new System.Windows.Forms.Label();
+            this.labelMeasureValue_2 = new System.Windows.Forms.Label();
+            this.labelMeasure_2 = new System.Windows.Forms.Label();
+            this.labelMeasureValue_4 = new System.Windows.Forms.Label();
+            this.labelMeasure_4 = new System.Windows.Forms.Label();
+            this.labelMeasureValue_1 = new System.Windows.Forms.Label();
+            this.labelMeasure_1 = new System.Windows.Forms.Label();
+            this.labelMeasureValue_0 = new System.Windows.Forms.Label();
+            this.labelMeasure_0 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -113,18 +113,20 @@
             // 
             // splitContainer2.Panel2
             // 
+            this.splitContainer2.Panel2.AccessibleName = "";
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.splitContainer2.Panel2.Controls.Add(this.button1);
-            this.splitContainer2.Panel2.Controls.Add(this.labelVariance);
-            this.splitContainer2.Panel2.Controls.Add(this.label10);
-            this.splitContainer2.Panel2.Controls.Add(this.labelAveragePower);
-            this.splitContainer2.Panel2.Controls.Add(this.label8);
-            this.splitContainer2.Panel2.Controls.Add(this.labelRootAveragePower);
-            this.splitContainer2.Panel2.Controls.Add(this.label6);
-            this.splitContainer2.Panel2.Controls.Add(this.labelAbsoluteAverage);
-            this.splitContainer2.Panel2.Controls.Add(this.label4);
-            this.splitContainer2.Panel2.Controls.Add(this.labelAverage);
-            this.splitContainer2.Panel2.Controls.Add(this.label1);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasureValue_3);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasure_3);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasureValue_2);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasure_2);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasureValue_4);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasure_4);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasureValue_1);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasure_1);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasureValue_0);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasure_0);
+            this.splitContainer2.Panel2.Tag = "";
             this.splitContainer2.Size = new System.Drawing.Size(788, 450);
             this.splitContainer2.SplitterDistance = 617;
             this.splitContainer2.TabIndex = 2;
@@ -139,105 +141,105 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // labelVariance
+            // labelMeasureValue_3
             // 
-            this.labelVariance.AutoSize = true;
-            this.labelVariance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelVariance.Location = new System.Drawing.Point(55, 313);
-            this.labelVariance.Name = "labelVariance";
-            this.labelVariance.Size = new System.Drawing.Size(54, 16);
-            this.labelVariance.TabIndex = 9;
-            this.labelVariance.Text = "wartość";
+            this.labelMeasureValue_3.AutoSize = true;
+            this.labelMeasureValue_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasureValue_3.Location = new System.Drawing.Point(12, 307);
+            this.labelMeasureValue_3.Name = "labelMeasureValue_3";
+            this.labelMeasureValue_3.Size = new System.Drawing.Size(61, 16);
+            this.labelMeasureValue_3.TabIndex = 9;
+            this.labelMeasureValue_3.Text = "wartość";
             // 
-            // label10
+            // labelMeasure_3
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(12, 291);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(72, 16);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Wariancja:";
+            this.labelMeasure_3.AutoSize = true;
+            this.labelMeasure_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasure_3.Location = new System.Drawing.Point(12, 291);
+            this.labelMeasure_3.Name = "labelMeasure_3";
+            this.labelMeasure_3.Size = new System.Drawing.Size(72, 16);
+            this.labelMeasure_3.TabIndex = 8;
+            this.labelMeasure_3.Text = "Wariancja:";
             // 
-            // labelAveragePower
+            // labelMeasureValue_2
             // 
-            this.labelAveragePower.AutoSize = true;
-            this.labelAveragePower.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelAveragePower.Location = new System.Drawing.Point(55, 228);
-            this.labelAveragePower.Name = "labelAveragePower";
-            this.labelAveragePower.Size = new System.Drawing.Size(54, 16);
-            this.labelAveragePower.TabIndex = 7;
-            this.labelAveragePower.Text = "wartość";
+            this.labelMeasureValue_2.AutoSize = true;
+            this.labelMeasureValue_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasureValue_2.Location = new System.Drawing.Point(12, 222);
+            this.labelMeasureValue_2.Name = "labelMeasureValue_2";
+            this.labelMeasureValue_2.Size = new System.Drawing.Size(61, 16);
+            this.labelMeasureValue_2.TabIndex = 7;
+            this.labelMeasureValue_2.Text = "wartość";
             // 
-            // label8
+            // labelMeasure_2
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(12, 206);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(85, 16);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Moc średnia:";
+            this.labelMeasure_2.AutoSize = true;
+            this.labelMeasure_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasure_2.Location = new System.Drawing.Point(12, 206);
+            this.labelMeasure_2.Name = "labelMeasure_2";
+            this.labelMeasure_2.Size = new System.Drawing.Size(85, 16);
+            this.labelMeasure_2.TabIndex = 6;
+            this.labelMeasure_2.Text = "Moc średnia:";
             // 
-            // labelRootAveragePower
+            // labelMeasureValue_4
             // 
-            this.labelRootAveragePower.AutoSize = true;
-            this.labelRootAveragePower.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelRootAveragePower.Location = new System.Drawing.Point(55, 412);
-            this.labelRootAveragePower.Name = "labelRootAveragePower";
-            this.labelRootAveragePower.Size = new System.Drawing.Size(54, 16);
-            this.labelRootAveragePower.TabIndex = 5;
-            this.labelRootAveragePower.Text = "wartość";
+            this.labelMeasureValue_4.AutoSize = true;
+            this.labelMeasureValue_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasureValue_4.Location = new System.Drawing.Point(12, 399);
+            this.labelMeasureValue_4.Name = "labelMeasureValue_4";
+            this.labelMeasureValue_4.Size = new System.Drawing.Size(61, 16);
+            this.labelMeasureValue_4.TabIndex = 5;
+            this.labelMeasureValue_4.Text = "wartość";
             // 
-            // label6
+            // labelMeasure_4
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(12, 383);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(124, 16);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Wartość skuteczna:";
+            this.labelMeasure_4.AutoSize = true;
+            this.labelMeasure_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasure_4.Location = new System.Drawing.Point(12, 383);
+            this.labelMeasure_4.Name = "labelMeasure_4";
+            this.labelMeasure_4.Size = new System.Drawing.Size(124, 16);
+            this.labelMeasure_4.TabIndex = 4;
+            this.labelMeasure_4.Text = "Wartość skuteczna:";
             // 
-            // labelAbsoluteAverage
+            // labelMeasureValue_1
             // 
-            this.labelAbsoluteAverage.AutoSize = true;
-            this.labelAbsoluteAverage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelAbsoluteAverage.Location = new System.Drawing.Point(55, 159);
-            this.labelAbsoluteAverage.Name = "labelAbsoluteAverage";
-            this.labelAbsoluteAverage.Size = new System.Drawing.Size(54, 16);
-            this.labelAbsoluteAverage.TabIndex = 3;
-            this.labelAbsoluteAverage.Text = "wartość";
+            this.labelMeasureValue_1.AutoSize = true;
+            this.labelMeasureValue_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasureValue_1.Location = new System.Drawing.Point(12, 153);
+            this.labelMeasureValue_1.Name = "labelMeasureValue_1";
+            this.labelMeasureValue_1.Size = new System.Drawing.Size(61, 16);
+            this.labelMeasureValue_1.TabIndex = 3;
+            this.labelMeasureValue_1.Text = "wartość";
             // 
-            // label4
+            // labelMeasure_1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(12, 137);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(143, 16);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Średnia bezwzględna: ";
+            this.labelMeasure_1.AutoSize = true;
+            this.labelMeasure_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasure_1.Location = new System.Drawing.Point(12, 137);
+            this.labelMeasure_1.Name = "labelMeasure_1";
+            this.labelMeasure_1.Size = new System.Drawing.Size(143, 16);
+            this.labelMeasure_1.TabIndex = 2;
+            this.labelMeasure_1.Text = "Średnia bezwzględna: ";
             // 
-            // labelAverage
+            // labelMeasureValue_0
             // 
-            this.labelAverage.AutoSize = true;
-            this.labelAverage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelAverage.Location = new System.Drawing.Point(55, 75);
-            this.labelAverage.Name = "labelAverage";
-            this.labelAverage.Size = new System.Drawing.Size(54, 16);
-            this.labelAverage.TabIndex = 1;
-            this.labelAverage.Text = "wartość";
+            this.labelMeasureValue_0.AutoSize = true;
+            this.labelMeasureValue_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasureValue_0.Location = new System.Drawing.Point(12, 69);
+            this.labelMeasureValue_0.Name = "labelMeasureValue_0";
+            this.labelMeasureValue_0.Size = new System.Drawing.Size(61, 16);
+            this.labelMeasureValue_0.TabIndex = 1;
+            this.labelMeasureValue_0.Text = "wartość";
             // 
-            // label1
+            // labelMeasure_0
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(12, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Średnia: ";
+            this.labelMeasure_0.AutoSize = true;
+            this.labelMeasure_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasure_0.Location = new System.Drawing.Point(12, 53);
+            this.labelMeasure_0.Name = "labelMeasure_0";
+            this.labelMeasure_0.Size = new System.Drawing.Size(61, 16);
+            this.labelMeasure_0.TabIndex = 0;
+            this.labelMeasure_0.Text = "Średnia: ";
             // 
             // PlotController
             // 
@@ -266,17 +268,17 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private OxyPlot.WindowsForms.PlotView histogram;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.Label labelAveragePower;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label labelRootAveragePower;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label labelAbsoluteAverage;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label labelAverage;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelVariance;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelMeasureValue_2;
+        private System.Windows.Forms.Label labelMeasure_2;
+        private System.Windows.Forms.Label labelMeasureValue_4;
+        private System.Windows.Forms.Label labelMeasureValue_1;
+        private System.Windows.Forms.Label labelMeasure_1;
+        private System.Windows.Forms.Label labelMeasureValue_0;
+        private System.Windows.Forms.Label labelMeasure_0;
+        private System.Windows.Forms.Label labelMeasureValue_3;
+        private System.Windows.Forms.Label labelMeasure_3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Label labelMeasure_4;
     }
 }

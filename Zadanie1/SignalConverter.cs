@@ -8,6 +8,14 @@ namespace Zadanie1
 {
     public static class SignalConverter
     {
+        private static readonly List<IMeasure> measures = new List<IMeasure>()
+        {
+            new MeanSquareError(),
+            new SignalNoiseRatio(),
+            new SignalNoiseMaxRatio(),
+            new MaxDifference(),
+        };
+
         #region A/C
 
         public static IEnumerable<ScatterPoint> SampleSignal(List<DataPoint> signal, double samplingFrequency, int samplingFrequencyAc)
@@ -84,13 +92,7 @@ namespace Zadanie1
             }
 
             var sampledPointsAsData = sampledPoints.Select(point => new DataPoint(point.X, point.Y)).ToList();
-            measuredValues = new List<double>()
-            {
-                new MaxDifference().GetValue(results, sampledPointsAsData),
-                new MeanSquareError().GetValue(results, sampledPointsAsData),
-                new SignalNoiseMaxRatio().GetValue(results, sampledPointsAsData),
-                new SignalNoiseRatio().GetValue(results, sampledPointsAsData),
-            };
+            measuredValues = measures.Select(m => m.GetValue(results, sampledPointsAsData)).ToList();
 
             return results;
         }
@@ -116,13 +118,7 @@ namespace Zadanie1
             }
 
             var sampledPointsAsData = scatterPoints.Select(point => new DataPoint(point.X, point.Y)).ToList();
-            measuredValues = new List<double>()
-            {
-                new MaxDifference().GetValue(results, sampledPointsAsData),
-                new MeanSquareError().GetValue(results, sampledPointsAsData),
-                new SignalNoiseMaxRatio().GetValue(results, sampledPointsAsData),
-                new SignalNoiseRatio().GetValue(results, sampledPointsAsData),
-            };
+            measuredValues = measures.Select(m => m.GetValue(results, sampledPointsAsData)).ToList();
 
             return results;
         }

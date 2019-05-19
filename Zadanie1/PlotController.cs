@@ -42,6 +42,28 @@ namespace Zadanie1
         private double variance;
         private double rootAveragePower;
 
+        private readonly LineSeries interpolatedSeries = new LineSeries
+        {
+            MarkerStrokeThickness = .1,
+            MarkerSize = 1,
+            MarkerStroke = OxyColors.Blue,
+            MarkerFill = OxyColors.Transparent,
+            MarkerType = MarkerType.Diamond,
+            Color = OxyColors.Blue,
+            BrokenLineColor = OxyColors.Blue
+        };
+
+        private readonly StairStepSeries sincSeries = new StairStepSeries
+        {
+            MarkerStrokeThickness = .1,
+            MarkerSize = 1,
+            MarkerStroke = OxyColors.Blue,
+            MarkerFill = OxyColors.Transparent,
+            MarkerType = MarkerType.Diamond,
+            Color = OxyColors.Blue,
+            BrokenLineColor = OxyColors.Blue,
+        };
+
         public PlotController()
         {
             InitializeComponent();
@@ -65,6 +87,8 @@ namespace Zadanie1
 
         public void DrawPlot()
         {
+            List<double> caMeasuredValues = null;
+
             switch (PlotType)
             {
                 case PlotType.SzumJednostajny:
@@ -110,14 +134,14 @@ namespace Zadanie1
                     DrawQuantizedPlot(DataPoints);
                     break;
                 case PlotType.Interpolation:
-                    DrawInterpolatedPlot(DataPoints);
+                    DrawInterpolatedPlot(DataPoints, out caMeasuredValues);
                     break;
                 case PlotType.SincReconstruction:
-                    DrawSincReconstructionPlot(DataPoints);
+                    DrawSincReconstructionPlot(DataPoints, out caMeasuredValues);
                     break;
             }
 
-            PrintResults();
+            PrintResults(caMeasuredValues);
         }
 
         private void RysujSzumImpulsowy()
@@ -187,24 +211,15 @@ namespace Zadanie1
             DataPoints = equationsProvider.SzumJednostajny();
         }
 
-        void DrawInterpolatedPlot(List<DataPoint> previousPoints)
+        void DrawInterpolatedPlot(List<DataPoint> previousPoints, out List<double> measuredValues)
         {
             DrawChart(previousPoints, false);
 
             var sampledSignal = SignalConverter.SampleSignal(previousPoints, SamplingFrequency, SamplingFrequencyAc);
             var interpolatedPoints = SignalConverter.Interpolate(previousPoints.Count, sampledSignal, SamplingFrequency, SamplingFrequencyAc, InitialTime, out var measures);
+            measuredValues = measures;
 
-            var interpolatedSeries = new LineSeries
-            {
-                MarkerStrokeThickness = .1,
-                MarkerSize = 1,
-                MarkerStroke = OxyColors.Blue,
-                MarkerFill = OxyColors.Transparent,
-                MarkerType = MarkerType.Diamond,
-                Color = OxyColors.Blue,
-                BrokenLineColor = OxyColors.Blue
-            };
-
+            interpolatedSeries.Points.Clear();
             foreach (var point in interpolatedPoints)
             {
                 interpolatedSeries.Points.Add(point);
@@ -212,24 +227,14 @@ namespace Zadanie1
             plot1.Model.Series.Add(interpolatedSeries);
         }
 
-        void DrawSincReconstructionPlot(List<DataPoint> previousPoints)
+        void DrawSincReconstructionPlot(List<DataPoint> previousPoints, out List<double> measuredValues)
         {
             DrawChart(previousPoints, false);
 
             var sampledSignal = SignalConverter.SampleSignal(previousPoints, SamplingFrequency, SamplingFrequencyAc);
             var sincPoints = SignalConverter.SincReconstruction(ReconstructionFrequency, SamplingFrequency, FinalTime,
                 sampledSignal.ToList(), ConsideredSamplesNumber, out var measures);
-
-            var sincSeries = new StairStepSeries
-            {
-                MarkerStrokeThickness = .1,
-                MarkerSize = 1,
-                MarkerStroke = OxyColors.Blue,
-                MarkerFill = OxyColors.Transparent,
-                MarkerType = MarkerType.Diamond,
-                Color =  OxyColors.Blue,
-                BrokenLineColor = OxyColors.Blue,
-            };
+            measuredValues = measures;
 
             foreach (var point in sincPoints)
             {
@@ -271,7 +276,7 @@ namespace Zadanie1
             var scatterSeries = new ScatterSeries
             {
                 MarkerStrokeThickness = .1,
-                MarkerSize = 1,
+                MarkerSize = 2,
                 MarkerStroke = OxyColors.Red,
                 MarkerFill = OxyColors.Transparent,
                 MarkerType = MarkerType.Diamond
@@ -284,20 +289,15 @@ namespace Zadanie1
             plot1.Model.Series.Add(scatterSeries);
         }
 
-        private void PrintResults()
+        private void PrintResults(List<double> measuredValues = null)
         {
-            bool useDefaultResults = PlotType != PlotType.Sampling
-                                     && PlotType != PlotType.Quantization
-                                     && PlotType != PlotType.SincReconstruction
-                                     && PlotType != PlotType.Interpolation;
+            labelMeasureValue_0.Text = measuredValues == null ? "Średnia" : "Błąd średniokwadratowy";
+            labelMeasureValue_1.Text = measuredValues == null ? "Średnia bezwzględna" : "Stosunek sygnał-szum";
+            labelMeasureValue_3.Text = measuredValues == null ? "Moc średnia" : "Szczytowy stosunek sygnał-szum";
+            labelMeasureValue_2.Text = measuredValues == null ? "Wariancja" : "Maksymalna różnica";
+            labelMeasureValue_4.Text = measuredValues == null ? "Wartość skuteczna" : "";
 
-            labelAverage.Enabled = useDefaultResults;
-            labelAbsoluteAverage.Enabled = useDefaultResults;
-            labelVariance.Enabled = useDefaultResults;
-            labelAveragePower.Enabled = useDefaultResults;
-            labelRootAveragePower.Enabled = useDefaultResults;
-
-            if (useDefaultResults)
+            if (measuredValues == null)
             {
                 int howManyPeriods = (int)(SharedSettings.TotalTime / SharedSettings.Period);
                 int length = (int)(howManyPeriods * SharedSettings.Period * SamplingFrequency);
@@ -310,11 +310,31 @@ namespace Zadanie1
                 averagePower = pointsRange.Select(y => y.Y).Sum(x => x * x) / pointsRange.Count;
                 rootAveragePower = Math.Sqrt(averagePower);
 
-                labelAverage.Text = averageValue.ToString(CultureInfo.InvariantCulture);
-                labelAbsoluteAverage.Text = absoluteAverageValue.ToString(CultureInfo.InvariantCulture);
-                labelVariance.Text = variance.ToString(CultureInfo.InvariantCulture);
-                labelAveragePower.Text = averagePower.ToString(CultureInfo.InvariantCulture);
-                labelRootAveragePower.Text = rootAveragePower.ToString(CultureInfo.InvariantCulture);
+                labelMeasureValue_0.Text = averageValue.ToString(CultureInfo.InvariantCulture);
+                labelMeasureValue_1.Text = absoluteAverageValue.ToString(CultureInfo.InvariantCulture);
+                labelMeasureValue_3.Text = variance.ToString(CultureInfo.InvariantCulture);
+                labelMeasureValue_2.Text = averagePower.ToString(CultureInfo.InvariantCulture);
+                labelMeasureValue_4.Text = rootAveragePower.ToString(CultureInfo.InvariantCulture);
+
+                labelMeasure_0.Text = "Średnia";
+                labelMeasure_1.Text = "Średnia bezwzględna";
+                labelMeasure_2.Text = "Moc średnia";
+                labelMeasure_3.Text = "Wariancja";
+                labelMeasure_4.Text = "Wartość skuteczna";
+            }
+            else
+            {
+                labelMeasureValue_0.Text = measuredValues[0].ToString(CultureInfo.InvariantCulture);
+                labelMeasureValue_1.Text = measuredValues[1].ToString(CultureInfo.InvariantCulture);
+                labelMeasureValue_3.Text = measuredValues[2].ToString(CultureInfo.InvariantCulture);
+                labelMeasureValue_2.Text = measuredValues[3].ToString(CultureInfo.InvariantCulture);
+                labelMeasureValue_4.Text = "";
+
+                labelMeasure_0.Text = "MSE";
+                labelMeasure_1.Text = "SNR";
+                labelMeasure_2.Text = "PSNR";
+                labelMeasure_3.Text = "MD";
+                labelMeasure_4.Text = "";
             }
         }
 
