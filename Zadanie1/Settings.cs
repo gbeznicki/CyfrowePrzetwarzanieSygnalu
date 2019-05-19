@@ -25,7 +25,7 @@ namespace Zadanie1
             textBoxInitialTime.Text = SharedSettings.InitialTime.ToString();
             textBoxJumpTime.Text = SharedSettings.JumpTime.ToString();
             textBoxPeriod.Text = SharedSettings.Period.ToString();
-            textBoxProbability.Text = SharedSettings.Period.ToString();
+            textBoxProbability.Text = SharedSettings.Probability.ToString();
             textBoxSamplingFrequency.Text = SharedSettings.SamplingFrequency.ToString();
             textBoxTotalTime.Text = SharedSettings.TotalTime.ToString();
             textBoxRangesAmount.Text = SharedSettings.RangesAmount.ToString();

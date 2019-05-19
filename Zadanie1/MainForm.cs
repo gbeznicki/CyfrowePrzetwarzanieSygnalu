@@ -103,7 +103,6 @@ namespace Zadanie1
         {
             Plotter plotter = new Plotter()
             {
-                //PlotType.ProstokatnySymetryczny, "Prostokątny Symetryczny", 5, 0, 10, 1, 0.7
                 PlotType = PlotType.ProstokatnySymetryczny,
                 Title = "Prostokątny Symetryczny",
             };

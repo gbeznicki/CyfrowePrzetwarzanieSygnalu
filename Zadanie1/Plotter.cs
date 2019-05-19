@@ -216,18 +216,34 @@ namespace Zadanie1
 
         private void Rysuj(List<DataPoint> points)
         {
-            //Rysowanie wykresu liniowego/punktowego
             PlotModel myModel = new PlotModel { Title = Title };
-            LineSeries plotData = new LineSeries();
-            foreach (DataPoint point in points)
+
+            if (PlotType == PlotType.ImpulsJednostkowy || PlotType == PlotType.SzumImpulsowy)
             {
-                plotData.Points.Add(point);
+                ///Rysowanie wykresu punktowego
+                ScatterSeries plotData = new ScatterSeries();
+                foreach (DataPoint point in points)
+                {
+                    plotData.Points.Add(new ScatterPoint(point.X, point.Y, 2));
+                }
+                myModel.Series.Add(plotData);
+                plot1.Model = myModel;
             }
-            myModel.Series.Add(plotData);
-            plot1.Model = myModel;
+            else
+            {
+                //Rysowanie wykresu liniowego
+                LineSeries plotData = new LineSeries();
+                foreach (DataPoint point in points)
+                {
+                    plotData.Points.Add(point);
+                }
+                myModel.Series.Add(plotData);
+                plot1.Model = myModel;
+            }
+
 
             //Pobranie punktów do histogramu
-            Dictionary<Double, Int32> histogramData = GenerateHistogram(plotData.Points);
+            Dictionary<Double, Int32> histogramData = GenerateHistogram(points);
 
             //Rysowanie histogramu
             PlotModel plotModel = new PlotModel { Title = Title };
@@ -267,7 +283,7 @@ namespace Zadanie1
         {
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                Export(folderBrowserDialog1.SelectedPath+"\\"+Title+".txt");
+                Export(folderBrowserDialog1.SelectedPath + "\\" + Title + ".txt");
                 MessageBox.Show("Pomyślnie wyeksportowano wykres do pliku");
             }
         }
