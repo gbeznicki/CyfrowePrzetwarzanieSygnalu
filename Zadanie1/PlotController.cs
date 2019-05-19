@@ -53,7 +53,7 @@ namespace Zadanie1
             BrokenLineColor = OxyColors.Blue
         };
 
-        private readonly StairStepSeries sincSeries = new StairStepSeries
+        private readonly LineSeries sincSeries = new LineSeries
         {
             MarkerStrokeThickness = .1,
             MarkerSize = 1,
@@ -128,10 +128,10 @@ namespace Zadanie1
                     DrawChart(DataPoints);
                     break;
                 case PlotType.Sampling:
-                    DrawSamplingPlot(DataPoints);
+                    DrawSamplingPlot(DataPoints, out caMeasuredValues);
                     break;
                 case PlotType.Quantization:
-                    DrawQuantizedPlot(DataPoints);
+                    DrawQuantizedPlot(DataPoints, out caMeasuredValues);
                     break;
                 case PlotType.Interpolation:
                     DrawInterpolatedPlot(DataPoints, out caMeasuredValues);
@@ -213,14 +213,18 @@ namespace Zadanie1
 
         void DrawInterpolatedPlot(List<DataPoint> previousPoints, out List<double> measuredValues)
         {
-            DrawChart(previousPoints, false);
+            DrawSamplingPlot(previousPoints, out _, false);
 
-            var sampledSignal = SignalConverter.SampleSignal(previousPoints, SamplingFrequency, SamplingFrequencyAc);
-            var interpolatedPoints = SignalConverter.Interpolate(previousPoints.Count, sampledSignal, SamplingFrequency, SamplingFrequencyAc, InitialTime, out var measures);
+            var sampledSignal = SignalConverter.SampleSignal(previousPoints, SamplingFrequency, SamplingFrequencyAc, out measuredValues);
+            var extrapolatedPoints = SignalConverter.Extrapolation(sampledSignal.ToList(), SamplingFrequency, InitialTime,
+                SamplingFrequencyAc, previousPoints.Count, out var measures);
+
+            //var interpolatedPoints = SignalConverter.Interpolate(previousPoints.Count, 
+            //    previousPoints.Select(p => new ScatterPoint(p.X, p.Y)).ToList(), SamplingFrequency, SamplingFrequencyAc, InitialTime, out var measures);
             measuredValues = measures;
 
             interpolatedSeries.Points.Clear();
-            foreach (var point in interpolatedPoints)
+            foreach (var point in extrapolatedPoints)
             {
                 interpolatedSeries.Points.Add(point);
             }
@@ -229,11 +233,10 @@ namespace Zadanie1
 
         void DrawSincReconstructionPlot(List<DataPoint> previousPoints, out List<double> measuredValues)
         {
-            DrawChart(previousPoints, false);
+            DrawSamplingPlot(previousPoints, out _, false);
 
-            var sampledSignal = SignalConverter.SampleSignal(previousPoints, SamplingFrequency, SamplingFrequencyAc);
             var sincPoints = SignalConverter.SincReconstruction(ReconstructionFrequency, SamplingFrequency, FinalTime,
-                sampledSignal.ToList(), ConsideredSamplesNumber, out var measures);
+                previousPoints.Select(p => new ScatterPoint(p.X, p.Y)).ToList(), ConsideredSamplesNumber, out var measures);
             measuredValues = measures;
 
             foreach (var point in sincPoints)
@@ -243,10 +246,14 @@ namespace Zadanie1
             plot1.Model.Series.Add(sincSeries);
         }
 
-        void DrawQuantizedPlot(List<DataPoint> previousPoints)
+        void DrawQuantizedPlot(List<DataPoint> previousPoints, out List<double> measuredValues)
         {
             DrawChart(previousPoints, false);
-            var quantizedPoints = SignalConverter.QuantizeSignal(previousPoints, QuantizationLevel);
+            var quantizedPoints = SignalConverter.QuantizeSignal(previousPoints, QuantizationLevel, out var measures);
+
+            //var interpolatedPoints = SignalConverter.Interpolate(previousPoints.Count, 
+            //    previousPoints.Select(p => new ScatterPoint(p.X, p.Y)).ToList(), SamplingFrequency, SamplingFrequencyAc, InitialTime, out var measures);
+            measuredValues = measures;
             var stepSizeSeries = new StairStepSeries
             {
                 MarkerStrokeThickness = .1,
@@ -267,12 +274,12 @@ namespace Zadanie1
             plot1.Model.Series.Add(stepSizeSeries);
         }
 
-        void DrawSamplingPlot(List<DataPoint> previousPoints)
+        void DrawSamplingPlot(List<DataPoint> previousPoints, out List<double> measuredValues, bool drawOriginalSignal = true)
         {
             // draw original signal
-            DrawChart(previousPoints, false);
+            DrawChart(previousPoints, false, drawOriginalSignal);
 
-            var sampledPoints = SignalConverter.SampleSignal(previousPoints, SamplingFrequency, SamplingFrequencyAc);
+            var sampledPoints = SignalConverter.SampleSignal(previousPoints, SamplingFrequency, SamplingFrequencyAc, out measuredValues);
             var scatterSeries = new ScatterSeries
             {
                 MarkerStrokeThickness = .1,
@@ -382,24 +389,27 @@ namespace Zadanie1
             histogram.Model = plotModel;
         }
 
-        void DrawChart(IEnumerable<DataPoint> points, bool drawHistogram = true)
+        void DrawChart(IEnumerable<DataPoint> points, bool drawHistogram = true, bool drawOriginalSignal = true)
         {
             //Rysowanie wykresu liniowego/punktowego
             var myModel = new PlotModel { Title = Title };
-            var plotData = new LineSeries();
 
-            foreach (var point in points)
+            if (drawOriginalSignal)
             {
-                plotData.Points.Add(point);
-            }
+                var plotData = new LineSeries();
+                foreach (var point in points)
+                {
+                    plotData.Points.Add(point);
+                }
+                myModel.Series.Add(plotData);
 
-            myModel.Series.Add(plotData);
+                if (drawHistogram)
+                {
+                    DrawHistogram(plotData.Points);
+                }
+            }
+       
             plot1.Model = myModel;
-
-            if (drawHistogram)
-            {
-                DrawHistogram(plotData.Points);
-            }
         }
 
         public void Export(string filePath)

@@ -8,7 +8,7 @@ namespace Zadanie1
 {
     public static class SignalConverter
     {
-        private static readonly List<IMeasure> measures = new List<IMeasure>()
+        static readonly List<IMeasure> Measures = new List<IMeasure>()
         {
             new MeanSquareError(),
             new SignalNoiseRatio(),
@@ -18,8 +18,10 @@ namespace Zadanie1
 
         #region A/C
 
-        public static IEnumerable<ScatterPoint> SampleSignal(List<DataPoint> signal, double samplingFrequency, int samplingFrequencyAc)
+        public static IEnumerable<ScatterPoint> SampleSignal(List<DataPoint> signal, double samplingFrequency, int samplingFrequencyAc,
+            out List<double> measuredValues)
         {
+            measuredValues = null;
             if (Math.Abs(samplingFrequency % samplingFrequencyAc) > 0.00001) return new List<ScatterPoint>();
             var results = new List<ScatterPoint>();
             var stepSize = (int)samplingFrequency / samplingFrequencyAc;
@@ -28,10 +30,11 @@ namespace Zadanie1
                 var point = signal[i];
                 results.Add(new ScatterPoint(point.X, point.Y));
             }
+            measuredValues = Measures.Select(m => m.GetValue(signal, results.Select(p => new DataPoint(p.X, p.Y)).ToList())).ToList();
             return results;
         }
 
-        public static IEnumerable<DataPoint> QuantizeSignal(List<DataPoint> samples, int quantizationLevel)
+        public static IEnumerable<DataPoint> QuantizeSignal(List<DataPoint> samples, int quantizationLevel, out List<double> measuredValues)
         {
             var results = new List<DataPoint>();
             var minMax = samples.GetMinMax();
@@ -62,12 +65,38 @@ namespace Zadanie1
                 closestIndex = 0;
             }
 
+            measuredValues = Measures.Select(m => m.GetValue(results, samples)).ToList();
+
             return results;
         }
 
         #endregion
 
         #region C/A
+
+        public static IEnumerable<DataPoint> Extrapolation(List<ScatterPoint> sampledPoints, double samplingFreq, double initialTime, 
+            int samplingFreqAc, int originalSignalLength, out List<double> measuredValues)
+        {
+            var extrapolatedValues = new List<DataPoint>();
+            var sampledValues = sampledPoints.Select(p => p.Y).ToList();
+            var T = 1 / (double)samplingFreqAc;
+            for (int i = 0; i < originalSignalLength; i++)
+            {
+                double sum = 0;
+                var t = i / samplingFreq + initialTime;
+                for (int j = 0; j < sampledValues.Count; j++)
+                {
+                    var rect = Rect((t - (T / 2.0) - (j * T)) / T);
+                    sum += sampledValues[j] * rect;
+                }
+                extrapolatedValues.Add(new DataPoint(t, sum));
+            }
+
+            var sampledPointsAsData = sampledPoints.Select(point => new DataPoint(point.X, point.Y)).ToList();
+            measuredValues = Measures.Select(m => m.GetValue(extrapolatedValues, sampledPointsAsData)).ToList();
+
+            return extrapolatedValues;
+        }
 
         public static IEnumerable<DataPoint> SincReconstruction(int reconstructionFreq, double samplingFreq,
             double timeDuration, List<ScatterPoint> sampledPoints, int consideredSamplesAmount, out List<double> measuredValues)
@@ -78,7 +107,7 @@ namespace Zadanie1
             {
                 foreach (var item in xValues)
                 {
-                    results.Add(new DataPoint(item, 
+                    results.Add(new DataPoint(item,
                         SignalUtils.GetSincReconstructionValue(
                             sampledPoints.SegregateSamples(consideredSamplesAmount, item), item, samplingFreq)));
                 }
@@ -92,7 +121,7 @@ namespace Zadanie1
             }
 
             var sampledPointsAsData = sampledPoints.Select(point => new DataPoint(point.X, point.Y)).ToList();
-            measuredValues = measures.Select(m => m.GetValue(results, sampledPointsAsData)).ToList();
+            measuredValues = Measures.Select(m => m.GetValue(results, sampledPointsAsData)).ToList();
 
             return results;
         }
@@ -118,7 +147,7 @@ namespace Zadanie1
             }
 
             var sampledPointsAsData = scatterPoints.Select(point => new DataPoint(point.X, point.Y)).ToList();
-            measuredValues = measures.Select(m => m.GetValue(results, sampledPointsAsData)).ToList();
+            measuredValues = Measures.Select(m => m.GetValue(results, sampledPointsAsData)).ToList();
 
             return results;
         }
@@ -130,6 +159,22 @@ namespace Zadanie1
                 return 1.0 - Math.Abs(t);
             }
             return 0.0;
+        }
+
+        static double Rect(double t)
+        {
+            if (Math.Abs(t) > 0.5)
+            {
+                return 0;
+            }
+            else if (Math.Abs(t) == 0.5)
+            {
+                return 0.5;
+            }
+            else
+            {
+                return 1.0;
+            }
         }
 
         #endregion

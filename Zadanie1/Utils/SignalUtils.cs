@@ -84,10 +84,13 @@ namespace Zadanie1
         public static List<DataPoint> AdjustSize(List<DataPoint> values, int size)
         {
             var results = new List<DataPoint>();
+            var dataLength = size / values.Count + 1;
+
             foreach (var item in values)
             {
-                for (int j = 0; j < (size / values.Count + 1); j++)
+                for (int j = 0; j < dataLength; j++)
                 {
+                    if (results.Count == size) continue;
                     results.Add(new DataPoint(item.X, item.Y));
                 }
             }
