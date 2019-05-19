@@ -16,158 +16,158 @@ namespace Zadanie1
 
         private void sygnałSinusoidalnyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.Sinusoidalny,
                 Title = "Sinusoidalny",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
         }
 
         private void szumORozkłJednostToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.SzumJednostajny,
                 Title = "Szum Jednostajny",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
         }
 
         private void szumGaussowskiToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.SzumGaussowski,
                 Title = "Szum Gaussowski",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
 
         }
 
         private void sygnałSinJednopWypToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.SinusoidalnyWyprostowanyJednopolowkowo,
                 Title = "Sinusoidalny wyprostowany jednopołówkowo",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
         }
 
         private void sygSinusoidalnyWyprostowanyDwupolowkowoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.SinusoidalnyWyprostowanyDwupolowkowo,
                 Title = "Sinusoidalny wyprostowany dwupołówkowo",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
         }
 
         private void sygProstokątnyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.Prostokatny,
                 Title = "Prostokątny",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
         }
 
         private void sygProstokątnySymToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.ProstokatnySymetryczny,
                 Title = "Prostokątny Symetryczny",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
         }
 
         private void sygTrójkątnyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.Trojkatny,
                 Title = "Trójkątny",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
         }
 
         private void skokJednostkowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.SkokJednostkowy,
                 Title = "Skok Jednostkowy",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
         }
 
         private void impulsJednostkowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.ImpulsJednostkowy,
                 Title = "Impuls Jednostkowy",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
 
         }
 
         private void szumImpulsowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Plotter plotter = new Plotter()
+            PlotController plotController = new PlotController()
             {
                 PlotType = PlotType.SzumImpulsowy,
                 Title = "Szum Impulsowy",
             };
-            plotter.Plot();
+            plotController.DrawPlot();
             // Set the Parent Form of the Child window.  
-            plotter.MdiParent = this;
+            plotController.MdiParent = this;
             // Display the new form.  
-            plotter.Show();
+            plotController.Show();
         }
 
         private void ustawieniaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -178,82 +178,82 @@ namespace Zadanie1
 
         private void dodawanieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<Plotter> plotters = new List<Plotter>();
-            foreach(Plotter p in MdiChildren)
+            List<PlotController> plotters = new List<PlotController>();
+            foreach(PlotController p in MdiChildren)
             {
                 plotters.Add(p);
             }
 
             Operation operation = new Operation(OperationType.Adding, plotters);
             operation.ShowDialog();
-            Plotter plotter = operation.result;
-            if(plotter != null)
+            PlotController plotController = operation.Result;
+            if(plotController != null)
             {
-                plotter.PlotType = PlotType.WynikDzialania;
-                plotter.Plot();
-                plotter.MdiParent = this;
-                plotter.Show();
+                plotController.PlotType = PlotType.WynikDzialania;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
             }
         }
 
         private void odejmowanieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<Plotter> plotters = new List<Plotter>();
-            foreach (Plotter p in MdiChildren)
+            List<PlotController> plotters = new List<PlotController>();
+            foreach (PlotController p in MdiChildren)
             {
                 plotters.Add(p);
             }
 
             Operation operation = new Operation(OperationType.Substracting, plotters);
             operation.ShowDialog();
-            Plotter plotter = operation.result;
-            if (plotter != null)
+            PlotController plotController = operation.Result;
+            if (plotController != null)
             {
-                plotter.PlotType = PlotType.WynikDzialania;
-                plotter.Plot();
-                plotter.MdiParent = this;
-                plotter.Show();
+                plotController.PlotType = PlotType.WynikDzialania;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
             }
         }
 
         private void mnożenieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<Plotter> plotters = new List<Plotter>();
-            foreach (Plotter p in MdiChildren)
+            List<PlotController> plotters = new List<PlotController>();
+            foreach (PlotController p in MdiChildren)
             {
                 plotters.Add(p);
             }
 
             Operation operation = new Operation(OperationType.Multiplying, plotters);
             operation.ShowDialog();
-            Plotter plotter = operation.result;
-            if (plotter != null)
+            PlotController plotController = operation.Result;
+            if (plotController != null)
             {
-                plotter.PlotType = PlotType.WynikDzialania;
-                plotter.Plot();
-                plotter.MdiParent = this;
-                plotter.Show();
+                plotController.PlotType = PlotType.WynikDzialania;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
             }
 
         }
 
         private void dzielenieToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<Plotter> plotters = new List<Plotter>();
-            foreach (Plotter p in MdiChildren)
+            List<PlotController> plotters = new List<PlotController>();
+            foreach (PlotController p in MdiChildren)
             {
                 plotters.Add(p);
             }
 
             Operation operation = new Operation(OperationType.Dividing, plotters);
             operation.ShowDialog();
-            Plotter plotter = operation.result;
-            if (plotter != null)
+            PlotController plotController = operation.Result;
+            if (plotController != null)
             {
-                plotter.PlotType = PlotType.WynikDzialania;
-                plotter.Plot();
-                plotter.MdiParent = this;
-                plotter.Show();
+                plotController.PlotType = PlotType.WynikDzialania;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
             }
 
         }
@@ -263,26 +263,26 @@ namespace Zadanie1
             OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Plotter plotter = Import(openFileDialog.FileName);
-                if (plotter != null)
+                PlotController plotController = Import(openFileDialog.FileName);
+                if (plotController != null)
                 {
-                    plotter.PlotType = PlotType.WynikDzialania;
-                    plotter.Plot();
-                    plotter.MdiParent = this;
-                    plotter.Show();
+                    plotController.PlotType = PlotType.WynikDzialania;
+                    plotController.DrawPlot();
+                    plotController.MdiParent = this;
+                    plotController.Show();
                 }
             }
         }
 
-        private Plotter Import(string path)
+        private PlotController Import(string path)
         {
-            Plotter plotter;
+            PlotController plotController;
             using (var sr = new StreamReader(path))
             {
                 var type = sr.ReadLine();
                 switch (type)
                 {
-                    case nameof(Plotter):
+                    case nameof(PlotController):
                         double.TryParse(sr.ReadLine(), out var initialTime);
                         double.TryParse(sr.ReadLine(), out var finalTime);
                         double? period;
@@ -309,16 +309,76 @@ namespace Zadanie1
                             resultPoints.Add(new DataPoint(resultTime[i], amplitudes[i]));
                         }
 
-                        plotter = new Plotter() { Title = "zaimportowany" };
-                        plotter.dataPoints = resultPoints;
+                        plotController = new PlotController() { Title = "zaimportowany" };
+                        plotController.DataPoints = resultPoints;
                         break;
                     default:
-                        plotter = null;
+                        plotController = null;
                         break;
                 }
             }
 
-            return plotter;
+            return plotController;
+        }
+
+        private void samplingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var currPlotters = MdiChildren.Cast<PlotController>().ToList();
+            var operation = new SinglePlotOperation(currPlotters, SinglePlotOperationType.Sampling);
+            operation.ShowDialog();
+            var plotController = operation.Result;
+            if (plotController != null)
+            {
+                plotController.PlotType = PlotType.Sampling;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
+            }
+        }
+
+        private void quantizationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var currPlotters = MdiChildren.Cast<PlotController>().ToList();
+            var operation = new SinglePlotOperation(currPlotters, SinglePlotOperationType.Quantization);
+            operation.ShowDialog();
+            var plotController = operation.Result;
+            if (plotController != null)
+            {
+                plotController.PlotType = PlotType.Quantization;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
+            }
+        }
+
+        private void interpolationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var currPlotters = MdiChildren.Cast<PlotController>().ToList();
+            var operation = new SinglePlotOperation(currPlotters, SinglePlotOperationType.Interpolation);
+            operation.ShowDialog();
+            var plotController = operation.Result;
+            if (plotController != null)
+            {
+                plotController.PlotType = PlotType.Interpolation;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
+            }
+        }
+
+        private void sincReconstructionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var currPlotters = MdiChildren.Cast<PlotController>().ToList();
+            var operation = new SinglePlotOperation(currPlotters, SinglePlotOperationType.SincReconstruction);
+            operation.ShowDialog();
+            var plotController = operation.Result;
+            if (plotController != null)
+            {
+                plotController.PlotType = PlotType.SincReconstruction;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
+            }
         }
     }
 }

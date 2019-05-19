@@ -8,4 +8,12 @@ namespace Zadanie1
         Multiplying,
         Dividing
     }
+
+    public enum SinglePlotOperationType
+    {
+        Sampling,
+        Quantization,
+        Interpolation,
+        SincReconstruction
+    }
 }

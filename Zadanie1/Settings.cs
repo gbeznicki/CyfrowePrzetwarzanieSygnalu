@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Zadanie1
@@ -25,10 +18,15 @@ namespace Zadanie1
             textBoxInitialTime.Text = SharedSettings.InitialTime.ToString();
             textBoxJumpTime.Text = SharedSettings.JumpTime.ToString();
             textBoxPeriod.Text = SharedSettings.Period.ToString();
-            textBoxProbability.Text = SharedSettings.Probability.ToString();
-            textBoxSamplingFrequency.Text = SharedSettings.SamplingFrequency.ToString();
+            textBoxProbability.Text = SharedSettings.Period.ToString();
+            textBoxSampling.Text = SharedSettings.Frequency.ToString();
             textBoxTotalTime.Text = SharedSettings.TotalTime.ToString();
             textBoxRangesAmount.Text = SharedSettings.RangesAmount.ToString();
+
+            textBoxReconstructionFrequency.Text = SharedSettings.ReconstructionFrequency.ToString();
+            textBoxConsideredSamplesAmount.Text = SharedSettings.ConsideredSamplesNumber.ToString();
+            textBoxQuantizationLevel.Text = SharedSettings.QuantizationLevel.ToString();
+            textBoxSamplingFrequency.Text = SharedSettings.SamplingFrequencyAc.ToString();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -51,15 +49,27 @@ namespace Zadanie1
             if (double.TryParse(textBoxProbability.Text, out double probability))
                 SharedSettings.Probability = probability;
             else MessageBox.Show("Prawdopodobieństwo musi być liczbą");
-            if (double.TryParse(textBoxSamplingFrequency.Text, out double samplingFrequency))
-                SharedSettings.SamplingFrequency = samplingFrequency;
+            if (double.TryParse(textBoxSampling.Text, out double frequency))
+                SharedSettings.Frequency = frequency;
             else MessageBox.Show("Częstowliwość próbkowania musi być liczbą");
             if (double.TryParse(textBoxTotalTime.Text, out double totalTime))
                 SharedSettings.TotalTime = totalTime;
             else MessageBox.Show("Czas całkowity musi być liczbą");
-            if (Int32.TryParse(textBoxRangesAmount.Text, out int rangesAmount))
+            if (int.TryParse(textBoxRangesAmount.Text, out int rangesAmount))
                 SharedSettings.RangesAmount = rangesAmount;
             else MessageBox.Show("Liczba przedziałów musi być liczbą całkowitą");
+            if (int.TryParse(textBoxReconstructionFrequency.Text, out int reconstructionFreq))
+                SharedSettings.ReconstructionFrequency = reconstructionFreq;
+            else MessageBox.Show("Liczba musi być liczbą całkowitą");
+            if (int.TryParse(textBoxQuantizationLevel.Text, out int quantizationLevel))
+                SharedSettings.QuantizationLevel = quantizationLevel;
+            else MessageBox.Show("Liczba musi być liczbą całkowitą");
+            if (int.TryParse(textBoxConsideredSamplesAmount.Text, out int consideredSamplesAmount))
+                SharedSettings.ConsideredSamplesNumber = consideredSamplesAmount;
+            else MessageBox.Show("Liczba musi być liczbą całkowitą");
+            if (int.TryParse(textBoxSamplingFrequency.Text, out int samplingFrequencyAc))
+                SharedSettings.SamplingFrequencyAc = samplingFrequencyAc;
+            else MessageBox.Show("Liczba musi być liczbą całkowitą");
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
