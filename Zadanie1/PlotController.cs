@@ -23,7 +23,7 @@ namespace Zadanie1
         public PlotType PlotType { get; set; }
 
         public List<DataPoint> DataPoints;
-        public double SamplingFrequency;
+        public double Frequency;
         public double InitialTime;
         public double FinalTime;
         public double Period;
@@ -42,7 +42,7 @@ namespace Zadanie1
         private double variance;
         private double rootAveragePower;
 
-        private readonly LineSeries interpolatedSeries = new LineSeries
+        private readonly StairStepSeries interpolatedSeries = new StairStepSeries
         {
             MarkerStrokeThickness = .1,
             MarkerSize = 1,
@@ -57,11 +57,11 @@ namespace Zadanie1
         {
             MarkerStrokeThickness = .1,
             MarkerSize = 1,
-            MarkerStroke = OxyColors.Blue,
+            MarkerStroke = OxyColors.Orange,
             MarkerFill = OxyColors.Transparent,
             MarkerType = MarkerType.Diamond,
-            Color = OxyColors.Blue,
-            BrokenLineColor = OxyColors.Blue,
+            Color = OxyColors.Orange,
+            BrokenLineColor = OxyColors.Orange,
         };
 
         public PlotController()
@@ -74,7 +74,7 @@ namespace Zadanie1
                 SharedSettings.Frequency, SharedSettings.Probability
             );
 
-            SamplingFrequency = SharedSettings.Frequency;
+            Frequency = SharedSettings.Frequency;
             InitialTime = SharedSettings.InitialTime;
             FinalTime = SharedSettings.InitialTime + SharedSettings.TotalTime;
             Period = SharedSettings.Period;
@@ -215,13 +215,13 @@ namespace Zadanie1
         {
             DrawSamplingPlot(previousPoints, out _, false);
 
-            var sampledSignal = SignalConverter.SampleSignal(previousPoints, SamplingFrequency, SamplingFrequencyAc, out measuredValues);
-            var extrapolatedPoints = SignalConverter.Extrapolation(sampledSignal.ToList(), SamplingFrequency, InitialTime,
-                SamplingFrequencyAc, previousPoints.Count, out var measures);
-
+            var sampledSignal = SignalConverter.SampleSignal(previousPoints, Frequency, SamplingFrequencyAc, out measuredValues);
+            var extrapolatedPoints = SignalConverter.ZeroAndHoldExtrapolation(sampledSignal.ToList(),
+                SamplingFrequencyAc, ConsideredSamplesNumber).ToList();
+            
             //var interpolatedPoints = SignalConverter.Interpolate(previousPoints.Count, 
             //    previousPoints.Select(p => new ScatterPoint(p.X, p.Y)).ToList(), SamplingFrequency, SamplingFrequencyAc, InitialTime, out var measures);
-            measuredValues = measures;
+            measuredValues = extrapolatedPoints.Select(p => p.Y).ToList();
 
             interpolatedSeries.Points.Clear();
             foreach (var point in extrapolatedPoints)
@@ -235,9 +235,10 @@ namespace Zadanie1
         {
             DrawSamplingPlot(previousPoints, out _, false);
 
-            var sincPoints = SignalConverter.SincReconstruction(ReconstructionFrequency, SamplingFrequency, FinalTime,
-                previousPoints.Select(p => new ScatterPoint(p.X, p.Y)).ToList(), ConsideredSamplesNumber, out var measures);
-            measuredValues = measures;
+            var sampledSignal = SignalConverter.SampleSignal(previousPoints, Frequency, SamplingFrequencyAc, out measuredValues);
+            var sincPoints = SignalConverter.SincReconstruction(sampledSignal.ToList(), SamplingFrequencyAc,
+                ConsideredSamplesNumber).ToList();
+            measuredValues = sincPoints.Select(p => p.Y).ToList();
 
             foreach (var point in sincPoints)
             {
@@ -279,7 +280,7 @@ namespace Zadanie1
             // draw original signal
             DrawChart(previousPoints, false, drawOriginalSignal);
 
-            var sampledPoints = SignalConverter.SampleSignal(previousPoints, SamplingFrequency, SamplingFrequencyAc, out measuredValues);
+            var sampledPoints = SignalConverter.SampleSignal(previousPoints, Frequency, SamplingFrequencyAc, out measuredValues);
             var scatterSeries = new ScatterSeries
             {
                 MarkerStrokeThickness = .1,
@@ -307,7 +308,7 @@ namespace Zadanie1
             if (measuredValues == null)
             {
                 int howManyPeriods = (int)(SharedSettings.TotalTime / SharedSettings.Period);
-                int length = (int)(howManyPeriods * SharedSettings.Period * SamplingFrequency);
+                int length = (int)(howManyPeriods * SharedSettings.Period * Frequency);
 
                 var pointsRange = DataPoints.GetRange(0, length);
 
@@ -420,7 +421,7 @@ namespace Zadanie1
                 sw.WriteLine(InitialTime);
                 sw.WriteLine(FinalTime);
                 sw.WriteLine(Period);
-                sw.WriteLine(SamplingFrequency);
+                sw.WriteLine(Frequency);
                 foreach (var y in DataPoints.Select(y => y.Y))
                 {
                     sw.Write($"{y} ");

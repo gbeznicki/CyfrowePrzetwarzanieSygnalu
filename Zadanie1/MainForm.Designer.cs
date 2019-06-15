@@ -297,7 +297,7 @@
             // 
             this.sincReconstructionToolStripMenuItem.Name = "sincReconstructionToolStripMenuItem";
             this.sincReconstructionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.sincReconstructionToolStripMenuItem.Text = "Sinc Reconstruction";
+            this.sincReconstructionToolStripMenuItem.Text = "GetSincValue Reconstruction";
             this.sincReconstructionToolStripMenuItem.Click += new System.EventHandler(this.sincReconstructionToolStripMenuItem_Click);
             // 
             // MainForm

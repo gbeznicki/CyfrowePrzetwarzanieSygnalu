@@ -96,5 +96,15 @@ namespace Zadanie1
             }
             return results;
         }
+
+        public static double Rect(this double value)
+        {
+            if (Math.Abs(value) > 0.5)
+                return 0;
+            if (Math.Abs(value).Equals(0.5))
+                return 0.5;
+
+            return 1;
+        }
     }
 }

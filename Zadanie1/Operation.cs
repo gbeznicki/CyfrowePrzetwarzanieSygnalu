@@ -56,7 +56,7 @@ namespace Zadanie1
         private void Add()
         {
             PlotController leftPlot = (PlotController)comboBoxLeft.SelectedItem, rightPlot = (PlotController)comboBoxRight.SelectedItem;
-            if(Math.Abs(leftPlot.SamplingFrequency - rightPlot.SamplingFrequency) > 1e-6)
+            if(Math.Abs(leftPlot.Frequency - rightPlot.Frequency) > 1e-6)
             {
                 MessageBox.Show("Wykresy mają różną częstotliwość próbkowania");
                 return;
@@ -64,7 +64,7 @@ namespace Zadanie1
 
             double initialTime = Math.Min(leftPlot.InitialTime, rightPlot.InitialTime);
             double finalTime = Math.Max(leftPlot.FinalTime, rightPlot.FinalTime);
-            double samplingFrequency = leftPlot.SamplingFrequency;
+            double samplingFrequency = leftPlot.Frequency;
 
             if(rightPlot.InitialTime < leftPlot.InitialTime)
             {
@@ -115,7 +115,7 @@ namespace Zadanie1
                 DataPoints = resultPoints,
                 InitialTime = initialTime,
                 FinalTime = finalTime,
-                SamplingFrequency = samplingFrequency
+                Frequency = samplingFrequency
             };
         }
 
@@ -125,7 +125,7 @@ namespace Zadanie1
 
             bool subtrahend;
             Result = null;
-            if (Math.Abs(leftPlot.SamplingFrequency - rightPlot.SamplingFrequency) > 1e-6)
+            if (Math.Abs(leftPlot.Frequency - rightPlot.Frequency) > 1e-6)
             {
                 MessageBox.Show("Wykresy mają różną częstotliwość próbkowania");
                 return;
@@ -133,7 +133,7 @@ namespace Zadanie1
 
             double initialTime = Math.Min(leftPlot.InitialTime, rightPlot.InitialTime);
             double finalTime = Math.Max(leftPlot.FinalTime, rightPlot.FinalTime);
-            double samplingFrequency = leftPlot.SamplingFrequency;
+            double samplingFrequency = leftPlot.Frequency;
 
             PlotController leftSignal;
             PlotController rightSignal;
@@ -190,12 +190,12 @@ namespace Zadanie1
             Result.DataPoints = resultPoints;
             Result.InitialTime = initialTime;
             Result.FinalTime = finalTime;
-            Result.SamplingFrequency = samplingFrequency;
+            Result.Frequency = samplingFrequency;
         }
 
         private void Multiply() {
             PlotController leftPlot = (PlotController)comboBoxLeft.SelectedItem, rightPlot = (PlotController)comboBoxRight.SelectedItem;
-            if (Math.Abs(leftPlot.SamplingFrequency - rightPlot.SamplingFrequency) > 1e-6)
+            if (Math.Abs(leftPlot.Frequency - rightPlot.Frequency) > 1e-6)
             {
                 MessageBox.Show("Wykresy mają różną częstotliwość próbkowania");
                 return;
@@ -203,7 +203,7 @@ namespace Zadanie1
 
             var initialTime = Math.Min(leftPlot.InitialTime, rightPlot.InitialTime);
             var finalTime = Math.Max(leftPlot.FinalTime, rightPlot.FinalTime);
-            var samplingFrequency = leftPlot.SamplingFrequency;
+            var samplingFrequency = leftPlot.Frequency;
 
             if (rightPlot.InitialTime < leftPlot.InitialTime)
             {
@@ -251,7 +251,7 @@ namespace Zadanie1
             Result.DataPoints = resultPoints;
             Result.InitialTime = initialTime;
             Result.FinalTime = finalTime;
-            Result.SamplingFrequency = samplingFrequency;
+            Result.Frequency = samplingFrequency;
 
         }
 
@@ -259,7 +259,7 @@ namespace Zadanie1
             bool dividend;
 
             PlotController leftPlot = (PlotController)comboBoxLeft.SelectedItem, rightPlot = (PlotController)comboBoxRight.SelectedItem;
-            if (Math.Abs(leftPlot.SamplingFrequency - rightPlot.SamplingFrequency) > 1e-6)
+            if (Math.Abs(leftPlot.Frequency - rightPlot.Frequency) > 1e-6)
             {
                 MessageBox.Show("Wykresy mają różną częstotliwość próbkowania");
                 return;
@@ -267,7 +267,7 @@ namespace Zadanie1
 
             double initialTime = Math.Min(leftPlot.InitialTime, rightPlot.InitialTime);
             double finalTime = Math.Max(leftPlot.FinalTime, rightPlot.FinalTime);
-            double samplingFrequency = leftPlot.SamplingFrequency;
+            double samplingFrequency = leftPlot.Frequency;
 
             PlotController leftSignal;
             PlotController rightSignal;
@@ -323,7 +323,7 @@ namespace Zadanie1
             Result.DataPoints = resultPoints;
             Result.InitialTime = initialTime;
             Result.FinalTime = finalTime;
-            Result.SamplingFrequency = samplingFrequency;
+            Result.Frequency = samplingFrequency;
         }
 
         private void button1_Click(object sender, System.EventArgs e)

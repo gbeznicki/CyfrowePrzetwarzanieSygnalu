@@ -40,7 +40,7 @@ namespace Zadanie1
                     DataPoints = selectedPlot.DataPoints,
                     InitialTime = selectedPlot.InitialTime,
                     FinalTime = selectedPlot.FinalTime,
-                    SamplingFrequency = selectedPlot.SamplingFrequency
+                    Frequency = selectedPlot.Frequency
                 };
             }
             Close();
