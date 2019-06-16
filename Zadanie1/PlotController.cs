@@ -217,11 +217,7 @@ namespace Zadanie1
 
             var sampledSignal = SignalConverter.SampleSignal(previousPoints, Frequency, SamplingFrequencyAc, out measuredValues);
             var extrapolatedPoints = SignalConverter.ZeroAndHoldExtrapolation(sampledSignal.ToList(),
-                SamplingFrequencyAc, ConsideredSamplesNumber).ToList();
-            
-            //var interpolatedPoints = SignalConverter.Interpolate(previousPoints.Count, 
-            //    previousPoints.Select(p => new ScatterPoint(p.X, p.Y)).ToList(), SamplingFrequency, SamplingFrequencyAc, InitialTime, out var measures);
-            measuredValues = extrapolatedPoints.Select(p => p.Y).ToList();
+                SamplingFrequencyAc, out measuredValues, ConsideredSamplesNumber).ToList();
 
             interpolatedSeries.Points.Clear();
             foreach (var point in extrapolatedPoints)
@@ -236,9 +232,8 @@ namespace Zadanie1
             DrawSamplingPlot(previousPoints, out _, false);
 
             var sampledSignal = SignalConverter.SampleSignal(previousPoints, Frequency, SamplingFrequencyAc, out measuredValues);
-            var sincPoints = SignalConverter.SincReconstruction(sampledSignal.ToList(), SamplingFrequencyAc,
+            var sincPoints = SignalConverter.SincReconstruction(sampledSignal.ToList(), SamplingFrequencyAc, out measuredValues,
                 ConsideredSamplesNumber).ToList();
-            measuredValues = sincPoints.Select(p => p.Y).ToList();
 
             foreach (var point in sincPoints)
             {

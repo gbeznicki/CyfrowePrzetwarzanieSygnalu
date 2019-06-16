@@ -76,7 +76,7 @@ namespace Zadanie1
         #region C/A
 
         public static IEnumerable<DataPoint> ZeroAndHoldExtrapolation(List<ScatterPoint> sampledSignal,
-            double samplingFrequency, int samplesNum = 8)
+            double samplingFrequency, out List<double> measuredValues, int samplesNum = 8)
         {
             var reconstructedPoints = new List<DataPoint>();
             var min = sampledSignal.Min(p => p.X);
@@ -92,6 +92,8 @@ namespace Zadanie1
                 }
                 reconstructedPoints.Add(new DataPoint(i, sum));
             }
+
+            measuredValues = Measures.Select(m => m.GetValue(reconstructedPoints, sampledSignal.Select(p => new DataPoint(p.X, p.Y)).ToList())).ToList();
             return reconstructedPoints;
         }
 
@@ -182,7 +184,7 @@ namespace Zadanie1
         //    return 0.0;
         //}
 
-        public static IEnumerable<DataPoint> SincReconstruction(List<ScatterPoint> signal, double samplingFreq, int samplesNum = 8)
+        public static IEnumerable<DataPoint> SincReconstruction(List<ScatterPoint> signal, double samplingFreq, out List<double> measuredValues, int samplesNum = 8)
         {
             var reconstructedPoints = new List<DataPoint>();
             var min = signal.Min(p => p.X);
@@ -222,6 +224,8 @@ namespace Zadanie1
                 }
                 reconstructedPoints.Add(new DataPoint(i, sum));
             }
+
+            measuredValues = Measures.Select(m => m.GetValue(reconstructedPoints, signal.Select(p => new DataPoint(p.X, p.Y)).ToList())).ToList();
             return reconstructedPoints;
         }
 
