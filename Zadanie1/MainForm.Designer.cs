@@ -58,11 +58,12 @@
             this.sincReconstructionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.środkowoprzepustowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.górnoprzepustowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.środkowoprzepustowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.górnoprzepustowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtrowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -113,7 +114,8 @@
             this.dodawanieToolStripMenuItem,
             this.odejmowanieToolStripMenuItem,
             this.mnożenieToolStripMenuItem,
-            this.dzielenieToolStripMenuItem});
+            this.dzielenieToolStripMenuItem,
+            this.filtrowanieToolStripMenuItem});
             this.operacjeToolStripMenuItem.Name = "operacjeToolStripMenuItem";
             this.operacjeToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.operacjeToolStripMenuItem.Text = "Operacja";
@@ -253,14 +255,14 @@
             // samplingToolStripMenuItem
             // 
             this.samplingToolStripMenuItem.Name = "samplingToolStripMenuItem";
-            this.samplingToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.samplingToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.samplingToolStripMenuItem.Text = "Sampling";
             this.samplingToolStripMenuItem.Click += new System.EventHandler(this.samplingToolStripMenuItem_Click);
             // 
             // quantizationToolStripMenuItem
             // 
             this.quantizationToolStripMenuItem.Name = "quantizationToolStripMenuItem";
-            this.quantizationToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.quantizationToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
             this.quantizationToolStripMenuItem.Text = "Quantization";
             this.quantizationToolStripMenuItem.Click += new System.EventHandler(this.quantizationToolStripMenuItem_Click);
             // 
@@ -306,6 +308,20 @@
             this.toolStripMenuItem2.Text = "Dolnoprzepustowy";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.lowPassFilterToolStripMenuItem_Click);
             // 
+            // środkowoprzepustowyToolStripMenuItem
+            // 
+            this.środkowoprzepustowyToolStripMenuItem.Name = "środkowoprzepustowyToolStripMenuItem";
+            this.środkowoprzepustowyToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
+            this.środkowoprzepustowyToolStripMenuItem.Text = "Środkowoprzepustowy";
+            this.środkowoprzepustowyToolStripMenuItem.Click += new System.EventHandler(this.środkowoprzepustowyToolStripMenuItem_Click);
+            // 
+            // górnoprzepustowyToolStripMenuItem
+            // 
+            this.górnoprzepustowyToolStripMenuItem.Name = "górnoprzepustowyToolStripMenuItem";
+            this.górnoprzepustowyToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
+            this.górnoprzepustowyToolStripMenuItem.Text = "Górnoprzepustowy";
+            this.górnoprzepustowyToolStripMenuItem.Click += new System.EventHandler(this.górnoprzepustowyToolStripMenuItem_Click);
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -327,19 +343,12 @@
             this.histogramToolStripMenuItem.Size = new System.Drawing.Size(148, 24);
             this.histogramToolStripMenuItem.Text = "Histogram";
             // 
-            // środkowoprzepustowyToolStripMenuItem
+            // filtrowanieToolStripMenuItem
             // 
-            this.środkowoprzepustowyToolStripMenuItem.Name = "środkowoprzepustowyToolStripMenuItem";
-            this.środkowoprzepustowyToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
-            this.środkowoprzepustowyToolStripMenuItem.Text = "Środkowoprzepustowy";
-            this.środkowoprzepustowyToolStripMenuItem.Click += new System.EventHandler(this.środkowoprzepustowyToolStripMenuItem_Click);
-            // 
-            // górnoprzepustowyToolStripMenuItem
-            // 
-            this.górnoprzepustowyToolStripMenuItem.Name = "górnoprzepustowyToolStripMenuItem";
-            this.górnoprzepustowyToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
-            this.górnoprzepustowyToolStripMenuItem.Text = "Górnoprzepustowy";
-            this.górnoprzepustowyToolStripMenuItem.Click += new System.EventHandler(this.górnoprzepustowyToolStripMenuItem_Click);
+            this.filtrowanieToolStripMenuItem.Name = "filtrowanieToolStripMenuItem";
+            this.filtrowanieToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.filtrowanieToolStripMenuItem.Text = "Filtrowanie";
+            this.filtrowanieToolStripMenuItem.Click += new System.EventHandler(this.filtrowanieToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -396,6 +405,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem środkowoprzepustowyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem górnoprzepustowyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem filtrowanieToolStripMenuItem;
     }
 }
 

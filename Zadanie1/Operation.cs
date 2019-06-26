@@ -50,6 +50,11 @@ namespace Zadanie1
                     label2.Text = "Dzielnik";
                     button1.Text = "Podziel";
                     break;
+                case OperationType.Filtering:
+                    label1.Text = "Wykres";
+                    label2.Text = "Filtr";
+                    button1.Text = "Filtruj";
+                    break;
             }
         }
 
@@ -326,6 +331,41 @@ namespace Zadanie1
             Result.Frequency = samplingFrequency;
         }
 
+        #region zadanie3
+        private void Filter()
+        {
+            PlotController leftPlot = (PlotController)comboBoxLeft.SelectedItem, rightPlot = (PlotController)comboBoxRight.SelectedItem;
+            double initialTime = Math.Min(leftPlot.InitialTime, rightPlot.InitialTime);
+            double finalTime = Math.Max(leftPlot.FinalTime, rightPlot.FinalTime);
+            double samplingFrequency = leftPlot.Frequency;
+
+            List<DataPoint> resultPoints = new List<DataPoint>();
+            List<DataPoint> signalPoints = leftPlot.DataPoints;
+            List<DataPoint> filterPoints = rightPlot.DataPoints;
+            for (int i = 0; i < signalPoints.Count + filterPoints.Count - 1; i++)
+            {
+                double sum = 0;
+                for (int j = 0; j < signalPoints.Count; j++)
+                {
+                    if (i - j < 0 || i - j >= filterPoints.Count)
+                        continue;
+
+                    sum += signalPoints[j].Y * filterPoints[i - j].Y;
+                }
+                resultPoints.Add(new DataPoint(i, sum));
+            }
+
+            Result = new PlotController
+            {
+                Title = textBoxTitle.Text,
+                DataPoints = resultPoints,
+                InitialTime = initialTime,
+                FinalTime = finalTime,
+                Frequency = samplingFrequency
+            };
+        }
+        #endregion
+
         private void button1_Click(object sender, System.EventArgs e)
         {
             if (comboBoxLeft.SelectedItem != null && comboBoxRight.SelectedItem != null)
@@ -343,6 +383,9 @@ namespace Zadanie1
                         break;
                     case OperationType.Dividing:
                         Divide();
+                        break;
+                    case OperationType.Filtering:
+                        Filter();
                         break;
                 }
             }

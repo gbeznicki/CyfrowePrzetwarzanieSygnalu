@@ -6,7 +6,8 @@ namespace Zadanie1
         Adding,
         Substracting,
         Multiplying,
-        Dividing
+        Dividing,
+        Filtering
     }
 
     public enum SinglePlotOperationType
