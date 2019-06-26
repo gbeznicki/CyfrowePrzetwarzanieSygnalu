@@ -27,6 +27,11 @@ namespace Zadanie1
             textBoxConsideredSamplesAmount.Text = SharedSettings.ConsideredSamplesNumber.ToString();
             textBoxQuantizationLevel.Text = SharedSettings.QuantizationLevel.ToString();
             textBoxSamplingFrequency.Text = SharedSettings.SamplingFrequencyAc.ToString();
+
+            textBoxFilterM.Text = SharedSettings.FilterM.ToString();
+            textBoxFilterF0.Text = SharedSettings.FilterF0.ToString();
+            textBoxFilterFp.Text = SharedSettings.FilterFp.ToString();
+            windowComboBox.Text = SharedSettings.ChosenWindow.ToString();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -70,11 +75,25 @@ namespace Zadanie1
             if (int.TryParse(textBoxSamplingFrequency.Text, out int samplingFrequencyAc))
                 SharedSettings.SamplingFrequencyAc = samplingFrequencyAc;
             else MessageBox.Show("Liczba musi być liczbą całkowitą");
+            if (int.TryParse(textBoxFilterM.Text, out int filterM))
+                SharedSettings.FilterM = filterM;
+            else MessageBox.Show("Wartość M musi być liczbą całkowitą");
+            if (double.TryParse(textBoxFilterF0.Text, out double filterF0))
+                SharedSettings.FilterF0 = filterF0;
+            else MessageBox.Show("Wartość f0 musi być liczbą");
+            if (double.TryParse(textBoxFilterFp.Text, out double filterFp))
+                SharedSettings.FilterFp = filterFp;
+            else MessageBox.Show("Wartość fp musi być liczbą");
         }
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void windowComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SharedSettings.ChosenWindow = windowComboBox.Text;
         }
     }
 }

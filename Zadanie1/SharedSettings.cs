@@ -22,5 +22,6 @@
         public static int FilterM { get; set; } = 50;
         public static double FilterF0 { get; set; } = 10.0;
         public static double FilterFp { get; set; } = 70.0;
+        public static string ChosenWindow { get; set; } = "prostokątne";
     }
 }
