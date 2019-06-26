@@ -380,5 +380,26 @@ namespace Zadanie1
                 plotController.Show();
             }
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lowPassFilterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlotController plotController = new PlotController()
+            {
+                PlotType = PlotType.LowPassFilter,
+                Title = "Filtr dolnoprzepustowy",
+            };
+            plotController.DrawPlot();
+            plotController.MdiParent = this;
+            plotController.Show();
+        }
+
+        private void cAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

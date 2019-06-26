@@ -18,6 +18,9 @@
         Sampling,
         Quantization, 
         Interpolation,
-        SincReconstruction
+        SincReconstruction,
+
+        LowPassFilter,
+        MidPassFilter,
     }
 }

@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Zadanie1.Zadanie3;
 
 namespace Zadanie1
 {
@@ -32,6 +33,10 @@ namespace Zadanie1
         public int ReconstructionFrequency;
         public int QuantizationLevel;
         public int ConsideredSamplesNumber;
+
+        public int FilterM;
+        public double FilterF0;
+        public double FilterFp;
 
         private readonly EquationsProvider equationsProvider;
 
@@ -83,11 +88,16 @@ namespace Zadanie1
             ReconstructionFrequency = SharedSettings.ReconstructionFrequency;
             QuantizationLevel = SharedSettings.QuantizationLevel;
             ConsideredSamplesNumber = SharedSettings.ConsideredSamplesNumber;
-        }
+
+            FilterM = SharedSettings.FilterM;
+            FilterF0 = SharedSettings.FilterF0;
+            FilterFp = SharedSettings.FilterFp;
+    }
 
         public void DrawPlot()
         {
             List<double> caMeasuredValues = null;
+            string type = "";
 
             switch (PlotType)
             {
@@ -139,10 +149,26 @@ namespace Zadanie1
                 case PlotType.SincReconstruction:
                     DrawSincReconstructionPlot(DataPoints, out caMeasuredValues);
                     break;
+                case PlotType.LowPassFilter:
+                    DrawLowPassFilterPlot();
+                    type = "filter";
+                    break;
+                //case PlotType.MidPassFilter:
+                //    DrawMidPassFilterPlot(DataPoints, out caMeasuredValues);
+                //    break;
             }
 
-            PrintResults(caMeasuredValues);
+            PrintResults(caMeasuredValues, type);
         }
+
+        #region zadanie3
+        void DrawLowPassFilterPlot()
+        {
+            var filteredPoints = Filter.LowPassFilter(FilterM, FilterF0, FilterFp);
+            DrawChart(filteredPoints);
+            DataPoints = filteredPoints;
+        }
+        #endregion
 
         private void RysujSzumImpulsowy()
         {
@@ -297,7 +323,7 @@ namespace Zadanie1
             plot1.Model.Series.Add(scatterSeries);
         }
 
-        private void PrintResults(List<double> measuredValues = null)
+        private void PrintResults(List<double> measuredValues = null, string type = "")
         {
             labelMeasureValue_0.Text = measuredValues == null ? "Średnia" : "Błąd średniokwadratowy";
             labelMeasureValue_1.Text = measuredValues == null ? "Średnia bezwzględna" : "Stosunek sygnał-szum";
@@ -305,7 +331,7 @@ namespace Zadanie1
             labelMeasureValue_2.Text = measuredValues == null ? "Wariancja" : "Maksymalna różnica";
             labelMeasureValue_4.Text = measuredValues == null ? "Wartość skuteczna" : "";
 
-            if (measuredValues == null)
+            if (measuredValues == null && type == "")
             {
                 int howManyPeriods = (int)(SharedSettings.TotalTime / SharedSettings.Period);
                 int length = (int)(howManyPeriods * SharedSettings.Period * Frequency);
@@ -329,6 +355,10 @@ namespace Zadanie1
                 labelMeasure_2.Text = "Moc średnia";
                 labelMeasure_3.Text = "Wariancja";
                 labelMeasure_4.Text = "Wartość skuteczna";
+            }
+            else if (type == "filter")
+            {
+
             }
             else
             {

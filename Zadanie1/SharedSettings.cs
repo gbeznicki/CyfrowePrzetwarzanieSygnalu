@@ -17,5 +17,10 @@
         public static int ReconstructionFrequency { get; set; } = 15;
         public static int QuantizationLevel { get; set; } = 4;
         public static int ConsideredSamplesNumber { get; set; } = 4;
+
+        // Zadanie1 3
+        public static int FilterM { get; set; } = 50;
+        public static double FilterF0 { get; set; } = 10.0;
+        public static double FilterFp { get; set; } = 70.0;
     }
 }
