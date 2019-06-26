@@ -55,6 +55,11 @@ namespace Zadanie1
                     label2.Text = "Filtr";
                     button1.Text = "Filtruj";
                     break;
+                case OperationType.Convolution:
+                    label1.Text = "Wykres";
+                    label2.Text = "Wykres 2";
+                    button1.Text = "Splot";
+                    break;
             }
         }
 
@@ -332,7 +337,7 @@ namespace Zadanie1
         }
 
         #region zadanie3
-        private void Filter()
+        private void Convolution()
         {
             PlotController leftPlot = (PlotController)comboBoxLeft.SelectedItem, rightPlot = (PlotController)comboBoxRight.SelectedItem;
             double initialTime = Math.Min(leftPlot.InitialTime, rightPlot.InitialTime);
@@ -385,7 +390,10 @@ namespace Zadanie1
                         Divide();
                         break;
                     case OperationType.Filtering:
-                        Filter();
+                        Convolution();
+                        break;
+                    case OperationType.Convolution:
+                        Convolution();
                         break;
                 }
             }

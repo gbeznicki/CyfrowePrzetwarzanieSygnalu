@@ -38,6 +38,7 @@
             this.odejmowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnożenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dzielenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filtrowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szumORozkłJednostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szumGaussowskiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,7 +64,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filtrowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -115,7 +116,8 @@
             this.odejmowanieToolStripMenuItem,
             this.mnożenieToolStripMenuItem,
             this.dzielenieToolStripMenuItem,
-            this.filtrowanieToolStripMenuItem});
+            this.filtrowanieToolStripMenuItem,
+            this.splotToolStripMenuItem});
             this.operacjeToolStripMenuItem.Name = "operacjeToolStripMenuItem";
             this.operacjeToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.operacjeToolStripMenuItem.Text = "Operacja";
@@ -147,6 +149,13 @@
             this.dzielenieToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.dzielenieToolStripMenuItem.Text = "Dzielenie";
             this.dzielenieToolStripMenuItem.Click += new System.EventHandler(this.dzielenieToolStripMenuItem_Click);
+            // 
+            // filtrowanieToolStripMenuItem
+            // 
+            this.filtrowanieToolStripMenuItem.Name = "filtrowanieToolStripMenuItem";
+            this.filtrowanieToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.filtrowanieToolStripMenuItem.Text = "Filtrowanie";
+            this.filtrowanieToolStripMenuItem.Click += new System.EventHandler(this.filtrowanieToolStripMenuItem_Click);
             // 
             // generujToolStripMenuItem
             // 
@@ -343,12 +352,12 @@
             this.histogramToolStripMenuItem.Size = new System.Drawing.Size(148, 24);
             this.histogramToolStripMenuItem.Text = "Histogram";
             // 
-            // filtrowanieToolStripMenuItem
+            // splotToolStripMenuItem
             // 
-            this.filtrowanieToolStripMenuItem.Name = "filtrowanieToolStripMenuItem";
-            this.filtrowanieToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.filtrowanieToolStripMenuItem.Text = "Filtrowanie";
-            this.filtrowanieToolStripMenuItem.Click += new System.EventHandler(this.filtrowanieToolStripMenuItem_Click);
+            this.splotToolStripMenuItem.Name = "splotToolStripMenuItem";
+            this.splotToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.splotToolStripMenuItem.Text = "Splot";
+            this.splotToolStripMenuItem.Click += new System.EventHandler(this.splotToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -406,6 +415,7 @@
         private System.Windows.Forms.ToolStripMenuItem środkowoprzepustowyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem górnoprzepustowyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filtrowanieToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem splotToolStripMenuItem;
     }
 }
 

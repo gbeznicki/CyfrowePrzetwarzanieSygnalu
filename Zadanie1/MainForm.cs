@@ -445,5 +445,25 @@ namespace Zadanie1
                 plotController.Show();
             }
         }
+
+        private void splotToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<PlotController> plotters = new List<PlotController>();
+            foreach (PlotController p in MdiChildren)
+            {
+                plotters.Add(p);
+            }
+
+            Operation operation = new Operation(OperationType.Convolution, plotters);
+            operation.ShowDialog();
+            PlotController plotController = operation.Result;
+            if (plotController != null)
+            {
+                plotController.PlotType = PlotType.WynikDzialania;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
+            }
+        }
     }
 }
