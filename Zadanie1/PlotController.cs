@@ -153,9 +153,14 @@ namespace Zadanie1
                     DrawLowPassFilterPlot();
                     type = "filter";
                     break;
-                //case PlotType.MidPassFilter:
-                //    DrawMidPassFilterPlot(DataPoints, out caMeasuredValues);
-                //    break;
+                case PlotType.MidPassFilter:
+                    DrawMidPassFilterPlot();
+                    type = "filter";
+                    break;
+                case PlotType.HighPassFilter:
+                    DrawHighPassFilterPlot();
+                    type = "filter";
+                    break;
             }
 
             PrintResults(caMeasuredValues, type);
@@ -165,6 +170,18 @@ namespace Zadanie1
         void DrawLowPassFilterPlot()
         {
             var filteredPoints = Filter.LowPassFilter(FilterM, FilterF0, FilterFp);
+            DrawChart(filteredPoints);
+            DataPoints = filteredPoints;
+        }
+        void DrawMidPassFilterPlot()
+        {
+            var filteredPoints = Filter.MidPassFilter(FilterM, FilterF0, FilterFp);
+            DrawChart(filteredPoints);
+            DataPoints = filteredPoints;
+        }
+        void DrawHighPassFilterPlot()
+        {
+            var filteredPoints = Filter.HighPassFilter(FilterM, FilterF0, FilterFp);
             DrawChart(filteredPoints);
             DataPoints = filteredPoints;
         }

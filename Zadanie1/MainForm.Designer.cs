@@ -61,6 +61,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.środkowoprzepustowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.górnoprzepustowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -289,7 +291,9 @@
             // filterToolStripMenuItem
             // 
             this.filterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2});
+            this.toolStripMenuItem2,
+            this.środkowoprzepustowyToolStripMenuItem,
+            this.górnoprzepustowyToolStripMenuItem});
             this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
             this.filterToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
             this.filterToolStripMenuItem.Text = "Filtry";
@@ -298,8 +302,8 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(216, 26);
-            this.toolStripMenuItem2.Text = "Low Pass Filter";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(235, 26);
+            this.toolStripMenuItem2.Text = "Dolnoprzepustowy";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.lowPassFilterToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
@@ -322,6 +326,20 @@
             this.histogramToolStripMenuItem.Name = "histogramToolStripMenuItem";
             this.histogramToolStripMenuItem.Size = new System.Drawing.Size(148, 24);
             this.histogramToolStripMenuItem.Text = "Histogram";
+            // 
+            // środkowoprzepustowyToolStripMenuItem
+            // 
+            this.środkowoprzepustowyToolStripMenuItem.Name = "środkowoprzepustowyToolStripMenuItem";
+            this.środkowoprzepustowyToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
+            this.środkowoprzepustowyToolStripMenuItem.Text = "Środkowoprzepustowy";
+            this.środkowoprzepustowyToolStripMenuItem.Click += new System.EventHandler(this.środkowoprzepustowyToolStripMenuItem_Click);
+            // 
+            // górnoprzepustowyToolStripMenuItem
+            // 
+            this.górnoprzepustowyToolStripMenuItem.Name = "górnoprzepustowyToolStripMenuItem";
+            this.górnoprzepustowyToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
+            this.górnoprzepustowyToolStripMenuItem.Text = "Górnoprzepustowy";
+            this.górnoprzepustowyToolStripMenuItem.Click += new System.EventHandler(this.górnoprzepustowyToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -376,6 +394,8 @@
         private System.Windows.Forms.ToolStripMenuItem sincReconstructionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem środkowoprzepustowyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem górnoprzepustowyToolStripMenuItem;
     }
 }
 

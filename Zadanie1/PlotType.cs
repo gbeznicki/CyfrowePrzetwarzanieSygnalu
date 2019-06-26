@@ -22,5 +22,6 @@
 
         LowPassFilter,
         MidPassFilter,
+        HighPassFilter,
     }
 }

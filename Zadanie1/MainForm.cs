@@ -401,5 +401,29 @@ namespace Zadanie1
         {
 
         }
+
+        private void środkowoprzepustowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlotController plotController = new PlotController()
+            {
+                PlotType = PlotType.MidPassFilter,
+                Title = "Filtr środkowoprzepustowy",
+            };
+            plotController.DrawPlot();
+            plotController.MdiParent = this;
+            plotController.Show();
+        }
+
+        private void górnoprzepustowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlotController plotController = new PlotController()
+            {
+                PlotType = PlotType.HighPassFilter,
+                Title = "Filtr górnoprzepustowy",
+            };
+            plotController.DrawPlot();
+            plotController.MdiParent = this;
+            plotController.Show();
+        }
     }
 }
