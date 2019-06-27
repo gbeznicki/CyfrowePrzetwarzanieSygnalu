@@ -60,6 +60,16 @@ namespace Zadanie1
                     label2.Text = "Wykres 2";
                     button1.Text = "Splot";
                     break;
+                case OperationType.Correlation:
+                    label1.Text = "Wykres";
+                    label2.Text = "Wykres 2";
+                    button1.Text = "Korelacja";
+                    break;
+                case OperationType.CorrelationWithConvolution:
+                    label1.Text = "Wykres";
+                    label2.Text = "Wykres 2";
+                    button1.Text = "Korelacja ze splotem";
+                    break;
             }
         }
 
@@ -369,6 +379,73 @@ namespace Zadanie1
                 Frequency = samplingFrequency
             };
         }
+
+        private void Correlation()
+        {
+            PlotController leftPlot = (PlotController)comboBoxLeft.SelectedItem, rightPlot = (PlotController)comboBoxRight.SelectedItem;
+            double initialTime = Math.Min(leftPlot.InitialTime, rightPlot.InitialTime);
+            double finalTime = Math.Max(leftPlot.FinalTime, rightPlot.FinalTime);
+            double samplingFrequency = leftPlot.Frequency;
+
+            List<DataPoint> resultPoints = new List<DataPoint>();
+            List<DataPoint> signalPoints = leftPlot.DataPoints;
+            List<DataPoint> signal2Points = rightPlot.DataPoints;
+            for (int i = signal2Points.Count - 1; i >= (-1) * signalPoints.Count; i--)
+            {
+                double sum = 0;
+                for (int j = 0; j < signalPoints.Count; j++)
+                {
+                    if (i - j < 0 || i - j >= signal2Points.Count)
+                        continue;
+
+                    sum += signalPoints[j].Y * signal2Points[i - j].Y;
+                }
+                resultPoints.Add(new DataPoint(i, sum));
+            }
+
+            Result = new PlotController
+            {
+                Title = textBoxTitle.Text,
+                DataPoints = resultPoints,
+                InitialTime = initialTime,
+                FinalTime = finalTime,
+                Frequency = samplingFrequency
+            };
+        }
+
+        private void CorrelationWithConvolution()
+        {
+            PlotController leftPlot = (PlotController)comboBoxLeft.SelectedItem, rightPlot = (PlotController)comboBoxRight.SelectedItem;
+            double initialTime = Math.Min(leftPlot.InitialTime, rightPlot.InitialTime);
+            double finalTime = Math.Max(leftPlot.FinalTime, rightPlot.FinalTime);
+            double samplingFrequency = leftPlot.Frequency;
+
+            List<DataPoint> resultPoints = new List<DataPoint>();
+            List<DataPoint> signalPoints = leftPlot.DataPoints;
+            List<DataPoint> signal2Points = rightPlot.DataPoints;
+            signalPoints.Reverse();
+            for (int i = 0; i < signalPoints.Count + signal2Points.Count - 1; i++)
+            {
+                double sum = 0;
+                for (int j = 0; j < signalPoints.Count; j++)
+                {
+                    if (i - j < 0 || i - j >= signal2Points.Count)
+                        continue;
+
+                    sum += signalPoints[j].Y * signal2Points[i - j].Y;
+                }
+                resultPoints.Add(new DataPoint(i, sum));
+            }
+
+            Result = new PlotController
+            {
+                Title = textBoxTitle.Text,
+                DataPoints = resultPoints,
+                InitialTime = initialTime,
+                FinalTime = finalTime,
+                Frequency = samplingFrequency
+            };
+        }
         #endregion
 
         private void button1_Click(object sender, System.EventArgs e)
@@ -394,6 +471,12 @@ namespace Zadanie1
                         break;
                     case OperationType.Convolution:
                         Convolution();
+                        break;
+                    case OperationType.Correlation:
+                        Correlation();
+                        break;
+                    case OperationType.CorrelationWithConvolution:
+                        CorrelationWithConvolution();
                         break;
                 }
             }

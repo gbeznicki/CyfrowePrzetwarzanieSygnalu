@@ -10,6 +10,8 @@ namespace Zadanie1
 
         Filtering,
         Convolution,
+        Correlation,
+        CorrelationWithConvolution,
     }
 
     public enum SinglePlotOperationType

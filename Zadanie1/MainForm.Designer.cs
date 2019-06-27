@@ -65,6 +65,8 @@
             this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.korelacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.korelacjaZeSplotemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -117,7 +119,9 @@
             this.mnożenieToolStripMenuItem,
             this.dzielenieToolStripMenuItem,
             this.filtrowanieToolStripMenuItem,
-            this.splotToolStripMenuItem});
+            this.splotToolStripMenuItem,
+            this.korelacjaToolStripMenuItem,
+            this.korelacjaZeSplotemToolStripMenuItem});
             this.operacjeToolStripMenuItem.Name = "operacjeToolStripMenuItem";
             this.operacjeToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
             this.operacjeToolStripMenuItem.Text = "Operacja";
@@ -359,6 +363,20 @@
             this.splotToolStripMenuItem.Text = "Splot";
             this.splotToolStripMenuItem.Click += new System.EventHandler(this.splotToolStripMenuItem_Click);
             // 
+            // korelacjaToolStripMenuItem
+            // 
+            this.korelacjaToolStripMenuItem.Name = "korelacjaToolStripMenuItem";
+            this.korelacjaToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.korelacjaToolStripMenuItem.Text = "Korelacja";
+            this.korelacjaToolStripMenuItem.Click += new System.EventHandler(this.korelacjaToolStripMenuItem_Click);
+            // 
+            // korelacjaZeSplotemToolStripMenuItem
+            // 
+            this.korelacjaZeSplotemToolStripMenuItem.Name = "korelacjaZeSplotemToolStripMenuItem";
+            this.korelacjaZeSplotemToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.korelacjaZeSplotemToolStripMenuItem.Text = "Korelacja ze splotem";
+            this.korelacjaZeSplotemToolStripMenuItem.Click += new System.EventHandler(this.korelacjaZeSplotemToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -416,6 +434,8 @@
         private System.Windows.Forms.ToolStripMenuItem górnoprzepustowyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem filtrowanieToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem splotToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem korelacjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem korelacjaZeSplotemToolStripMenuItem;
     }
 }
 
