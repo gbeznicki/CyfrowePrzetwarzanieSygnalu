@@ -14,6 +14,8 @@ namespace Zadanie1
         Sampling,
         Quantization,
         Interpolation,
-        SincReconstruction
+        SincReconstruction,
+        FourierTransform,
+        FastFourierTransform
     }
 }

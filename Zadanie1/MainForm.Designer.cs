@@ -50,15 +50,18 @@
             this.skokJednostkowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.impulsJednostkowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szumImpulsowyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.samplingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quantizationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.interpolationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sincReconstructionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.transformacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fourierTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fastOurierTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -70,7 +73,8 @@
             this.operacjeToolStripMenuItem,
             this.generujToolStripMenuItem,
             this.aCToolStripMenuItem,
-            this.cAToolStripMenuItem});
+            this.cAToolStripMenuItem,
+            this.transformacjaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(966, 24);
@@ -234,26 +238,6 @@
             this.szumImpulsowyToolStripMenuItem.Text = "Szum impulsowy";
             this.szumImpulsowyToolStripMenuItem.Click += new System.EventHandler(this.szumImpulsowyToolStripMenuItem_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.wykresToolStripMenuItem,
-            this.histogramToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(131, 48);
-            // 
-            // wykresToolStripMenuItem
-            // 
-            this.wykresToolStripMenuItem.Name = "wykresToolStripMenuItem";
-            this.wykresToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.wykresToolStripMenuItem.Text = "Wykres";
-            // 
-            // histogramToolStripMenuItem
-            // 
-            this.histogramToolStripMenuItem.Name = "histogramToolStripMenuItem";
-            this.histogramToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.histogramToolStripMenuItem.Text = "Histogram";
-            // 
             // aCToolStripMenuItem
             // 
             this.aCToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -289,16 +273,57 @@
             // interpolationToolStripMenuItem
             // 
             this.interpolationToolStripMenuItem.Name = "interpolationToolStripMenuItem";
-            this.interpolationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.interpolationToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.interpolationToolStripMenuItem.Text = "Interpolation";
             this.interpolationToolStripMenuItem.Click += new System.EventHandler(this.interpolationToolStripMenuItem_Click);
             // 
             // sincReconstructionToolStripMenuItem
             // 
             this.sincReconstructionToolStripMenuItem.Name = "sincReconstructionToolStripMenuItem";
-            this.sincReconstructionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sincReconstructionToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.sincReconstructionToolStripMenuItem.Text = "GetSincValue Reconstruction";
             this.sincReconstructionToolStripMenuItem.Click += new System.EventHandler(this.sincReconstructionToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.wykresToolStripMenuItem,
+            this.histogramToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(131, 48);
+            // 
+            // wykresToolStripMenuItem
+            // 
+            this.wykresToolStripMenuItem.Name = "wykresToolStripMenuItem";
+            this.wykresToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.wykresToolStripMenuItem.Text = "Wykres";
+            // 
+            // histogramToolStripMenuItem
+            // 
+            this.histogramToolStripMenuItem.Name = "histogramToolStripMenuItem";
+            this.histogramToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.histogramToolStripMenuItem.Text = "Histogram";
+            // 
+            // transformacjaToolStripMenuItem
+            // 
+            this.transformacjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fourierTransformToolStripMenuItem,
+            this.fastOurierTransformToolStripMenuItem});
+            this.transformacjaToolStripMenuItem.Name = "transformacjaToolStripMenuItem";
+            this.transformacjaToolStripMenuItem.Size = new System.Drawing.Size(94, 20);
+            this.transformacjaToolStripMenuItem.Text = "Transformacja";
+            // 
+            // fourierTransformToolStripMenuItem
+            // 
+            this.fourierTransformToolStripMenuItem.Name = "fourierTransformToolStripMenuItem";
+            this.fourierTransformToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.fourierTransformToolStripMenuItem.Text = "Fourier Transform";
+            // 
+            // fastOurierTransformToolStripMenuItem
+            // 
+            this.fastOurierTransformToolStripMenuItem.Name = "fastOurierTransformToolStripMenuItem";
+            this.fastOurierTransformToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.fastOurierTransformToolStripMenuItem.Text = "Fast Fourier Transform";
             // 
             // MainForm
             // 
@@ -350,6 +375,9 @@
         private System.Windows.Forms.ToolStripMenuItem cAToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem interpolationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sincReconstructionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem transformacjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fourierTransformToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fastOurierTransformToolStripMenuItem;
     }
 }
 

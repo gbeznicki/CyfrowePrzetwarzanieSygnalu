@@ -18,6 +18,8 @@
         Sampling,
         Quantization, 
         Interpolation,
-        SincReconstruction
+        SincReconstruction,
+        FourierTransform,
+        FastFourierTransform
     }
 }

@@ -7,6 +7,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Numerics;
 
 namespace Zadanie1
 {
@@ -22,6 +23,7 @@ namespace Zadanie1
         /// </summary>
         public PlotType PlotType { get; set; }
 
+        public List<Complex> complexPoints;
         public List<DataPoint> DataPoints;
         public double Frequency;
         public double InitialTime;
@@ -138,6 +140,12 @@ namespace Zadanie1
                     break;
                 case PlotType.SincReconstruction:
                     DrawSincReconstructionPlot(DataPoints, out caMeasuredValues);
+                    break;
+                case PlotType.FourierTransform:
+                    DrawFourierPlot();
+                    break;
+                case PlotType.FastFourierTransform:
+                    DrawFastFourierPlot();
                     break;
             }
 
@@ -290,6 +298,16 @@ namespace Zadanie1
                 scatterSeries.Points.Add(point);
             }
             plot1.Model.Series.Add(scatterSeries);
+        }
+
+        void DrawFourierPlot()
+        {
+
+        }
+
+        void DrawFastFourierPlot()
+        {
+
         }
 
         private void PrintResults(List<double> measuredValues = null)
