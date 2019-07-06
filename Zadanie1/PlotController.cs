@@ -372,7 +372,7 @@ namespace Zadanie1
             {
                 stepSizeSeries.Points.Add(new DataPoint(i, reversedPoints[i]));
             }
-            plot1.Model.Series.Add(stepSizeSeries);
+            upperPlot.Model.Series.Add(stepSizeSeries);
         }
 
         void DrawFastFourierPlot()
@@ -494,6 +494,24 @@ namespace Zadanie1
             }
        
             upperPlot.Model = myModel;
+        }
+
+        void DrawLowerChart(IEnumerable<DataPoint> points, bool drawOriginalSignal = true)
+        {
+            //Rysowanie wykresu liniowego/punktowego
+            var myModel = new PlotModel { Title = Title };
+
+            if (drawOriginalSignal)
+            {
+                var plotData = new LineSeries();
+                foreach (var point in points)
+                {
+                    plotData.Points.Add(point);
+                }
+                myModel.Series.Add(plotData);
+            }
+
+            lowerPlot.Model = myModel;
         }
 
         public void Export(string filePath)
