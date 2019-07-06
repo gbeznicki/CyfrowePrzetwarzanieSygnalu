@@ -20,6 +20,7 @@
         Interpolation,
         SincReconstruction,
         FourierTransform,
+        ReverseFourierTransform,
         FastFourierTransform
     }
 }

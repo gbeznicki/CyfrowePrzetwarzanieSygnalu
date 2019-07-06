@@ -144,6 +144,9 @@ namespace Zadanie1
                 case PlotType.FourierTransform:
                     DrawFourierPlot(DataPoints);
                     break;
+                case PlotType.ReverseFourierTransform:
+                    DrawReverseFourierPlot(complexPoints);
+                    break;
                 case PlotType.FastFourierTransform:
                     DrawFastFourierPlot();
                     break;
@@ -299,12 +302,12 @@ namespace Zadanie1
             }
             upperPlot.Model.Series.Add(scatterSeries);
         }
-
+        
         void DrawFourierPlot(List<DataPoint> previousPoints) //, out List<double> measuredValues
         {
             DrawChart(previousPoints, false);
             //var quantizedPoints = SignalConverter.QuantizeSignal(previousPoints, QuantizationLevel, out var measures);
-            List<Complex> newPoints = FourierTransform.Transform(previousPoints.Select(p => p.Y).ToList());
+            complexPoints = FourierTransform.Transform(previousPoints.Select(p => p.Y).ToList());
 
             //measuredValues = newPoints.Select(p => p.Real).ToList();
             var stepSizeSeries = new StairStepSeries
@@ -320,7 +323,7 @@ namespace Zadanie1
                 StrokeThickness = .1,
             };
             double x = 0;
-            foreach (var point in newPoints)
+            foreach (var point in complexPoints)
             {
                 stepSizeSeries.Points.Add(new DataPoint(x, point.Real));
                 x++;
@@ -340,12 +343,36 @@ namespace Zadanie1
                 StrokeThickness = .1,
             };
             x = 0;
-            foreach (var point in newPoints)
+            foreach (var point in complexPoints)
             {
                 stepSizeSeriesImaginary.Points.Add(new DataPoint(x, point.Imaginary));
                 x++;
             }
             upperPlot.Model.Series.Add(stepSizeSeriesImaginary);
+        }
+
+        void DrawReverseFourierPlot(List<Complex> previousPoints) //, out List<double> measuredValues
+        {
+            var reversedPoints = FourierTransform.ReverseTransform(previousPoints);
+
+            var stepSizeSeries = new StairStepSeries
+            {
+                MarkerStrokeThickness = .1,
+                MarkerSize = 1,
+                MarkerStroke = OxyColors.Blue,
+                MarkerFill = OxyColors.Transparent,
+                MarkerType = MarkerType.Diamond,
+                Color = OxyColors.Blue,
+                BrokenLineColor = OxyColors.Blue,
+                BrokenLineThickness = .1,
+                StrokeThickness = .1,
+            };
+
+            for (int i = 0; i < reversedPoints.Count; i++)
+            {
+                stepSizeSeries.Points.Add(new DataPoint(i, reversedPoints[i]));
+            }
+            plot1.Model.Series.Add(stepSizeSeries);
         }
 
         void DrawFastFourierPlot()

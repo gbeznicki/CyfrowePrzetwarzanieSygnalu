@@ -16,6 +16,7 @@ namespace Zadanie1
         Interpolation,
         SincReconstruction,
         FourierTransform,
+        ReverseFourierTransform,
         FastFourierTransform
     }
 }
