@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using OxyPlot;
 using OxyPlot.Series;
-using Zadanie1.Zadanie3.Convolution;
 
 namespace Zadanie1.Zadanie3
 {

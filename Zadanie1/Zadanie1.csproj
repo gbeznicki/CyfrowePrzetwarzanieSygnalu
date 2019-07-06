@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Zadanie3\Filter.cs" />
     <Compile Include="SinglePlotOperation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +97,7 @@
     <Compile Include="SignalConverter.cs" />
     <Compile Include="Measures\IMeasure.cs" />
     <Compile Include="Utils\SignalUtils.cs" />
+    <Compile Include="Zadanie3\Window.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
