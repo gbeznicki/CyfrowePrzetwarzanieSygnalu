@@ -32,6 +32,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lowerPlot = new OxyPlot.WindowsForms.PlotView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.labelMeasureValue_Time = new System.Windows.Forms.Label();
+            this.labelMeasure_Time = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.labelMeasureValue_3 = new System.Windows.Forms.Label();
             this.labelMeasure_3 = new System.Windows.Forms.Label();
@@ -54,12 +56,12 @@
             this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // plot1
+            // upperPlot
             // 
             this.upperPlot.BackColor = System.Drawing.Color.Bisque;
             this.upperPlot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.upperPlot.Location = new System.Drawing.Point(0, 0);
-            this.upperPlot.Name = "plot1";
+            this.upperPlot.Name = "upperPlot";
             this.upperPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
             this.upperPlot.Size = new System.Drawing.Size(617, 185);
             this.upperPlot.TabIndex = 0;
@@ -86,12 +88,12 @@
             this.splitContainer1.SplitterDistance = 185;
             this.splitContainer1.TabIndex = 1;
             // 
-            // histogram
+            // lowerPlot
             // 
             this.lowerPlot.BackColor = System.Drawing.Color.Wheat;
             this.lowerPlot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lowerPlot.Location = new System.Drawing.Point(0, 0);
-            this.lowerPlot.Name = "histogram";
+            this.lowerPlot.Name = "lowerPlot";
             this.lowerPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
             this.lowerPlot.Size = new System.Drawing.Size(617, 261);
             this.lowerPlot.TabIndex = 0;
@@ -115,6 +117,8 @@
             // 
             this.splitContainer2.Panel2.AccessibleName = "";
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasureValue_Time);
+            this.splitContainer2.Panel2.Controls.Add(this.labelMeasure_Time);
             this.splitContainer2.Panel2.Controls.Add(this.button1);
             this.splitContainer2.Panel2.Controls.Add(this.labelMeasureValue_3);
             this.splitContainer2.Panel2.Controls.Add(this.labelMeasure_3);
@@ -130,6 +134,26 @@
             this.splitContainer2.Size = new System.Drawing.Size(788, 450);
             this.splitContainer2.SplitterDistance = 617;
             this.splitContainer2.TabIndex = 2;
+            // 
+            // labelMeasureValue_Time
+            // 
+            this.labelMeasureValue_Time.AutoSize = true;
+            this.labelMeasureValue_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasureValue_Time.Location = new System.Drawing.Point(12, 45);
+            this.labelMeasureValue_Time.Name = "labelMeasureValue_Time";
+            this.labelMeasureValue_Time.Size = new System.Drawing.Size(61, 16);
+            this.labelMeasureValue_Time.TabIndex = 11;
+            this.labelMeasureValue_Time.Text = "wartość";
+            // 
+            // labelMeasure_Time
+            // 
+            this.labelMeasure_Time.AutoSize = true;
+            this.labelMeasure_Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelMeasure_Time.Location = new System.Drawing.Point(12, 29);
+            this.labelMeasure_Time.Name = "labelMeasure_Time";
+            this.labelMeasure_Time.Size = new System.Drawing.Size(97, 16);
+            this.labelMeasure_Time.TabIndex = 10;
+            this.labelMeasure_Time.Text = "Czas obliczeń: ";
             // 
             // button1
             // 
@@ -225,7 +249,7 @@
             // 
             this.labelMeasureValue_0.AutoSize = true;
             this.labelMeasureValue_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelMeasureValue_0.Location = new System.Drawing.Point(12, 69);
+            this.labelMeasureValue_0.Location = new System.Drawing.Point(12, 97);
             this.labelMeasureValue_0.Name = "labelMeasureValue_0";
             this.labelMeasureValue_0.Size = new System.Drawing.Size(61, 16);
             this.labelMeasureValue_0.TabIndex = 1;
@@ -235,7 +259,7 @@
             // 
             this.labelMeasure_0.AutoSize = true;
             this.labelMeasure_0.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelMeasure_0.Location = new System.Drawing.Point(12, 53);
+            this.labelMeasure_0.Location = new System.Drawing.Point(12, 81);
             this.labelMeasure_0.Name = "labelMeasure_0";
             this.labelMeasure_0.Size = new System.Drawing.Size(61, 16);
             this.labelMeasure_0.TabIndex = 0;
@@ -280,5 +304,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Label labelMeasure_4;
+        private System.Windows.Forms.Label labelMeasureValue_Time;
+        private System.Windows.Forms.Label labelMeasure_Time;
     }
 }

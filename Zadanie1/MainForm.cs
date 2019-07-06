@@ -1,6 +1,7 @@
 ﻿using OxyPlot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -391,7 +392,11 @@ namespace Zadanie1
             {
                 plotController.PlotType = PlotType.FourierTransform;
                 plotController.Title = "Transformata Fouriera";
+                Stopwatch s = new Stopwatch();
+                s.Start();
                 plotController.DrawPlot();
+                s.Stop();
+                plotController.ElapsedTime = s.Elapsed;
                 plotController.MdiParent = this;
                 plotController.Show();
             }
@@ -422,7 +427,11 @@ namespace Zadanie1
             {
                 plotController.PlotType = PlotType.FastFourierTransform;
                 plotController.Title = "Szybka transformata Fouriera";
+                Stopwatch s = new Stopwatch();
+                s.Start();
                 plotController.DrawPlot();
+                s.Stop();
+                plotController.ElapsedTime = s.Elapsed;
                 plotController.MdiParent = this;
                 plotController.Show();
             }

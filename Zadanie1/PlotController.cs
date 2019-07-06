@@ -23,6 +23,8 @@ namespace Zadanie1
         /// </summary>
         public PlotType PlotType { get; set; }
 
+        public TimeSpan ElapsedTime { get; set; }
+
         public List<Complex> complexPoints;
         public List<DataPoint> DataPoints;
         public double Frequency;
@@ -400,6 +402,7 @@ namespace Zadanie1
                 labelMeasureValue_3.Text = variance.ToString(CultureInfo.InvariantCulture);
                 labelMeasureValue_2.Text = averagePower.ToString(CultureInfo.InvariantCulture);
                 labelMeasureValue_4.Text = rootAveragePower.ToString(CultureInfo.InvariantCulture);
+                labelMeasureValue_Time.Text = ElapsedTime.ToString();
 
                 labelMeasure_0.Text = "Średnia";
                 labelMeasure_1.Text = "Średnia bezwzględna";
