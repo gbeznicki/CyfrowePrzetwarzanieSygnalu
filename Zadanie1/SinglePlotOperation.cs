@@ -19,7 +19,9 @@ namespace Zadanie1
                 p.PlotType != PlotType.Quantization &&
                 p.PlotType != PlotType.Sampling &&
                 p.PlotType != PlotType.SincReconstruction &&
-                p.PlotType != PlotType.Interpolation).ToList();
+                p.PlotType != PlotType.Interpolation &&
+                p.PlotType != PlotType.FourierTransform &&
+                p.PlotType != PlotType.FastFourierTransform).ToList();
             comboBoxCurrentPlots.DisplayMember = "Title";
         }
 

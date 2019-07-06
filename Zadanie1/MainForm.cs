@@ -380,5 +380,20 @@ namespace Zadanie1
                 plotController.Show();
             }
         }
+
+        private void fourierTransformToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var currPlotters = MdiChildren.Cast<PlotController>().ToList();
+            var operation = new SinglePlotOperation(currPlotters, SinglePlotOperationType.FourierTransform);
+            operation.ShowDialog();
+            var plotController = operation.Result;
+            if (plotController != null)
+            {
+                plotController.PlotType = PlotType.FourierTransform;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
+            }
+        }
     }
 }

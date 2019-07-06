@@ -142,7 +142,7 @@ namespace Zadanie1
                     DrawSincReconstructionPlot(DataPoints, out caMeasuredValues);
                     break;
                 case PlotType.FourierTransform:
-                    DrawFourierPlot();
+                    DrawFourierPlot(DataPoints);
                     break;
                 case PlotType.FastFourierTransform:
                     DrawFastFourierPlot();
@@ -300,9 +300,52 @@ namespace Zadanie1
             plot1.Model.Series.Add(scatterSeries);
         }
 
-        void DrawFourierPlot()
+        void DrawFourierPlot(List<DataPoint> previousPoints) //, out List<double> measuredValues
         {
+            DrawChart(previousPoints, false);
+            //var quantizedPoints = SignalConverter.QuantizeSignal(previousPoints, QuantizationLevel, out var measures);
+            List<Complex> newPoints = FourierTransform.Transform(previousPoints.Select(p => p.Y).ToList());
 
+            //measuredValues = newPoints.Select(p => p.Real).ToList();
+            var stepSizeSeries = new StairStepSeries
+            {
+                MarkerStrokeThickness = .1,
+                MarkerSize = 1,
+                MarkerStroke = OxyColors.Blue,
+                MarkerFill = OxyColors.Transparent,
+                MarkerType = MarkerType.Diamond,
+                Color = OxyColors.Blue,
+                BrokenLineColor = OxyColors.Blue,
+                BrokenLineThickness = .1,
+                StrokeThickness = .1,
+            };
+            double x = 0;
+            foreach (var point in newPoints)
+            {
+                stepSizeSeries.Points.Add(new DataPoint(x, point.Real));
+                x++;
+            }
+            plot1.Model.Series.Add(stepSizeSeries);
+
+            //var stepSizeSeriesImaginary = new StairStepSeries
+            //{
+            //    MarkerStrokeThickness = .1,
+            //    MarkerSize = 1,
+            //    MarkerStroke = OxyColors.Blue,
+            //    MarkerFill = OxyColors.Transparent,
+            //    MarkerType = MarkerType.Diamond,
+            //    Color = OxyColors.Blue,
+            //    BrokenLineColor = OxyColors.Blue,
+            //    BrokenLineThickness = .1,
+            //    StrokeThickness = .1,
+            //};
+            //x = 0;
+            //foreach (var point in newPoints)
+            //{
+            //    stepSizeSeriesImaginary.Points.Add(new DataPoint(x, point.Imaginary));
+            //    x++;
+            //}
+            //plot1.Model.Series.Add(stepSizeSeries);
         }
 
         void DrawFastFourierPlot()
