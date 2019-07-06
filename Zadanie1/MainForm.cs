@@ -395,5 +395,20 @@ namespace Zadanie1
                 plotController.Show();
             }
         }
+
+        private void reverseFourierTransformToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var currPlotters = MdiChildren.Cast<PlotController>().ToList();
+            var operation = new SinglePlotOperation(currPlotters, SinglePlotOperationType.ReverseFourierTransform);
+            operation.ShowDialog();
+            var plotController = operation.Result;
+            if (plotController != null)
+            {
+                plotController.PlotType = PlotType.ReverseFourierTransform;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
+            }
+        }
     }
 }

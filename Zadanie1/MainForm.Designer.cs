@@ -62,6 +62,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reverseFourierTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -290,7 +291,8 @@
             // 
             this.transformacjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fourierTransformToolStripMenuItem,
-            this.fastOurierTransformToolStripMenuItem});
+            this.fastOurierTransformToolStripMenuItem,
+            this.reverseFourierTransformToolStripMenuItem});
             this.transformacjaToolStripMenuItem.Name = "transformacjaToolStripMenuItem";
             this.transformacjaToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
             this.transformacjaToolStripMenuItem.Text = "Transformacja";
@@ -328,6 +330,13 @@
             this.histogramToolStripMenuItem.Name = "histogramToolStripMenuItem";
             this.histogramToolStripMenuItem.Size = new System.Drawing.Size(148, 24);
             this.histogramToolStripMenuItem.Text = "Histogram";
+            // 
+            // reverseFourierTransformToolStripMenuItem
+            // 
+            this.reverseFourierTransformToolStripMenuItem.Name = "reverseFourierTransformToolStripMenuItem";
+            this.reverseFourierTransformToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.reverseFourierTransformToolStripMenuItem.Text = "Reverse Fourier Transform";
+            this.reverseFourierTransformToolStripMenuItem.Click += new System.EventHandler(this.reverseFourierTransformToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -383,6 +392,7 @@
         private System.Windows.Forms.ToolStripMenuItem transformacjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fourierTransformToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fastOurierTransformToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reverseFourierTransformToolStripMenuItem;
     }
 }
 
