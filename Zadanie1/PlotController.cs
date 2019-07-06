@@ -327,25 +327,25 @@ namespace Zadanie1
             }
             plot1.Model.Series.Add(stepSizeSeries);
 
-            //var stepSizeSeriesImaginary = new StairStepSeries
-            //{
-            //    MarkerStrokeThickness = .1,
-            //    MarkerSize = 1,
-            //    MarkerStroke = OxyColors.Blue,
-            //    MarkerFill = OxyColors.Transparent,
-            //    MarkerType = MarkerType.Diamond,
-            //    Color = OxyColors.Blue,
-            //    BrokenLineColor = OxyColors.Blue,
-            //    BrokenLineThickness = .1,
-            //    StrokeThickness = .1,
-            //};
-            //x = 0;
-            //foreach (var point in newPoints)
-            //{
-            //    stepSizeSeriesImaginary.Points.Add(new DataPoint(x, point.Imaginary));
-            //    x++;
-            //}
-            //plot1.Model.Series.Add(stepSizeSeries);
+            var stepSizeSeriesImaginary = new StairStepSeries
+            {
+                MarkerStrokeThickness = .1,
+                MarkerSize = 1,
+                MarkerStroke = OxyColors.Red,
+                MarkerFill = OxyColors.Transparent,
+                MarkerType = MarkerType.Diamond,
+                Color = OxyColors.Blue,
+                BrokenLineColor = OxyColors.Blue,
+                BrokenLineThickness = .1,
+                StrokeThickness = .1,
+            };
+            x = 0;
+            foreach (var point in newPoints)
+            {
+                stepSizeSeriesImaginary.Points.Add(new DataPoint(x, point.Imaginary));
+                x++;
+            }
+            plot1.Model.Series.Add(stepSizeSeriesImaginary);
         }
 
         void DrawFastFourierPlot()
