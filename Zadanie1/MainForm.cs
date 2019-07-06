@@ -411,5 +411,36 @@ namespace Zadanie1
                 plotController.Show();
             }
         }
+
+        private void fastOurierTransformToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var currPlotters = MdiChildren.Cast<PlotController>().ToList();
+            var operation = new SinglePlotOperation(currPlotters, SinglePlotOperationType.FastFourierTransform);
+            operation.ShowDialog();
+            var plotController = operation.Result;
+            if (plotController != null)
+            {
+                plotController.PlotType = PlotType.FastFourierTransform;
+                plotController.Title = "Szybka transformata Fouriera";
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
+            }
+        }
+
+        private void reverseFastFourierTransformToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var currPlotters = MdiChildren.Cast<PlotController>().ToList();
+            var operation = new SinglePlotOperation(currPlotters, SinglePlotOperationType.ReverseFastFourierTransform);
+            operation.ShowDialog();
+            var plotController = operation.Result;
+            if (plotController != null)
+            {
+                plotController.PlotType = PlotType.ReverseFastFourierTransform;
+                plotController.DrawPlot();
+                plotController.MdiParent = this;
+                plotController.Show();
+            }
+        }
     }
 }

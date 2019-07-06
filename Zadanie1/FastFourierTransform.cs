@@ -9,23 +9,23 @@ namespace Zadanie1
 {
     public class FastFourierTransform
     {
-        private Dictionary<string, Complex> _factors = new Dictionary<string, Complex>();
-        private Dictionary<string, Complex> _factorsReverse = new Dictionary<string, Complex>();
-        public List<Complex> Transform(List<double> points)
+        private static Dictionary<string, Complex> _factors = new Dictionary<string, Complex>();
+        private static Dictionary<string, Complex> _factorsReverse = new Dictionary<string, Complex>();
+        public static List<Complex> Transform(List<double> points)
         {
             List<Complex> transformed = new List<Complex>();
             int N = points.Count;
             transformed = SwitchSamples(points.Select(s => new Complex(s, 0)).ToList());
             return transformed.Select(c => c / N).ToList();
         }
-        public List<double> ReverseTransform(List<Complex> points)
+        public static List<double> ReverseTransform(List<Complex> points)
         {
             List<double> transformed = new List<double>();
             int N = points.Count;
             transformed = SwitchSamples(points, true).Select(c => c.Real).ToList();
             return transformed;
         }
-        public List<Complex> SwitchSamples(List<Complex> points, bool reverse = false)
+        public static List<Complex> SwitchSamples(List<Complex> points, bool reverse = false)
         {
             if (points.Count < 2)
             {
@@ -41,7 +41,7 @@ namespace Zadanie1
             var result = Connect(SwitchSamples(evenPoints, reverse), SwitchSamples(oddPoints, reverse), reverse);
             return result;
         }
-        private List<Complex> Connect(List<Complex> evenPoints, List<Complex> oddPoints, bool reverse)
+        private static List<Complex> Connect(List<Complex> evenPoints, List<Complex> oddPoints, bool reverse)
         {
             int N = oddPoints.Count * 2;
             Complex[] result = new Complex[N];
@@ -65,11 +65,11 @@ namespace Zadanie1
             }
             return result.ToList();
         }
-        private Complex CalculateFactor(int m, int n, int N)
+        private static Complex CalculateFactor(int m, int n, int N)
         {
             return Complex.Exp(new Complex(0, -2 * Math.PI * m * n / N));
         }
-        private Complex CalculateReverseFactor(int m, int n, int N)
+        private static Complex CalculateReverseFactor(int m, int n, int N)
         {
             return Complex.Exp(new Complex(0, 2 * Math.PI * m * n / N));
         }

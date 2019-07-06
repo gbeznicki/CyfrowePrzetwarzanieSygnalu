@@ -148,7 +148,10 @@ namespace Zadanie1
                     DrawReverseFourierPlot(complexPoints);
                     break;
                 case PlotType.FastFourierTransform:
-                    DrawFastFourierPlot();
+                    DrawFastFourierPlot(DataPoints);
+                    break;
+                case PlotType.ReverseFastFourierTransform:
+                    DrawReverseFastFourierPlot(complexPoints);
                     break;
             }
 
@@ -322,7 +325,7 @@ namespace Zadanie1
             {
                 imaginaryDataPoints.Add(new DataPoint(i, imaginaryYValues[i]));
             }
-            DrawLowerChart(imaginaryDataPoints);
+            DrawLowerChart(imaginaryDataPoints, true, "Część urojona");
         }
 
         void DrawReverseFourierPlot(List<Complex> previousPoints) //, out List<double> measuredValues
@@ -337,9 +340,38 @@ namespace Zadanie1
             DrawChart(dataPoints, false, true);
         }
 
-        void DrawFastFourierPlot()
+        void DrawFastFourierPlot(List<DataPoint> previousPoints) //, out List<double> measuredValues
         {
+            DrawChart(previousPoints, false);
+            complexPoints = FastFourierTransform.Transform(previousPoints.Select(p => p.Y).ToList());
 
+            var realYValues = complexPoints.Select(p => p.Real).ToList();
+            List<DataPoint> realDataPoints = new List<DataPoint>();
+            for (int i = 0; i < realYValues.Count; i++)
+            {
+                realDataPoints.Add(new DataPoint(i, realYValues[i]));
+            }
+            DrawChart(realDataPoints, false, true);
+
+            var imaginaryYValues = complexPoints.Select(p => p.Imaginary).ToList();
+            List<DataPoint> imaginaryDataPoints = new List<DataPoint>();
+            for (int i = 0; i < imaginaryYValues.Count; i++)
+            {
+                imaginaryDataPoints.Add(new DataPoint(i, imaginaryYValues[i]));
+            }
+            DrawLowerChart(imaginaryDataPoints, true, "Część urojona");
+        }
+
+        void DrawReverseFastFourierPlot(List<Complex> previousPoints) //, out List<double> measuredValues
+        {
+            var reversedPoints = FastFourierTransform.ReverseTransform(previousPoints);
+
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            for (int i = 0; i < reversedPoints.Count; i++)
+            {
+                dataPoints.Add(new DataPoint(i, reversedPoints[i]));
+            }
+            DrawChart(dataPoints, false, true);
         }
 
         private void PrintResults(List<double> measuredValues = null)
@@ -458,10 +490,10 @@ namespace Zadanie1
             upperPlot.Model = myModel;
         }
 
-        void DrawLowerChart(IEnumerable<DataPoint> points, bool drawOriginalSignal = true)
+        void DrawLowerChart(IEnumerable<DataPoint> points, bool drawOriginalSignal = true, string title = "")
         {
             //Rysowanie wykresu liniowego/punktowego
-            var myModel = new PlotModel { Title = Title };
+            var myModel = new PlotModel { Title = title == "" ? Title : title };
 
             if (drawOriginalSignal)
             {

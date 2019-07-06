@@ -59,10 +59,11 @@
             this.transformacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fourierTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fastOurierTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reverseFourierTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reverseFourierTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reverseFastFourierTransformToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -292,7 +293,8 @@
             this.transformacjaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fourierTransformToolStripMenuItem,
             this.fastOurierTransformToolStripMenuItem,
-            this.reverseFourierTransformToolStripMenuItem});
+            this.reverseFourierTransformToolStripMenuItem,
+            this.reverseFastFourierTransformToolStripMenuItem});
             this.transformacjaToolStripMenuItem.Name = "transformacjaToolStripMenuItem";
             this.transformacjaToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
             this.transformacjaToolStripMenuItem.Text = "Transformacja";
@@ -300,15 +302,23 @@
             // fourierTransformToolStripMenuItem
             // 
             this.fourierTransformToolStripMenuItem.Name = "fourierTransformToolStripMenuItem";
-            this.fourierTransformToolStripMenuItem.Size = new System.Drawing.Size(229, 26);
+            this.fourierTransformToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.fourierTransformToolStripMenuItem.Text = "Fourier Transform";
             this.fourierTransformToolStripMenuItem.Click += new System.EventHandler(this.fourierTransformToolStripMenuItem_Click);
             // 
             // fastOurierTransformToolStripMenuItem
             // 
             this.fastOurierTransformToolStripMenuItem.Name = "fastOurierTransformToolStripMenuItem";
-            this.fastOurierTransformToolStripMenuItem.Size = new System.Drawing.Size(229, 26);
+            this.fastOurierTransformToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.fastOurierTransformToolStripMenuItem.Text = "Fast Fourier Transform";
+            this.fastOurierTransformToolStripMenuItem.Click += new System.EventHandler(this.fastOurierTransformToolStripMenuItem_Click);
+            // 
+            // reverseFourierTransformToolStripMenuItem
+            // 
+            this.reverseFourierTransformToolStripMenuItem.Name = "reverseFourierTransformToolStripMenuItem";
+            this.reverseFourierTransformToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.reverseFourierTransformToolStripMenuItem.Text = "Reverse Fourier Transform";
+            this.reverseFourierTransformToolStripMenuItem.Click += new System.EventHandler(this.reverseFourierTransformToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -331,12 +341,12 @@
             this.histogramToolStripMenuItem.Size = new System.Drawing.Size(148, 24);
             this.histogramToolStripMenuItem.Text = "Histogram";
             // 
-            // reverseFourierTransformToolStripMenuItem
+            // reverseFastFourierTransformToolStripMenuItem
             // 
-            this.reverseFourierTransformToolStripMenuItem.Name = "reverseFourierTransformToolStripMenuItem";
-            this.reverseFourierTransformToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
-            this.reverseFourierTransformToolStripMenuItem.Text = "Reverse Fourier Transform";
-            this.reverseFourierTransformToolStripMenuItem.Click += new System.EventHandler(this.reverseFourierTransformToolStripMenuItem_Click);
+            this.reverseFastFourierTransformToolStripMenuItem.Name = "reverseFastFourierTransformToolStripMenuItem";
+            this.reverseFastFourierTransformToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
+            this.reverseFastFourierTransformToolStripMenuItem.Text = "Reverse Fast Fourier Transform";
+            this.reverseFastFourierTransformToolStripMenuItem.Click += new System.EventHandler(this.reverseFastFourierTransformToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -346,7 +356,7 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -393,6 +403,7 @@
         private System.Windows.Forms.ToolStripMenuItem fourierTransformToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fastOurierTransformToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reverseFourierTransformToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reverseFastFourierTransformToolStripMenuItem;
     }
 }
 

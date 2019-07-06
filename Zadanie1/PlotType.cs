@@ -21,6 +21,7 @@
         SincReconstruction,
         FourierTransform,
         ReverseFourierTransform,
-        FastFourierTransform
+        FastFourierTransform,
+        ReverseFastFourierTransform
     }
 }

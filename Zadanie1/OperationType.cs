@@ -17,6 +17,7 @@ namespace Zadanie1
         SincReconstruction,
         FourierTransform,
         ReverseFourierTransform,
-        FastFourierTransform
+        FastFourierTransform,
+        ReverseFastFourierTransform
     }
 }
