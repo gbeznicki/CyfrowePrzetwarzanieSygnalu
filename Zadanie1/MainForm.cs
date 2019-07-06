@@ -441,6 +441,16 @@ namespace Zadanie1
                 plotController.MdiParent = this;
                 plotController.Show();
             }
+        private void bladSredniokwadratowyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<PlotController> plotters = new List<PlotController>();
+            foreach (PlotController p in MdiChildren)
+            {
+                plotters.Add(p);
+            }
+
+            MeanSquaredErrorCalculator meanSquaredErrorCalculator = new MeanSquaredErrorCalculator(plotters);
+            meanSquaredErrorCalculator.Show();
         }
     }
 }
