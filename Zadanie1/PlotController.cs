@@ -232,7 +232,7 @@ namespace Zadanie1
             {
                 interpolatedSeries.Points.Add(point);
             }
-            plot1.Model.Series.Add(interpolatedSeries);
+            upperPlot.Model.Series.Add(interpolatedSeries);
         }
 
         void DrawSincReconstructionPlot(List<DataPoint> previousPoints, out List<double> measuredValues)
@@ -247,7 +247,7 @@ namespace Zadanie1
             {
                 sincSeries.Points.Add(point);
             }
-            plot1.Model.Series.Add(sincSeries);
+            upperPlot.Model.Series.Add(sincSeries);
         }
 
         void DrawQuantizedPlot(List<DataPoint> previousPoints, out List<double> measuredValues)
@@ -275,7 +275,7 @@ namespace Zadanie1
             {
                 stepSizeSeries.Points.Add(point);
             }
-            plot1.Model.Series.Add(stepSizeSeries);
+            upperPlot.Model.Series.Add(stepSizeSeries);
         }
 
         void DrawSamplingPlot(List<DataPoint> previousPoints, out List<double> measuredValues, bool drawOriginalSignal = true)
@@ -297,7 +297,7 @@ namespace Zadanie1
             {
                 scatterSeries.Points.Add(point);
             }
-            plot1.Model.Series.Add(scatterSeries);
+            upperPlot.Model.Series.Add(scatterSeries);
         }
 
         void DrawFourierPlot(List<DataPoint> previousPoints) //, out List<double> measuredValues
@@ -325,7 +325,7 @@ namespace Zadanie1
                 stepSizeSeries.Points.Add(new DataPoint(x, point.Real));
                 x++;
             }
-            plot1.Model.Series.Add(stepSizeSeries);
+            upperPlot.Model.Series.Add(stepSizeSeries);
 
             var stepSizeSeriesImaginary = new StairStepSeries
             {
@@ -345,7 +345,7 @@ namespace Zadanie1
                 stepSizeSeriesImaginary.Points.Add(new DataPoint(x, point.Imaginary));
                 x++;
             }
-            plot1.Model.Series.Add(stepSizeSeriesImaginary);
+            upperPlot.Model.Series.Add(stepSizeSeriesImaginary);
         }
 
         void DrawFastFourierPlot()
@@ -443,7 +443,7 @@ namespace Zadanie1
                 histogramSeries.Items.Add(new ColumnItem(y));
             }
             plotModel.Series.Add(histogramSeries);
-            histogram.Model = plotModel;
+            lowerPlot.Model = plotModel;
         }
 
         void DrawChart(IEnumerable<DataPoint> points, bool drawHistogram = true, bool drawOriginalSignal = true)
@@ -466,7 +466,7 @@ namespace Zadanie1
                 }
             }
        
-            plot1.Model = myModel;
+            upperPlot.Model = myModel;
         }
 
         public void Export(string filePath)

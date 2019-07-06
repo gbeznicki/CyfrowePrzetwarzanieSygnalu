@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
+using Accord.Math.Transforms;
+
 
 namespace Zadanie1
 {
@@ -37,6 +40,34 @@ namespace Zadanie1
             }
             return transformed;
         }
+
+        public static List<Complex> FastFourierTransformation(Complex[] data)
+        {
+            FourierTransform2.FFT(data, Accord.Math.FourierTransform.Direction.Forward);
+            return data.OfType<Complex>().ToList();
+        }
+
+        public static List<Complex> InverseFastFourierTransformation(Complex[] data)
+        {
+            FourierTransform2.FFT(data, Accord.Math.FourierTransform.Direction.Backward);
+            return data.OfType<Complex>().ToList();
+        }
+
+        public static List<Complex> DiscreteFourierTransformation(Complex[] data)
+        {
+            FourierTransform2.DFT(data, Accord.Math.FourierTransform.Direction.Forward);
+
+            return data.OfType<Complex>().ToList();
+        }
+
+        public static List<Complex> InverseDiscreteFourierTransformation(Complex[] data)
+        {
+            FourierTransform2.DFT(data, Accord.Math.FourierTransform.Direction.Backward);
+
+            return data.OfType<Complex>().ToList();
+        }
+
+
 
     }
 }

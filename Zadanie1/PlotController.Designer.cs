@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.plot1 = new OxyPlot.WindowsForms.PlotView();
+            this.upperPlot = new OxyPlot.WindowsForms.PlotView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.histogram = new OxyPlot.WindowsForms.PlotView();
+            this.lowerPlot = new OxyPlot.WindowsForms.PlotView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.button1 = new System.Windows.Forms.Button();
             this.labelMeasureValue_3 = new System.Windows.Forms.Label();
@@ -56,17 +56,17 @@
             // 
             // plot1
             // 
-            this.plot1.BackColor = System.Drawing.Color.Bisque;
-            this.plot1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plot1.Location = new System.Drawing.Point(0, 0);
-            this.plot1.Name = "plot1";
-            this.plot1.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plot1.Size = new System.Drawing.Size(617, 185);
-            this.plot1.TabIndex = 0;
-            this.plot1.Text = "plotView1";
-            this.plot1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.plot1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.plot1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            this.upperPlot.BackColor = System.Drawing.Color.Bisque;
+            this.upperPlot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.upperPlot.Location = new System.Drawing.Point(0, 0);
+            this.upperPlot.Name = "plot1";
+            this.upperPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.upperPlot.Size = new System.Drawing.Size(617, 185);
+            this.upperPlot.TabIndex = 0;
+            this.upperPlot.Text = "plotView1";
+            this.upperPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.upperPlot.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.upperPlot.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // splitContainer1
             // 
@@ -77,28 +77,28 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.plot1);
+            this.splitContainer1.Panel1.Controls.Add(this.upperPlot);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.histogram);
+            this.splitContainer1.Panel2.Controls.Add(this.lowerPlot);
             this.splitContainer1.Size = new System.Drawing.Size(617, 450);
             this.splitContainer1.SplitterDistance = 185;
             this.splitContainer1.TabIndex = 1;
             // 
             // histogram
             // 
-            this.histogram.BackColor = System.Drawing.Color.Wheat;
-            this.histogram.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.histogram.Location = new System.Drawing.Point(0, 0);
-            this.histogram.Name = "histogram";
-            this.histogram.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.histogram.Size = new System.Drawing.Size(617, 261);
-            this.histogram.TabIndex = 0;
-            this.histogram.Text = "plotView1";
-            this.histogram.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.histogram.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.histogram.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            this.lowerPlot.BackColor = System.Drawing.Color.Wheat;
+            this.lowerPlot.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lowerPlot.Location = new System.Drawing.Point(0, 0);
+            this.lowerPlot.Name = "histogram";
+            this.lowerPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.lowerPlot.Size = new System.Drawing.Size(617, 261);
+            this.lowerPlot.TabIndex = 0;
+            this.lowerPlot.Text = "plotView1";
+            this.lowerPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.lowerPlot.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.lowerPlot.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // splitContainer2
             // 
@@ -264,9 +264,9 @@
 
         #endregion
 
-        private OxyPlot.WindowsForms.PlotView plot1;
+        private OxyPlot.WindowsForms.PlotView upperPlot;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private OxyPlot.WindowsForms.PlotView histogram;
+        private OxyPlot.WindowsForms.PlotView lowerPlot;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label labelMeasureValue_2;
         private System.Windows.Forms.Label labelMeasure_2;
