@@ -441,6 +441,8 @@ namespace Zadanie1
                 plotController.MdiParent = this;
                 plotController.Show();
             }
+        }
+
         private void bladSredniokwadratowyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             List<PlotController> plotters = new List<PlotController>();
