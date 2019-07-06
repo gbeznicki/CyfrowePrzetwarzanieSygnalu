@@ -67,6 +67,12 @@
   <ItemGroup>
     <Compile Include="FastFourierTransform.cs" />
     <Compile Include="FourierTransform.cs" />
+    <Compile Include="MSE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MSE.Designer.cs">
+      <DependentUpon>MSE.cs</DependentUpon>
+    </Compile>
     <Compile Include="SinglePlotOperation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     <Compile Include="Utils\SignalUtils.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MSE.resx">
+      <DependentUpon>MSE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operation.resx">
       <DependentUpon>Operation.cs</DependentUpon>
