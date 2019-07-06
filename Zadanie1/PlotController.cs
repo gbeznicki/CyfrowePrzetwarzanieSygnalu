@@ -306,73 +306,35 @@ namespace Zadanie1
         void DrawFourierPlot(List<DataPoint> previousPoints) //, out List<double> measuredValues
         {
             DrawChart(previousPoints, false);
-            //var quantizedPoints = SignalConverter.QuantizeSignal(previousPoints, QuantizationLevel, out var measures);
             complexPoints = FourierTransform.Transform(previousPoints.Select(p => p.Y).ToList());
 
-            //measuredValues = newPoints.Select(p => p.Real).ToList();
-            var stepSizeSeries = new StairStepSeries
+            var realYValues = complexPoints.Select(p => p.Real).ToList();
+            List<DataPoint> realDataPoints = new List<DataPoint>();
+            for (int i = 0; i < realYValues.Count; i++)
             {
-                MarkerStrokeThickness = .1,
-                MarkerSize = 1,
-                MarkerStroke = OxyColors.Blue,
-                MarkerFill = OxyColors.Transparent,
-                MarkerType = MarkerType.Diamond,
-                Color = OxyColors.Blue,
-                BrokenLineColor = OxyColors.Blue,
-                BrokenLineThickness = .1,
-                StrokeThickness = .1,
-            };
-            double x = 0;
-            foreach (var point in complexPoints)
-            {
-                stepSizeSeries.Points.Add(new DataPoint(x, point.Real));
-                x++;
+                realDataPoints.Add(new DataPoint(i, realYValues[i]));
             }
-            upperPlot.Model.Series.Add(stepSizeSeries);
+            DrawChart(realDataPoints, false, true);
 
-            var stepSizeSeriesImaginary = new StairStepSeries
+            var imaginaryYValues = complexPoints.Select(p => p.Imaginary).ToList();
+            List<DataPoint> imaginaryDataPoints = new List<DataPoint>();
+            for (int i = 0; i < imaginaryYValues.Count; i++)
             {
-                MarkerStrokeThickness = .1,
-                MarkerSize = 1,
-                MarkerStroke = OxyColors.Red,
-                MarkerFill = OxyColors.Transparent,
-                MarkerType = MarkerType.Diamond,
-                Color = OxyColors.Blue,
-                BrokenLineColor = OxyColors.Blue,
-                BrokenLineThickness = .1,
-                StrokeThickness = .1,
-            };
-            x = 0;
-            foreach (var point in complexPoints)
-            {
-                stepSizeSeriesImaginary.Points.Add(new DataPoint(x, point.Imaginary));
-                x++;
+                imaginaryDataPoints.Add(new DataPoint(i, imaginaryYValues[i]));
             }
-            upperPlot.Model.Series.Add(stepSizeSeriesImaginary);
+            DrawLowerChart(imaginaryDataPoints);
         }
 
         void DrawReverseFourierPlot(List<Complex> previousPoints) //, out List<double> measuredValues
         {
             var reversedPoints = FourierTransform.ReverseTransform(previousPoints);
 
-            var stepSizeSeries = new StairStepSeries
-            {
-                MarkerStrokeThickness = .1,
-                MarkerSize = 1,
-                MarkerStroke = OxyColors.Blue,
-                MarkerFill = OxyColors.Transparent,
-                MarkerType = MarkerType.Diamond,
-                Color = OxyColors.Blue,
-                BrokenLineColor = OxyColors.Blue,
-                BrokenLineThickness = .1,
-                StrokeThickness = .1,
-            };
-
+            List<DataPoint> dataPoints = new List<DataPoint>();
             for (int i = 0; i < reversedPoints.Count; i++)
             {
-                stepSizeSeries.Points.Add(new DataPoint(i, reversedPoints[i]));
+                dataPoints.Add(new DataPoint(i, reversedPoints[i]));
             }
-            upperPlot.Model.Series.Add(stepSizeSeries);
+            DrawChart(dataPoints, false, true);
         }
 
         void DrawFastFourierPlot()

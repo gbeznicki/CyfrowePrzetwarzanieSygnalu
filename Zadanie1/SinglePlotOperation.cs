@@ -19,9 +19,7 @@ namespace Zadanie1
                 p.PlotType != PlotType.Quantization &&
                 p.PlotType != PlotType.Sampling &&
                 p.PlotType != PlotType.SincReconstruction &&
-                p.PlotType != PlotType.Interpolation &&
-                p.PlotType != PlotType.FourierTransform &&
-                p.PlotType != PlotType.FastFourierTransform).ToList();
+                p.PlotType != PlotType.Interpolation).ToList();
             comboBoxCurrentPlots.DisplayMember = "Title";
         }
 
@@ -40,6 +38,7 @@ namespace Zadanie1
                 {
                     Title = singlePlotOperationType.ToString(),
                     DataPoints = selectedPlot.DataPoints,
+                    complexPoints = selectedPlot.complexPoints,
                     InitialTime = selectedPlot.InitialTime,
                     FinalTime = selectedPlot.FinalTime,
                     Frequency = selectedPlot.Frequency

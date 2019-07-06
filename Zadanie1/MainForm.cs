@@ -390,6 +390,7 @@ namespace Zadanie1
             if (plotController != null)
             {
                 plotController.PlotType = PlotType.FourierTransform;
+                plotController.Title = "Transformata Fouriera";
                 plotController.DrawPlot();
                 plotController.MdiParent = this;
                 plotController.Show();
