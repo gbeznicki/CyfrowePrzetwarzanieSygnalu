@@ -67,11 +67,11 @@
   <ItemGroup>
     <Compile Include="FastFourierTransform.cs" />
     <Compile Include="FourierTransform.cs" />
-    <Compile Include="MSE.cs">
+    <Compile Include="MeanSquaredErrorCalculator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MSE.Designer.cs">
-      <DependentUpon>MSE.cs</DependentUpon>
+    <Compile Include="MeanSquaredErrorCalculator.Designer.cs">
+      <DependentUpon>MeanSquaredErrorCalculator.cs</DependentUpon>
     </Compile>
     <Compile Include="SinglePlotOperation.cs">
       <SubType>Form</SubType>
@@ -120,8 +120,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MSE.resx">
-      <DependentUpon>MSE.cs</DependentUpon>
+    <EmbeddedResource Include="MeanSquaredErrorCalculator.resx">
+      <DependentUpon>MeanSquaredErrorCalculator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operation.resx">
       <DependentUpon>Operation.cs</DependentUpon>

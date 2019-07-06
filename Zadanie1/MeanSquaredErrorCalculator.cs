@@ -46,7 +46,8 @@ namespace Zadanie1
             double mse = 0;
             for (int i = 0; i < initialPoints.Count; i++)
             {
-                mse += Math.Pow(initialPoints[i].Y - (afterReverseTransformPoints[i].Y / afterReverseTransformPoints.Count), 2);
+                double diff = initialPoints[i].Y - afterReverseTransformPoints[i].Y;
+                mse += Math.Pow(diff, 2);
             }
             return mse / initialPoints.Count;
         }
