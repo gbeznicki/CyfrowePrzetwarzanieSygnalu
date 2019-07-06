@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Numerics;
+using System.Diagnostics;
 
 namespace Zadanie1
 {
@@ -311,7 +312,11 @@ namespace Zadanie1
         void DrawFourierPlot(List<DataPoint> previousPoints) //, out List<double> measuredValues
         {
             DrawChart(previousPoints, false);
+            Stopwatch s = new Stopwatch();
+            s.Start();
             complexPoints = FourierTransform.Transform(previousPoints.Select(p => p.Y).ToList());
+            s.Stop();
+            ElapsedTime = s.Elapsed;
 
             var realYValues = complexPoints.Select(p => p.Real).ToList();
             List<DataPoint> realDataPoints = new List<DataPoint>();
@@ -345,7 +350,12 @@ namespace Zadanie1
         void DrawFastFourierPlot(List<DataPoint> previousPoints) //, out List<double> measuredValues
         {
             DrawChart(previousPoints, false);
+
+            Stopwatch s = new Stopwatch();
+            s.Start();
             complexPoints = FastFourierTransform.Transform(previousPoints.Select(p => p.Y).ToList());
+            s.Stop();
+            ElapsedTime = s.Elapsed;
 
             var realYValues = complexPoints.Select(p => p.Real).ToList();
             List<DataPoint> realDataPoints = new List<DataPoint>();

@@ -392,11 +392,7 @@ namespace Zadanie1
             {
                 plotController.PlotType = PlotType.FourierTransform;
                 plotController.Title = "Transformata Fouriera";
-                Stopwatch s = new Stopwatch();
-                s.Start();
                 plotController.DrawPlot();
-                s.Stop();
-                plotController.ElapsedTime = s.Elapsed;
                 plotController.MdiParent = this;
                 plotController.Show();
             }
