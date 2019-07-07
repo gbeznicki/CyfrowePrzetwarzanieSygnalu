@@ -161,6 +161,10 @@ namespace Zadanie1
                     DrawHighPassFilterPlot();
                     type = "filter";
                     break;
+                case PlotType.MeasureDistance:
+                    DrawMeasureDistance();
+                    type = "filter";
+                    break;
             }
 
             PrintResults(caMeasuredValues, type);
@@ -340,6 +344,27 @@ namespace Zadanie1
             plot1.Model.Series.Add(scatterSeries);
         }
 
+        private void DrawMeasureDistance()
+        {
+            Antenna antenna = new Antenna();
+            List<double> OriginalList = antenna.GetOriginalDistance();
+            List<double> CountedList = antenna.CountDistances();
+            List<double> DiffrenceList = antenna.CountDiffrence(OriginalList, CountedList);
+            List<DataPoint> probingDataPoints = new List<DataPoint>();
+            for (int i = 0; i < antenna.ProbingSignal.Count; i++)
+                probingDataPoints.Add(new DataPoint(i, antenna.ProbingSignal[i]));
+            List<DataPoint> feedbackDataPoints = new List<DataPoint>();
+            for (int i = 0; i < antenna.FeedbackSignal.Count; i++)
+                feedbackDataPoints.Add(new DataPoint(i, antenna.FeedbackSignal[i]));
+            List<DataPoint> correlationSamplesDataPoints = new List<DataPoint>();
+            for (int i = 0; i < antenna.CorrelationSamples.Count; i++)
+                correlationSamplesDataPoints.Add(new DataPoint(i, antenna.CorrelationSamples[i]));
+            DrawChart(probingDataPoints);
+            DrawLowerChart(feedbackDataPoints, true, "Odpowiedź");
+            //DrawLowestChart(correlationSamplesDataPoints, true, "Korelacja");
+            DataPoints = probingDataPoints;
+        }
+
         private void PrintResults(List<double> measuredValues = null, string type = "")
         {
             labelMeasureValue_0.Text = measuredValues == null ? "Średnia" : "Błąd średniokwadratowy";
@@ -435,6 +460,24 @@ namespace Zadanie1
             }
             plotModel.Series.Add(histogramSeries);
             histogram.Model = plotModel;
+        }
+
+        void DrawLowerChart(IEnumerable<DataPoint> points, bool drawOriginalSignal = true, string title = "")
+        {
+            //Rysowanie wykresu liniowego/punktowego
+            var myModel = new PlotModel { Title = title == "" ? Title : title };
+
+            if (drawOriginalSignal)
+            {
+                var plotData = new LineSeries();
+                foreach (var point in points)
+                {
+                    plotData.Points.Add(point);
+                }
+                myModel.Series.Add(plotData);
+            }
+
+            histogram.Model = myModel;
         }
 
         void DrawChart(IEnumerable<DataPoint> points, bool drawHistogram = true, bool drawOriginalSignal = true)

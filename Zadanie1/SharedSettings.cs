@@ -18,10 +18,20 @@
         public static int QuantizationLevel { get; set; } = 4;
         public static int ConsideredSamplesNumber { get; set; } = 4;
 
-        // Zadanie1 3
+        // Zadanie 3
         public static int FilterM { get; set; } = 50;
         public static double FilterF0 { get; set; } = 10.0;
         public static double FilterFp { get; set; } = 70.0;
         public static string ChosenWindow { get; set; } = "prostokątne";
+        // Zadanie 3 antena
+        public static int NumberOfMeasurement { get; set; } = 10;
+        public static double TimeUnit { get; set; } = 10;
+        public static double RealSpeed { get; set; } = 10;
+        public static double AbstractSpeed { get; set; } = 2000;
+        public static double SignalPeriod { get; set; } = 1;
+        public static int BasicSignals { get; set; } = 2;
+        public static double BuffersLength { get; set; } = 400;
+        public static double ReportingPeriod { get; set; } = 2;
+        public static double SamplingFrequency { get; set; } = 100;
     }
 }

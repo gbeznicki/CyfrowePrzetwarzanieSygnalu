@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Zadanie3\Antenna.cs" />
     <Compile Include="Zadanie3\Filter.cs" />
     <Compile Include="SinglePlotOperation.cs">
       <SubType>Form</SubType>

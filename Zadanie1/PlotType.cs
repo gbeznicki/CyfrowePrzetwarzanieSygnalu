@@ -23,5 +23,7 @@
         LowPassFilter,
         MidPassFilter,
         HighPassFilter,
+
+        MeasureDistance
     }
 }

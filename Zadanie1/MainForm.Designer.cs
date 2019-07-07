@@ -39,6 +39,9 @@
             this.mnożenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dzielenieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.filtrowanieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.splotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.korelacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.korelacjaZeSplotemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szumORozkłJednostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.szumGaussowskiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,9 +67,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.wykresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.histogramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.korelacjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.korelacjaZeSplotemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pomiarOdległościToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +81,8 @@
             this.generujToolStripMenuItem,
             this.aCToolStripMenuItem,
             this.cAToolStripMenuItem,
-            this.filterToolStripMenuItem});
+            this.filterToolStripMenuItem,
+            this.pomiarOdległościToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -129,37 +131,58 @@
             // dodawanieToolStripMenuItem
             // 
             this.dodawanieToolStripMenuItem.Name = "dodawanieToolStripMenuItem";
-            this.dodawanieToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.dodawanieToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.dodawanieToolStripMenuItem.Text = "Dodawanie";
             this.dodawanieToolStripMenuItem.Click += new System.EventHandler(this.dodawanieToolStripMenuItem_Click);
             // 
             // odejmowanieToolStripMenuItem
             // 
             this.odejmowanieToolStripMenuItem.Name = "odejmowanieToolStripMenuItem";
-            this.odejmowanieToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.odejmowanieToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.odejmowanieToolStripMenuItem.Text = "Odejmowanie";
             this.odejmowanieToolStripMenuItem.Click += new System.EventHandler(this.odejmowanieToolStripMenuItem_Click);
             // 
             // mnożenieToolStripMenuItem
             // 
             this.mnożenieToolStripMenuItem.Name = "mnożenieToolStripMenuItem";
-            this.mnożenieToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.mnożenieToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.mnożenieToolStripMenuItem.Text = "Mnożenie";
             this.mnożenieToolStripMenuItem.Click += new System.EventHandler(this.mnożenieToolStripMenuItem_Click);
             // 
             // dzielenieToolStripMenuItem
             // 
             this.dzielenieToolStripMenuItem.Name = "dzielenieToolStripMenuItem";
-            this.dzielenieToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.dzielenieToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.dzielenieToolStripMenuItem.Text = "Dzielenie";
             this.dzielenieToolStripMenuItem.Click += new System.EventHandler(this.dzielenieToolStripMenuItem_Click);
             // 
             // filtrowanieToolStripMenuItem
             // 
             this.filtrowanieToolStripMenuItem.Name = "filtrowanieToolStripMenuItem";
-            this.filtrowanieToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.filtrowanieToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.filtrowanieToolStripMenuItem.Text = "Filtrowanie";
             this.filtrowanieToolStripMenuItem.Click += new System.EventHandler(this.filtrowanieToolStripMenuItem_Click);
+            // 
+            // splotToolStripMenuItem
+            // 
+            this.splotToolStripMenuItem.Name = "splotToolStripMenuItem";
+            this.splotToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.splotToolStripMenuItem.Text = "Splot";
+            this.splotToolStripMenuItem.Click += new System.EventHandler(this.splotToolStripMenuItem_Click);
+            // 
+            // korelacjaToolStripMenuItem
+            // 
+            this.korelacjaToolStripMenuItem.Name = "korelacjaToolStripMenuItem";
+            this.korelacjaToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.korelacjaToolStripMenuItem.Text = "Korelacja";
+            this.korelacjaToolStripMenuItem.Click += new System.EventHandler(this.korelacjaToolStripMenuItem_Click);
+            // 
+            // korelacjaZeSplotemToolStripMenuItem
+            // 
+            this.korelacjaZeSplotemToolStripMenuItem.Name = "korelacjaZeSplotemToolStripMenuItem";
+            this.korelacjaZeSplotemToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.korelacjaZeSplotemToolStripMenuItem.Text = "Korelacja ze splotem";
+            this.korelacjaZeSplotemToolStripMenuItem.Click += new System.EventHandler(this.korelacjaZeSplotemToolStripMenuItem_Click);
             // 
             // generujToolStripMenuItem
             // 
@@ -356,26 +379,12 @@
             this.histogramToolStripMenuItem.Size = new System.Drawing.Size(148, 24);
             this.histogramToolStripMenuItem.Text = "Histogram";
             // 
-            // splotToolStripMenuItem
+            // pomiarOdległościToolStripMenuItem
             // 
-            this.splotToolStripMenuItem.Name = "splotToolStripMenuItem";
-            this.splotToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
-            this.splotToolStripMenuItem.Text = "Splot";
-            this.splotToolStripMenuItem.Click += new System.EventHandler(this.splotToolStripMenuItem_Click);
-            // 
-            // korelacjaToolStripMenuItem
-            // 
-            this.korelacjaToolStripMenuItem.Name = "korelacjaToolStripMenuItem";
-            this.korelacjaToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
-            this.korelacjaToolStripMenuItem.Text = "Korelacja";
-            this.korelacjaToolStripMenuItem.Click += new System.EventHandler(this.korelacjaToolStripMenuItem_Click);
-            // 
-            // korelacjaZeSplotemToolStripMenuItem
-            // 
-            this.korelacjaZeSplotemToolStripMenuItem.Name = "korelacjaZeSplotemToolStripMenuItem";
-            this.korelacjaZeSplotemToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
-            this.korelacjaZeSplotemToolStripMenuItem.Text = "Korelacja ze splotem";
-            this.korelacjaZeSplotemToolStripMenuItem.Click += new System.EventHandler(this.korelacjaZeSplotemToolStripMenuItem_Click);
+            this.pomiarOdległościToolStripMenuItem.Name = "pomiarOdległościToolStripMenuItem";
+            this.pomiarOdległościToolStripMenuItem.Size = new System.Drawing.Size(140, 24);
+            this.pomiarOdległościToolStripMenuItem.Text = "Pomiar odległości";
+            this.pomiarOdległościToolStripMenuItem.Click += new System.EventHandler(this.pomiarOdległościToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -436,6 +445,7 @@
         private System.Windows.Forms.ToolStripMenuItem splotToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem korelacjaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem korelacjaZeSplotemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pomiarOdległościToolStripMenuItem;
     }
 }
 

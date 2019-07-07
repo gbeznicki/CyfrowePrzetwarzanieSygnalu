@@ -505,5 +505,17 @@ namespace Zadanie1
                 plotController.Show();
             }
         }
+
+        private void pomiarOdległościToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlotController plotController = new PlotController()
+            {
+                PlotType = PlotType.MeasureDistance,
+                Title = "Pomiar odległości",
+            };
+            plotController.DrawPlot();
+            plotController.MdiParent = this;
+            plotController.Show();
+        }
     }
 }
