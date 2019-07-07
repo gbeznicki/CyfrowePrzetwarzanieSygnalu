@@ -94,8 +94,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Panel2.Controls.Add(this.histogram);
             this.splitContainer1.Panel2.Controls.Add(this.lowestPlot);
-            this.splitContainer1.Size = new System.Drawing.Size(1224, 714);
-            this.splitContainer1.SplitterDistance = 257;
+            this.splitContainer1.Size = new System.Drawing.Size(856, 744);
+            this.splitContainer1.SplitterDistance = 267;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -182,8 +182,8 @@
             this.splitContainer2.Panel2.Controls.Add(this.labelMeasureValue_0);
             this.splitContainer2.Panel2.Controls.Add(this.labelMeasure_0);
             this.splitContainer2.Panel2.Tag = "";
-            this.splitContainer2.Size = new System.Drawing.Size(1565, 714);
-            this.splitContainer2.SplitterDistance = 1224;
+            this.splitContainer2.Size = new System.Drawing.Size(1095, 744);
+            this.splitContainer2.SplitterDistance = 856;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 2;
             // 
@@ -316,7 +316,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1565, 714);
+            this.ClientSize = new System.Drawing.Size(1095, 744);
             this.Controls.Add(this.splitContainer2);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PlotController";

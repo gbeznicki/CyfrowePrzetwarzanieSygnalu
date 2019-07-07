@@ -8,7 +8,7 @@
         public static double ImpletionRate { get; set; } = 0.7;
         public static double JumpTime { get; set; } = 6;
         public static double Probability { get; set; } = 0.1;
-        public static double Frequency { get; set; } = 5000;
+        public static double Frequency { get; set; } = 250;
         public static double TotalTime { get; set; } = 10;
         public static int RangesAmount { get; set; } = 10;
 
