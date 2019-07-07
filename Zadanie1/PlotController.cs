@@ -337,7 +337,11 @@ namespace Zadanie1
 
         void DrawReverseFourierPlot(List<Complex> previousPoints) //, out List<double> measuredValues
         {
+            Stopwatch s = new Stopwatch();
+            s.Start();
             var reversedPoints = FourierTransform.ReverseTransform(previousPoints);
+            s.Stop();
+            ElapsedTime = s.Elapsed;
 
             List<DataPoint> dataPoints = new List<DataPoint>();
             for (int i = 0; i < reversedPoints.Count; i++)
@@ -376,7 +380,11 @@ namespace Zadanie1
 
         void DrawReverseFastFourierPlot(List<Complex> previousPoints) //, out List<double> measuredValues
         {
+            Stopwatch s = new Stopwatch();
+            s.Start();
             var reversedPoints = FastFourierTransform.ReverseTransform(previousPoints);
+            s.Stop();
+            ElapsedTime = s.Elapsed;
 
             List<DataPoint> dataPoints = new List<DataPoint>();
             for (int i = 0; i < reversedPoints.Count; i++)

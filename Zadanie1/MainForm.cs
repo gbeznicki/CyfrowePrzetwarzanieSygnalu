@@ -391,7 +391,7 @@ namespace Zadanie1
             if (plotController != null)
             {
                 plotController.PlotType = PlotType.FourierTransform;
-                plotController.Title = "Transformata Fouriera";
+                plotController.Title = "Transformata Fouriera - część rzeczywista";
                 plotController.DrawPlot();
                 plotController.MdiParent = this;
                 plotController.Show();
@@ -407,6 +407,7 @@ namespace Zadanie1
             if (plotController != null)
             {
                 plotController.PlotType = PlotType.ReverseFourierTransform;
+                plotController.Title = "Odwrotna transformata Fouriera";
                 plotController.DrawPlot();
                 plotController.MdiParent = this;
                 plotController.Show();
@@ -422,12 +423,8 @@ namespace Zadanie1
             if (plotController != null)
             {
                 plotController.PlotType = PlotType.FastFourierTransform;
-                plotController.Title = "Szybka transformata Fouriera";
-                Stopwatch s = new Stopwatch();
-                s.Start();
+                plotController.Title = "Szybka transformata Fouriera - część rzeczywista";
                 plotController.DrawPlot();
-                s.Stop();
-                plotController.ElapsedTime = s.Elapsed;
                 plotController.MdiParent = this;
                 plotController.Show();
             }
@@ -442,6 +439,7 @@ namespace Zadanie1
             if (plotController != null)
             {
                 plotController.PlotType = PlotType.ReverseFastFourierTransform;
+                plotController.Title = "Odwrotna szybka transformata Fouriera";
                 plotController.DrawPlot();
                 plotController.MdiParent = this;
                 plotController.Show();
