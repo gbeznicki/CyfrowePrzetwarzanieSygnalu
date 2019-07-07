@@ -361,7 +361,7 @@ namespace Zadanie1
                 correlationSamplesDataPoints.Add(new DataPoint(i, antenna.CorrelationSamples[i]));
             DrawChart(probingDataPoints);
             DrawLowerChart(feedbackDataPoints, true, "Odpowiedź");
-            //DrawLowestChart(correlationSamplesDataPoints, true, "Korelacja");
+            DrawLowestChart(correlationSamplesDataPoints, true, "Korelacja");
             DataPoints = probingDataPoints;
         }
 
@@ -478,6 +478,24 @@ namespace Zadanie1
             }
 
             histogram.Model = myModel;
+        }
+
+        void DrawLowestChart(IEnumerable<DataPoint> points, bool drawOriginalSignal = true, string title = "")
+        {
+            //Rysowanie wykresu liniowego/punktowego
+            var myModel = new PlotModel { Title = title == "" ? Title : title };
+
+            if (drawOriginalSignal)
+            {
+                var plotData = new LineSeries();
+                foreach (var point in points)
+                {
+                    plotData.Points.Add(point);
+                }
+                myModel.Series.Add(plotData);
+            }
+
+            lowestPlot.Model = myModel;
         }
 
         void DrawChart(IEnumerable<DataPoint> points, bool drawHistogram = true, bool drawOriginalSignal = true)
