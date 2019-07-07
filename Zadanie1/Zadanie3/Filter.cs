@@ -8,21 +8,6 @@ namespace Zadanie1.Zadanie3
 {
     public class Filter
     {
-        //private IImpulseResponse _response;
-        //private IWindow _window;
-
-        //public Filter ImpulseResponse(IImpulseResponse response)
-        //{
-        //    _response = response;
-        //    return this;
-        //}
-
-        //public Filter WindowFunction(IWindow window)
-        //{
-        //    _window = window;
-        //    return this;
-        //}
-
         private static List<DataPoint> useWindow(List<DataPoint> filterDataPoints, int m)
         {
             List<DataPoint> results = new List<DataPoint>();
@@ -93,19 +78,5 @@ namespace Zadanie1.Zadanie3
 
             return useWindow(results, m);
         }
-
-        //public List<double> FilterOperation(List<double> points, int m, double fo, double fp)
-        //{
-        //    if (_response == null)
-        //        throw new Exception("Response is null");
-        //    return Helper.Convolution(_response.Create(points.Count, m, fo, fp).Zip((_window ?? new RectangularWindow()).Create(points.Count, m), (x, y) => x * y).ToList(), points);
-        //}
-
-        //public List<double> FilterOperation2(List<double> points, int m, double fo, double fp)
-        //{
-        //    if (_response == null)
-        //        throw new Exception("Response is null");
-        //    return _response.Create(points.Count, m, fo, fp).Zip((_window ?? new RectangularWindow()).Create(points.Count, m), (x, y) => x * y).ToList();
-        //}
     }
 }
