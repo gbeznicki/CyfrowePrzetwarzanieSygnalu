@@ -23,7 +23,7 @@ namespace Zadanie1.Zadanie3
         public List<double> ProbingSignal { get; set; }
         public List<double> FeedbackSignal { get; set; }
         public List<double> CorrelationSamples { get; set; }
-        
+
         public Antenna()
         {
             NumberOfMeasurement = SharedSettings.NumberOfMeasurement;

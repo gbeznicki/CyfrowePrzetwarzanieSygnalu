@@ -28,9 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.plot1 = new OxyPlot.WindowsForms.PlotView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.OryginalnyDystans = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ObliczonyDystans = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Roznica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.histogram = new OxyPlot.WindowsForms.PlotView();
+            this.lowestPlot = new OxyPlot.WindowsForms.PlotView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.button1 = new System.Windows.Forms.Button();
             this.labelMeasureValue_3 = new System.Windows.Forms.Label();
@@ -44,22 +50,24 @@
             this.labelMeasureValue_0 = new System.Windows.Forms.Label();
             this.labelMeasure_0 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.lowestPlot = new OxyPlot.WindowsForms.PlotView();
+            this.antennaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.antennaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // plot1
             // 
             this.plot1.BackColor = System.Drawing.Color.Bisque;
             this.plot1.Location = new System.Drawing.Point(0, 0);
-            this.plot1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.plot1.Margin = new System.Windows.Forms.Padding(4);
             this.plot1.Name = "plot1";
             this.plot1.PanCursor = System.Windows.Forms.Cursors.Hand;
             this.plot1.Size = new System.Drawing.Size(849, 253);
@@ -73,7 +81,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -83,18 +91,47 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Panel2.Controls.Add(this.histogram);
             this.splitContainer1.Panel2.Controls.Add(this.lowestPlot);
-            this.splitContainer1.Size = new System.Drawing.Size(858, 714);
+            this.splitContainer1.Size = new System.Drawing.Size(1224, 714);
             this.splitContainer1.SplitterDistance = 257;
             this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.OryginalnyDystans,
+            this.ObliczonyDystans,
+            this.Roznica});
+            this.dataGridView1.Location = new System.Drawing.Point(860, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(461, 446);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // OryginalnyDystans
+            // 
+            this.OryginalnyDystans.HeaderText = "Oryginalny dystans";
+            this.OryginalnyDystans.Name = "OryginalnyDystans";
+            // 
+            // ObliczonyDystans
+            // 
+            this.ObliczonyDystans.HeaderText = "Obliczony dystans";
+            this.ObliczonyDystans.Name = "ObliczonyDystans";
+            // 
+            // Roznica
+            // 
+            this.Roznica.HeaderText = "Różnica";
+            this.Roznica.Name = "Roznica";
             // 
             // histogram
             // 
             this.histogram.BackColor = System.Drawing.Color.BurlyWood;
             this.histogram.Location = new System.Drawing.Point(4, -8);
-            this.histogram.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.histogram.Margin = new System.Windows.Forms.Padding(4);
             this.histogram.Name = "histogram";
             this.histogram.PanCursor = System.Windows.Forms.Cursors.Hand;
             this.histogram.Size = new System.Drawing.Size(849, 237);
@@ -104,12 +141,25 @@
             this.histogram.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.histogram.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
+            // lowestPlot
+            // 
+            this.lowestPlot.BackColor = System.Drawing.Color.PapayaWhip;
+            this.lowestPlot.Location = new System.Drawing.Point(0, 229);
+            this.lowestPlot.Name = "lowestPlot";
+            this.lowestPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.lowestPlot.Size = new System.Drawing.Size(849, 220);
+            this.lowestPlot.TabIndex = 1;
+            this.lowestPlot.Text = "plotView1";
+            this.lowestPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.lowestPlot.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.lowestPlot.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
             // splitContainer2
             // 
             this.splitContainer2.BackColor = System.Drawing.Color.Wheat;
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -132,15 +182,15 @@
             this.splitContainer2.Panel2.Controls.Add(this.labelMeasureValue_0);
             this.splitContainer2.Panel2.Controls.Add(this.labelMeasure_0);
             this.splitContainer2.Panel2.Tag = "";
-            this.splitContainer2.Size = new System.Drawing.Size(1096, 714);
-            this.splitContainer2.SplitterDistance = 858;
+            this.splitContainer2.Size = new System.Drawing.Size(1565, 714);
+            this.splitContainer2.SplitterDistance = 1224;
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 2;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(3, 4);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(216, 28);
             this.button1.TabIndex = 3;
@@ -258,37 +308,30 @@
             this.labelMeasure_0.TabIndex = 0;
             this.labelMeasure_0.Text = "Średnia: ";
             // 
-            // lowestPlot
+            // antennaBindingSource
             // 
-            this.lowestPlot.BackColor = System.Drawing.Color.PapayaWhip;
-            this.lowestPlot.Location = new System.Drawing.Point(0, 229);
-            this.lowestPlot.Name = "lowestPlot";
-            this.lowestPlot.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.lowestPlot.Size = new System.Drawing.Size(849, 220);
-            this.lowestPlot.TabIndex = 1;
-            this.lowestPlot.Text = "plotView1";
-            this.lowestPlot.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.lowestPlot.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.lowestPlot.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            this.antennaBindingSource.DataSource = typeof(Zadanie1.Zadanie3.Antenna);
             // 
             // PlotController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1096, 714);
+            this.ClientSize = new System.Drawing.Size(1565, 714);
             this.Controls.Add(this.splitContainer2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PlotController";
             this.Text = "Form2";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.antennaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -312,5 +355,10 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Label labelMeasure_4;
         private OxyPlot.WindowsForms.PlotView lowestPlot;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource antennaBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OryginalnyDystans;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ObliczonyDystans;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Roznica;
     }
 }

@@ -362,6 +362,15 @@ namespace Zadanie1
             DrawChart(probingDataPoints);
             DrawLowerChart(feedbackDataPoints, true, "Odpowiedź");
             DrawLowestChart(correlationSamplesDataPoints, true, "Korelacja");
+            for (int i = 0; i < OriginalList.Count; i++)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridView1);
+                row.Cells[0].Value = OriginalList[i];
+                row.Cells[1].Value = CountedList[i];
+                row.Cells[2].Value = DiffrenceList[i];
+                dataGridView1.Rows.Add(row);
+            }
             DataPoints = probingDataPoints;
         }
 
